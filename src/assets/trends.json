@@ -1,0 +1,22 @@
+{
+  "politicians": [
+    {
+      "firstName": "Karl",
+      "lastName": "Lauterbach",
+      "id": "12345",
+      "image": "https://rdw.hgvcdn.de/resources/FILENAME/9783737101325_161.jpg"
+    },
+    {
+      "firstName": "Gregor",
+      "lastName": "Gysi",
+      "id": "1235",
+      "image": "https://www.linksfraktion.de/fileadmin/user_upload/Pressefotos/pressefoto-gregor-gysi.jpg"
+    },
+    {
+      "firstName": "Sahra",
+      "lastName": "Wagenknecht",
+      "id": "12335",
+      "image": "https://img.welt.de/img/politik/deutschland/mobile234066804/2122508807-ci102l-w1024/Sahra-Wagenknecht-3.jpg"
+    }
+  ]
+}
