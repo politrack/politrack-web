@@ -6,7 +6,7 @@
       :style="image!==null? { 'background-image': 'url(' + image + ')' }:{}"
   >
     <v-card-title>
-      <span class="font-weight-light text-caption ml-auto">{{ article.published }}</span>
+      <span class="font-weight-light text-caption ml-auto">{{ moment(article.published).fromNow() }}</span>
     </v-card-title>
 
 

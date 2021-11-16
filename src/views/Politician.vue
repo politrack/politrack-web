@@ -37,21 +37,18 @@
     <div class="px-5">
       <h3 class="mb-2">Aktuelle Berichte</h3>
       <v-slide-group
+          class="overflow-y-visible"
           multiple
           show-arrows
-          class="overflow-y-visible"
       >
         <v-slide-item
-            v-for="tweet in politician.tweets"
-            :key="tweet.id"
+            v-for="entry in entries"
+            :key="entry.id"
         >
-          <TweetCard :tweet="tweet" :user="politician.twitterUser"/>
-        </v-slide-item>
-        <v-slide-item
-            v-for="article in politician.articles"
-            :key="article.id"
-        >
-          <ArticleCard :article="article"/>
+          <div class="h-100">
+            <TweetCard v-if="entry.entryType === 'tweet'" :tweet="entry" :user="politician.twitterUser"/>
+            <ArticleCard v-if="entry.entryType === 'article'" :article="entry"/>
+          </div>
         </v-slide-item>
       </v-slide-group>
     </div>
@@ -62,6 +59,7 @@
 import mockup from "../assets/politicians/mockup.json"
 import TweetCard from "../components/profiles/TweetCard";
 import ArticleCard from "../components/profiles/ArticleCard";
+
 export default {
   name: "Politician",
   components: {
@@ -71,11 +69,31 @@ export default {
   data: () => {
     return {
       id: null,
-      politician: mockup
+      politician: mockup,
+      entries: []
     }
   },
-  mounted() {
+  created() {
     this.id = this.$route.params.id;
+
+    this.politician.tweets.forEach(function (item) {
+      item["entryType"] = "tweet";
+    });
+
+    this.politician.articles.forEach(function (item) {
+      item["entryType"] = "article";
+    });
+
+    this.initializeSortedEntries();
+  },
+  methods: {
+    initializeSortedEntries() {
+      this.entries = this.politician.articles.concat(this.politician.tweets).sort(function (a, b) {
+        let aDate = a["entryType"] === "tweet" ? a.created_at : a.published;
+        let bDate = b["entryType"] === "tweet" ? b.created_at : b.published;
+        return new Date(bDate) - new Date(aDate);
+      });
+    }
   }
 }
 </script>
@@ -87,11 +105,16 @@ export default {
 
 .slider-card {
   width: 300px;
+  height: 100%;
   margin-left: 1em;
   margin-right: 1em;
 }
 
 .overflow-y-visible div {
   overflow-y: visible !important;
+}
+
+div.h-100 {
+  height: 100%;
 }
 </style>

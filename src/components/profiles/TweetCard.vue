@@ -1,7 +1,7 @@
 <template>
   <v-card
       class="slider-card d-flex flex-column justify-space-between"
-      color="#26c6da"
+      color="#1cb8c2"
       dark
       rounded
   >
@@ -60,5 +60,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
