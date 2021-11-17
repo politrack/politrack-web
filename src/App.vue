@@ -4,29 +4,35 @@
       <v-container>
         <v-row>
           <div class="d-flex align-center">
-            <v-img
-                alt="PoliTrack Logo"
-                class="shrink mr-2"
-                contain
-                src="./assets/logo.png"
-                transition="scale-transition"
-                width="30"
-            />
-            <h3 class="grey--text text--darken-3">PoliTrack</h3>
+            <router-link to="/" class="text-decoration-none">
+              <v-img
+                  alt="PoliTrack Logo"
+                  class="shrink mr-2"
+                  contain
+                  src="./assets/logo.png"
+                  transition="scale-transition"
+                  width="30"/>
+            </router-link>
+            <router-link to="/" class="text-decoration-none">
+              <h3 class="grey--text text--darken-3 d-inline">PoliTrack</h3>
+            </router-link>
           </div>
           <v-spacer></v-spacer>
-          <a
-              class="icon-link"
-              href="https://github.com/themeselection/materio-vuetify-vuejs-admin-template-free"
-              target="_blank"
-              rel="nofollow"
-          >
+          <a class="text-decoration-none"
+             href="https://github.com/politrack"
+             target="_blank"
+             rel="nofollow">
             <v-icon class="">
               fab fa-github
             </v-icon>
-            <v-icon class="ms-3">
-            fab fa-twitter
-            </v-icon>
+            <a class="text-decoration-none"
+               href="https://twitter.com/pltrck"
+               target="_blank"
+               rel="nofollow">
+              <v-icon class="ms-3">
+                fab fa-twitter
+              </v-icon>
+            </a>
           </a>
         </v-row>
       </v-container>
@@ -35,6 +41,29 @@
     <v-main :style="{background: $vuetify.theme.themes[theme].background}" class="mt-5">
       <router-view></router-view>
     </v-main>
+    <v-footer
+        color="grey darken-1"
+        padless>
+      <v-row
+          justify="center"
+          no-gutters>
+        <v-btn
+            v-for="link in footerLinks"
+            :key="link.name"
+            color="white"
+            text
+            rounded
+            class="my-2">
+          <router-link :to="{name: link.route}" class="text-decoration-none" style="color: white">{{ link.name }}
+          </router-link>
+        </v-btn>
+        <v-col
+            class="grey darken-2 py-4 text-center white--text"
+            cols="12">
+          {{ new Date().getFullYear() }} — <strong>PoliTrack</strong>
+        </v-col>
+      </v-row>
+    </v-footer>
   </v-app>
 </template>
 
@@ -43,10 +72,23 @@
 
 export default {
   name: 'App',
-
   components: {},
-
-  data: () => ({}),
+  data: () => ({
+    'footerLinks': [
+      {
+        'name': 'Impressum',
+        'route': 'imprint'
+      },
+      {
+        'name': 'Datenschutzerklärung',
+        'route': 'privacy'
+      },
+      {
+        'name': 'Über uns',
+        'route': 'about'
+      }
+    ]
+  }),
   computed: {
     theme() {
       return (this.$vuetify.theme.dark) ? 'dark' : 'light'
@@ -61,7 +103,7 @@ export default {
   background: rgb(245, 245, 245)
 }
 
-.icon-link {
+.text-decoration-none {
   text-decoration: none;
 }
 
