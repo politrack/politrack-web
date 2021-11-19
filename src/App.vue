@@ -42,7 +42,7 @@
       <router-view></router-view>
     </v-main>
     <v-footer
-        color="grey darken-1"
+        color="darken-1"
         padless>
       <v-row
           justify="center"
@@ -50,15 +50,14 @@
         <v-btn
             v-for="link in footerLinks"
             :key="link.name"
-            color="white"
             text
             rounded
             class="my-2">
-          <router-link :to="{name: link.route}" class="text-decoration-none" style="color: white">{{ link.name }}
+          <router-link :to="{name: link.route}" class="text-decoration-none">{{ link.name }}
           </router-link>
         </v-btn>
         <v-col
-            class="grey darken-2 py-4 text-center white--text"
+            class=" py-4 text-center"
             cols="12">
           {{ new Date().getFullYear() }} — <strong>PoliTrack</strong>
         </v-col>

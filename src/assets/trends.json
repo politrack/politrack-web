@@ -4,19 +4,84 @@
       "firstName": "Karl",
       "lastName": "Lauterbach",
       "id": "79215",
-      "image": "https://rdw.hgvcdn.de/resources/FILENAME/9783737101325_161.jpg"
+      "image": "https://rdw.hgvcdn.de/resources/FILENAME/9783737101325_161.jpg",
+      "count": 23,
+      "party": "SPD"
     },
     {
       "firstName": "Gregor",
       "lastName": "Gysi",
-      "id": "1235",
-      "image": "https://www.linksfraktion.de/fileadmin/user_upload/Pressefotos/pressefoto-gregor-gysi.jpg"
+      "id": "79334",
+      "image": "https://www.linksfraktion.de/fileadmin/user_upload/Pressefotos/pressefoto-gregor-gysi.jpg",
+      "count": 15,
+      "party": "Die Linke"
     },
     {
-      "firstName": "Sahra",
-      "lastName": "Wagenknecht",
-      "id": "12335",
-      "image": "https://img.welt.de/img/politik/deutschland/mobile234066804/2122508807-ci102l-w1024/Sahra-Wagenknecht-3.jpg"
+      "firstName": "Philip",
+      "lastName": "Amthor",
+      "id": "145862",
+      "count": 13,
+      "party": "CDU/CSU"
+    },
+    {
+      "firstName": "Annalena",
+      "lastName": "Baerbock",
+      "id": "79475",
+      "count": 6,
+      "party": "Grüne"
+    },
+    {
+      "firstName": "Christian",
+      "lastName": "Lindner",
+      "id": "119742",
+      "count": 4,
+      "party": "FDP"
+    }
+  ],
+  "topics": [
+    {
+      "articles": [
+        {
+          "url": "https://www.welt.de/politik/deutschland/plus232634253/Hochwasser-Man-haette-das-Ausmass-des-Schadens-reduzieren-koennen.html",
+          "id": "3b0725438a0a3bae5016864ced8b12286630805ef6ba75dd045915f1f632db38",
+          "published": "2021-07-20T18:03:44+00:00",
+          "title": "Hochwasser: \u201eMan h\u00e4tte das Ausma\u00df des Schadens reduzieren k\u00f6nnen\u201c",
+          "publisher": "WELT",
+          "info": {
+            "source": "welt",
+            "paid_article": true
+          },
+          "image": "https://img.welt.de/img/politik/deutschland/mobile232634249/8901620777-ci23x11-w1136/Bundesinnenminister-in-der-Hochwasser-Krisen-Region-Bad-Neuenahr-Ahrweiler.jpg"
+        },
+        {
+          "url": "https://www.bild.de/regional/duesseldorf/duesseldorf-regional-politik-und-wirtschaft/laschet-zur-flut-unwetterschaeden-in-nrw-ueberschreiten-13-mrd-euro-77332866.bild.html",
+          "id": "e9f153c585ed243b1e46fbf667f9982f80291b6a8338175b4fbd5d19a8c40525",
+          "publisher": "BILD",
+          "title": "Laschet zur Flut: Unwettersch\u00e4den in NRW \u00fcberschreiten 13 Mrd. Euro | Regional",
+          "published": "2021-08-09T16:03:25.835000+00:00",
+          "info": {
+            "source": "bild",
+            "paid_article": false
+          },
+          "image": "https://images.bild.de/61112c0281b0604d119b24b2/f7fd4132853ca7af85a470cc275eae78/6/4?w=992"
+        }
+      ]
+    },
+    {
+      "articles": [
+        {
+          "publisher": "SPON",
+          "published": "2021-09-23T20:14:19+02:00",
+          "url": "https://www.spiegel.de/politik/deutschland/liveblog-zur-schlussrunde-der-spitzenkandidaten-a-34f2a2d7-94b3-4c9a-89d8-976999eccdc5",
+          "id": "69b2650faad3469b127db44d76f146fe4dcf78378068470556b0a38bc6011f65",
+          "title": "Elefantenrunde vor der Wahl: Wenn alle reden, sagt keiner etwas",
+          "info": {
+            "source": "spon",
+            "paid_article": false
+          },
+          "image": "https://cdn.prod.www.spiegel.de/images/c10e01f5-c06b-404b-a506-6d0d6f451946_w948_r1.778_fpx28.13_fpy50.jpg"
+        }
+      ]
     }
   ]
 }
