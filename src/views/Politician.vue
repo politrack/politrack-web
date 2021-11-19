@@ -4,7 +4,7 @@
       <v-row>
         <v-col lg="8">
           <v-row>
-            <v-col lg="5" class="text-center">
+            <v-col class="text-center" lg="5">
               <v-avatar class="mx-5 mt-3" size="128">
                 <img :alt="politician.label" :src="politician.image" class="avatar-image">
               </v-avatar>
@@ -68,21 +68,29 @@
     </div>
 
     <div class="px-5 mt-5">
-      <h3 class="mb-2">Aktuelle Tweets</h3>
-      <v-slide-group
-          class="overflow-y-visible"
-          multiple
-          show-arrows
-      >
-        <v-slide-item
-            v-for="tweet in politician.tweets"
-            :key="tweet.id"
-        >
-          <div class="h-100">
-            <TweetCard :tweet="tweet" :user="politician.twitterUser"/>
-          </div>
-        </v-slide-item>
-      </v-slide-group>
+      <h3 class="mb-2">Aktuelle Aussagen</h3>
+
+      <v-row>
+        <v-col lg="8">
+          <v-slide-group
+              class="overflow-y-visible"
+              multiple
+              show-arrows
+          >
+            <v-slide-item
+                v-for="tweet in politician.tweets"
+                :key="tweet.id"
+            >
+              <div class="h-100">
+                <TweetCard :tweet="tweet" :user="politician.twitterUser"/>
+              </div>
+            </v-slide-item>
+          </v-slide-group>
+        </v-col>
+        <v-col lg="4">
+          <QuotesCard :politician="politician"/>
+        </v-col>
+      </v-row>
     </div>
 
     <v-row class="mt-5 px-5">
@@ -106,7 +114,7 @@ import SourceDistribution from "../components/profiles/SourceDistribution";
 import ArticlesOverTime from "../components/profiles/ArticlesOverTime";
 import TopicDistribution from "../components/profiles/TopicDistribution";
 import MentionedWith from "../components/profiles/MentionedWith";
-
+import QuotesCard from "../components/profiles/QuotesCard";
 
 export default {
   name: "Politician",
@@ -116,6 +124,7 @@ export default {
     ArticlesOverTime,
     SourceDistribution,
     TopicDistribution,
+    QuotesCard,
     MentionedWith
   },
   data: () => {
@@ -137,7 +146,7 @@ export default {
 
       this.politician.articles.forEach(function (item) {
         item["entryType"] = "article";
-        item["published"] =  new Date(item["published"]);
+        item["published"] = new Date(item["published"]);
       });
 
       this.politician.articles = this.politician.articles.sort(function (a, b) {
