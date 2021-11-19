@@ -1,0 +1,37 @@
+{
+  "bild": {
+    "label": "BILD",
+    "id": "bild",
+    "color": "#3f5cb7"
+  },
+  "faz": {
+    "id": "faz",
+    "label": "Frankfurter Allgemeine",
+    "color": "#5c8bad"
+  },
+  "spon": {
+    "id": "spon",
+    "label": "Spiegel Online",
+    "color": "#bedbc5"
+  },
+  "sueddeutsche": {
+    "id": "sueddeutsche",
+    "label": "Süddeutsche",
+    "color": "#fed0b9"
+  },
+  "taz": {
+    "id": "taz",
+    "label": "TAZ",
+    "color": "#f6a094"
+  },
+  "welt": {
+    "id": "welt",
+    "label": "Welt",
+    "color": "#e87074"
+  },
+  "zeit-online": {
+    "id": "zeit-online",
+    "label": "Zeit Online",
+    "color": "#ca4566"
+  }
+}

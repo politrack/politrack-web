@@ -5,6 +5,38 @@
     "username": "Karl_Lauterbach",
     "image": "https://pbs.twimg.com/profile_images/601388878554079232/db5tdAsW_400x400.jpg"
   },
+  "mentionedWith": [
+    {
+      "id": "2244994945",
+      "first_name": "Bärbel",
+      "last_name": "Bas",
+      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBISFBgSFRIYGBgYGRgYGRkaGBkYGhoYGRgaGRkYGhgcIS4lHB4rIRgYJjgmKy8xNTU1GiU7QDs0Py40NTEBDAwMEA8QHxISHjQkJSQ0MT00MTQxNDQ0NDQ0MTQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0MTQ0NDQ0NDE0NDQ0NDQ0NP/AABEIALkBEAMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAAAQUGAgMEB//EAEAQAAEDAQQHBgQDBwIHAAAAAAEAAhEDBCExQQUSUWFxgZEGEyKhsfAycsHRQlLhM2KCkqLC8RTiByNDU3Oys//EABkBAQADAQEAAAAAAAAAAAAAAAABAwQCBf/EACQRAQEBAAICAgEFAQEAAAAAAAABAgMRITESQTIiM1FhcRME/9oADAMBAAIRAxEAPwC4IQhQ6NCE0AhCEAhCEAhCEAhCaAQha61drBLjCW9DYhQVs7RU6eRK56Xaqm5riGmRljjwF/RcfPLr4aWVCqrdO1n3tuHyH7yuqlpuo342Bw2j7ZLn/rlP/PSwJLlsmkKdTAwdh+m1dSsll9ObLPYQhClAQhCAQhCASTQgSEIQJCaSBJJpIMkIQgaaSaAQhCAQhNAk0IQCELF7w0FxMAIFWqBolVjSdqc4nEk4Ae8ApC0WgvvPIbFxV7OA0ucdUYE5n90LJycnd6npp48dKlbmOcdUnE5JtszWAAtu4+as1j0a2re1kDapR+gGOF964ltXfGfaAsNjbq6zDyx81JMAIwnccVznQ9Sg/WYTGz9F2O8YkiHe+i5qLnpyV6RHiYc7/wDCkNHaXNzX3jbjH394qPe8g7/XdxWmo2fEMPMFdZ1c3uK9Zl8VcWPBEgrJV3RWkC06jve8KwtM3rXnU1GfWbmhCaS7chCEIBCEIBJNCBJJoQJJNCACEIQNNJNAIQhAJoQgEIQgFB6QtneVO7b8LL3b3ZN4KU0haO7pvfsF3E3DzVZsZ1QDiTJP6+ap5ddTpbx57vaSY3WIA2+z5So2ux1qtIp393TGG0yQTzI6KRbV1GOqHAN88ffFPQlGGGocX+LlAWX7bMz7S9BoaA1ogC5bwCtVMre1y7ia1PZKjbZZYMi5TCwcwG4pqCtWqzlw1gLx6+/d65mMDhPI7t6mrRT7t0ZFRtpp927WGBx3Hb91W41OnK+n19yFL6FtocO7JvAkbwo+Q4Y7j9CtFQFhD23OaZ57eB+67xq5vaveZqdLchc9htQqsDxniNhGIXQtsvflls6CSaSlAQhCAQhCASTSQCSaSBJpJoGmkmgEIQgaEIQCaSEEF2qrwxlP87pPBo+5ChKVf1jl7HmtvbGuRWa38rAeZLp9Aoqy1LwN49P0WPlvlp4p4TWmKh7llMY1HBvUx6Kfpw1oaMhHRVx/jtLGZMbrHkLvopii977mXAYuOE7hmqo158RK0L12NpqLbZLQBIqAcAttOvVbdUjcYhdzw59+nfCxc1YsqSFjWrEYKeyMa1MOEFQ9ppES08t493FdpZanm57Wjgue1WauB8TX8lzqfwm9eqrlSoWO93jCDvC2ttIcIOVx3jL3x2rVbvFJjAw4Zg7eCjHVSz3lmo7U2LJoO1d3U7snw1L27njLmPQKzLz2zWouaRPiZ42ne2+5egUn6zQ6IkAxskTC1cV7nTNyTz2ySTSVysIQhAIQhAIQhAkIQgxTWKaDIJrFNA0IQgE0k0DQkhBQu1z5tDtwYPIfdR1iPjb7zC7e05m0PO3V6AAfRRdjfD/e9YuTza1cfqLToyzF1SrU2+CeGPot9q0ibO0NY2XG5oNwF8CfeWeC6tEABgJ/FLupXZ/pabhe0dFxjx7aNf0q1LSOkHVmtfU1WGZIEty1RkAI1iTPK6+aZbKj3uph+syfiviMc7+k8lIus9MXta0H8wbf1XK6mG4Y7VbrWfpznOp7ros9cwQsDanknVvIuGHW9Y2VskrU1pDoVc8LLETp5lUhrqdeqHHV1na7mlsPBdDQQ0y268HHguqyWuu1rQ6o6oCTOu0azQSdXxtADromc5vU4wDZ74LMicvfBWXWeulXws12rlpsztcvGbb7rpE4+8lA26mMrhhByOw7thV7tLRqkR/lUXSph5HuMwqr7TqeEbSe6m8EGPscQvVLO/WY120A+S8ts8F4BNxI5cF6lZmBrGtBkAADhlgtHD9snN9NiSaS0KghCEAhCSAQhCAQhJBimsVkEDCaQTQNCEIBNJNAIKFjUJiBiUHn/ajw1nGMRI3gSPUFQrHapnYrJ25IY9kZMiOdyrlWg7VYYufB5Sse8/qasXwu2jX6zGEH8LfQKwUDNyqegahFFk/ljoYVls1W5ceq1Z8x1vY0BQlprlzyMGi6ciVJ1KmS467GuGrAj1SpkLRFqp1JDXtOrIJBBE7Ls1pt9ZnehjXgOA1om88Auhmjqer4fAf3YHVaq2jwL5k710iTy7LFaw8arsR5712BiiQ2IIxHmMwu2narsVymz+Gu13KgaVqzWqN/K4RzY1x8yVdbVVJKoumKUVXv2uA6MaFDjfpzUB4wBy+i9WsjYYwfut9AvNrDQ8Qzkgea9MpiGjgFo4ftj5vpkkhC0KQhCECSTSQCEkIGhJCDFMJBMIMk1iE0GSEk0AmkmgEnJoKChdtCC5sXkyCfexR1tbqim3Yxg6ifqrT2m0T3hZUmYcAdzTjAVY0j46pjKT/KLlk340048x1djrUatJ4JvY8j+EgOHqVbbJTJuleadhbZqV30ibnAFvFlx6g+S9Osb4Kjc6q/i13GVZhbJIJjCOElRVktVasTqU9QAOMvIBOq7VPhBJBxN+SsFpgiVD2myydYXHbh5hRnpb5rvpaOtJDj3jDDoAg3i7xA5Y4blnadH2gXd4z8MXEAyYzK0UKpDNXvHtdO4jkSEq9J9QHWqE4CMJg43XKw6392df4h322s2sKbGtqCfG4Eta0fNB1juCsDLPPiOYv+n1XBZ7LqlS9nN0dVXovj77cTqGJyCpVtc2pUqNzbUaOJ1Gq9aQtDWMc4mAASdwF5XkFg0mX1nu/O5zwDvMtHQAc0mfFqnevUXzRlhaXs3SY4C7zVtCo+grd4geY+30V3pvDgCDIIkFX8P4svN7NCEK5UEkJIBJCSAQkiUDQlKSATWKaDJZBYhMIMk1iE0DQhCBoQkUEXp2vqtgZ/Yqm0qcue/Y13S/7Ke7Q2mXRMkXKCqvDKFQjEtc3qNX1JWHlv6mviz+lSbAXMqB7T4mGR/Df5iQvV9EW5tRgcP8FeaWSn/wA3eR/aQrPoU6j4BgkFu7WbDhdwLui71e08duavLq0wFuYwOVbFuJuIghStgtwPouemia7SAs2wrIUYxK2tqgpa4zUjS4ALGlVuPHyXPbKwiAudjzEBR0WoHt/pLUoOptN7wQflunrIHMrzWxktLHjL6FXTttSdUqMpsEkgjqQSegUAdD1KZaHDVu63q3P4svJ3dJuz1tV24+JvPEdQfJW7QGmabgKb3QfwyYB3cVRXkhjdoJHp9gtYrmJ5/dV51c6NZmo9hBTVK7MafJim98jIkyRz2K5MeCJGC1Z1NTtm1mymUkykV0gkigpEoCUpSlEoGiUpRKBhNYhMIMgmFiFkgyCaxCaDJCSaAXLbqrmi4A8zPoupY1GyFzfRFA0lWe58ahbjeRv33lR9sf4NTeCeGSsulLDUe46rSXHO4ABVLS7e6b4nS5xN3Dases26bM6ky4LKQbQ3n9VL1X93FQfhqBx4EQ7ylQNjkP1s7/TH3tUrUqa1J4OYkco+y6sRmrYKQf4hj6rIWWoDICjez1pLqLHHFvgdywPSFb7E8EbV0sRTK1Zt0HotgtFV1xlT8N2LW5jdydJ+VRNOi44rfWLaTC51w9TsG9dFas1mAkrHR1gNd4q1Pgbe0ZE7Y2Kc5ur1DepjPdcFl0aGtdaqrfG8AMafwM+5zXHabC0v13i4C/1Vyq2TvL8hgPRVvTdqbT8E34m6bso5jyWu5mM/4wTd1r/VM01ZfEGNHwtl8ZOdeRyCigJuF+3hthTlsrhwLWNMHE5k5yuSzWSCXHFZc4vfyq7Wp11EZZrDUBJpukgyGzfBzB2jDovU9CNqCizXaWuiSCZjdK8+0mC1usJadZoaRI38sMl06M7ZV6UNqgVG7Tc+PmGPMFW5z1e1V13Ono6RUPo/tNZK4uqBjvy1PAZ2SbjyKltab125BWJKCUiUDlKUiUpQOUSlKUolsCaQQEQyCyWITQZBMLFNBkmsVS+1vaB4JoUXFsfE5pgnaAchlyKC22230qDdepUawbzeeDcTyVW0h25aPDQpF2Ws+4cmC88yFS9VzzrOcSdpMnqtjG6uAvQS1TtHaHSXuJJ+Fo8LRd+UY85UJXl/iec5J9fotzKeZx2rlrHWMZT/AIUfGVPdaWOcdZwFzRJ2mL497Fbe1GjRZKFnJvLwxh3HUJM9CoiwWdjtWnHxOAM5yYV6/wCJlm1rOx35Hsd1BZ/couJ8a6zq/KRCdnLIWMdODgOsKesfhMFcWg3a9Bu0LvZjIWet2fTsdaIFy194cFrGK3U1HbroUqAMveQ1jb3Em6NnNWF8BrWNiDGGEZRuUdbrAXWdzIkmHRvBwW7RVNwYwOxa2OhMeULfxcUmO/t5vPzXe+vqenfaX92zZdjsGZXmWlrSajnPm4n+mbgrn2s0iGs7tpvdj8ufXDqqQ8SIyUav04zPtrpNELYTCTbsEO95Lh2h9LvPgb8zj5R6uUcaM5KWtVHXe793VaOQ1vVy1GmAgi3UoXTZNIV6H7Oo5m4GW/ym49F0/wCnnBaqlC/DBBPaP7aPF1amHD8zPC7+U3HqFa7BpGlXbrU6gdGIwcOLTeF5e+jAlYUq76Tg5ji1wwIMH3uRD1yUKn6I7U1XQ19LXAuL2QDzafCTwI4K0Wa1U6g1mOB27RuIyRLfKUpSlKDeEwkEwiDTSCaBrJYpoOXSlp7uk94xiBxNwPKZ5LzO0M1nnO+OQuV77UP8DG7XE/yj/cqc1oidqJc3cjBGoGrojqVr1bydiDTU2TxXHQszWEvcdZ15BP4dzRhN+K2WhxJDRxSrXNjbCId2havd1KLj/wB2n1LwBPMqz6YLnaMqaziT38S4kmRVaDeearjKImztNw75hJ/dZNRx6MKtVvsrqmi3iC1zj30HI98HgxwVs/bqM/uRx9kang1TkppwgmNqq/ZO0EjVLdVw/qAxI4XTyO2LfSZIvzWHXt6mY1MK6rGJewbXD1WirDTC3WSo0VWMBl8h0DENF5cdgUYn6ojf42/0tNJgAE4qP0jamUS4kgeEuAznAiOh5LKvanXtYPEczg0bf0VY7Q1AyKQdLjD3uOO4E+ccF6NvU7ryJO6hrVaHVHF7ib/IDABctRgcCJI3tJBG8ELd/hYEqi3tc4LU59NtznGLpud1kXLVYmVnXvqf0tH0Xeyo0ktm/Zl+qweXMBDRt8PrBQubPbQ5wYDftJ5rlZLysDV1wINxvncpKx0YCBMoxyC1vozK7nN9Vi1m5BGOs+S5jZQ50AXm79eQ9VNuZgsLDSkl+34fl/VAU6AY0AXDJb7JWNN4qDCQHb2nH78kP+q1VZgHLNBb5Slc1gqa1Nhn8IHMXfRb5QdQTCxCyRBhNIJhAwslimEFW7TV9aoGZMb/AFG8+UKvOMgDb6KW07+1qfN9AopuPIIlhMuO5Y1LhCbPidxSrZoI9t7yeXRD73Ab5Ss34uJRT/aj3kiFhoOALGkC8G/ZgvSKNJr6QDhILdVw2tc2CF5iPib8h+i9Ssvwj5Wq6fi4v5KLYNDksc0OLXsqPa1+9ji2bsMEP0jabO2KrQcg8BxE7yxpHkFOWL/qf+at/wDV6wrrBXsZQD7XXqkBjHOnNhLGj5nuE5i5sG5XLQmjHUKYadXvX3vImGjIAm8xtN88FH2H4mfM31Cs7Pjd/D6FaOCTyx/+vVk6c1srU7NTc83xhtc44BUGrUc9xc4y5xLjxKtfbL4Kfz/2lVH35KzdZMMC6VrtLH6pcw+IC4R6LNmPM+i2jEe8lXVmb1e0VophAe5wIdrG/gMvusNK1iGd2De+RM4MHxnzji4KSqYe9yhrf+1/gH/s5RmdR3y7u921ss1HDhCmabYCj7DiPe1SbfhHNdK2DhcnSbcm7BZ0cOSDmtJuDc3GBwzPSVuYyOS0V/jZ/H/auvM8vRBzubPVa33mOK2tw97AtT/fkgmtCE91Byc4ecz5rulcWiv2Y4ldZQf/2Q=="
+    },
+    {
+      "id": "3223",
+      "first_name": "Kevin",
+      "last_name": "Kühnert",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Maischberger_-_2019-03-06-6434.jpg"
+    },
+    {
+      "id": "1231244",
+      "first_name": "Olaf",
+      "last_name": "Scholz",
+      "image": "https://www.bundesfinanzministerium.de/Content/DE/Bilderstrecken/Bildergalerien/Bundesminister-Staatssekretaere/Olaf-Scholz-Lebenslauf.jpg?__blob=square&v=10"
+    },
+    {
+      "id": "421241",
+      "first_name": "Philipp",
+      "last_name": "Amthor",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Foto_Philipp_Amthor.jpg"
+    },
+    {
+      "id": "934912391",
+      "first_name": "Kevin",
+      "last_name": "Kühnert",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Maischberger_-_2019-03-06-6434.jpg"
+    }
+  ],
   "tweets": [
     {
       "author_id": "2244994945",
@@ -85,14 +117,6 @@
       "visited": "2021-11-15T09:08:50.385137",
       "published": "2021-01-05T07:19:31.737000+00:00",
       "title": "Weiße Dampfer: Wellness-Kur in Werft | Regional",
-      "summary": null,
-      "text": "Hamburg – Werft-Wellness in der Winter-Pause, unsere Alster-Dampfer haben's verdient!\nFür die Alster Touristik (ATG, 18 Schiffe) war 2020 ein hartes Jahr – Corona-Beschränkungen und im Sommer oft kein Durchkommen auf Kanälen und Fleeten.\nGerade wird der Dampfer „Eilbek“ (Bj. 1951) auf der ATG-Hauswerft am Osterbekkanal wieder hübsch gemacht für die neue Saison: pinseln, putzen, Motor prüfen.\nDie neue Saison startet im Frühjahr (wahrscheinlich 1. April, je nach Pandemie-Lage) und wohl auch wieder mit reduzieren Ticketpreisen von 15 statt 16,50 Euro für eine Alsterrundfahrt.",
-      "authors": [],
-      "keywords": [
-        "Alster",
-        "Schiffswerften",
-        "Eilbek"
-      ],
       "images": [
         {
           "url": "https://images.bild.de/5ff316f8eaf523000156d2c1/7bd469d99d8084e5b1bc0691842dcc45/1/2?w=1280",
@@ -146,8 +170,100 @@
       ],
       "paid_article": false,
       "source": "bild"
+    },
+    {
+      "url": "https://www.bild.de/regional/hamburg/hamburg-regional-politik-und-wirtschaft/weisse-dampfer-wellness-kur-in-werft-74735670.bild.html",
+      "stripped_url": "https://www.bild.de/regional/hamburg/hamburg-regional-politik-und-wirtschaft/weisse-dampfer-wellness-kur-in-werft-74735670.bild.html",
+      "id": "02f19ed6a231a97bd8bd8e80730fc4587c7246812b9369032fba3f493ed1f6f4",
+      "visited": "2021-11-15T09:08:50.385137",
+      "published": "2021-01-05T07:19:31.737000+00:00",
+      "title": "Weiße Dampfer: Wellness-Kur in Werft | Regional",
+      "images": [
+        {
+          "url": "https://images.bild.de/5ff316f8eaf523000156d2c1/7bd469d99d8084e5b1bc0691842dcc45/1/2?w=1280",
+          "title": "Teaser-Bild",
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "paid_article": false,
+      "source": "bild"
+    },
+    {
+      "url": "https://www.bild.de/regional/hamburg/hamburg-regional-politik-und-wirtschaft/weisse-dampfer-wellness-kur-in-werft-74735670.bild.html",
+      "stripped_url": "https://www.bild.de/regional/hamburg/hamburg-regional-politik-und-wirtschaft/weisse-dampfer-wellness-kur-in-werft-74735670.bild.html",
+      "id": "02f19ed6a231a97bd8bd8e80730fc4587c7246812b9369032fba3f493ed1f6f0",
+      "visited": "2021-11-15T09:08:50.385137",
+      "published": "2021-01-05T07:19:31.737000+00:00",
+      "title": "Weiße Dampfer: Wellness-Kur in Werft | Regional",
+      "images": [
+        {
+          "url": "https://images.bild.de/5ff316f8eaf523000156d2c1/7bd469d99d8084e5b1bc0691842dcc45/1/2?w=1280",
+          "title": "Teaser-Bild",
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "paid_article": false,
+      "source": "bild"
+    },
+    {
+      "url": "https://www.bild.de/regional/hamburg/hamburg-regional-politik-und-wirtschaft/weisse-dampfer-wellness-kur-in-werft-74735670.bild.html",
+      "stripped_url": "https://www.bild.de/regional/hamburg/hamburg-regional-politik-und-wirtschaft/weisse-dampfer-wellness-kur-in-werft-74735670.bild.html",
+      "id": "02f19ed6a231a97bd8bd8e80730fc4587c7246812b9369032fba3f493ed1f6f2",
+      "visited": "2021-11-15T09:08:50.385137",
+      "published": "2021-01-05T07:19:31.737000+00:00",
+      "title": "Weiße Dampfer: Wellness-Kur in Werft | Regional",
+      "images": [
+        {
+          "url": "https://images.bild.de/5ff316f8eaf523000156d2c1/7bd469d99d8084e5b1bc0691842dcc45/1/2?w=1280",
+          "title": "Teaser-Bild",
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "paid_article": false,
+      "source": "bild"
     }
   ],
+  "statistics": {
+    "articlesOverTime": [{"dateTime":"2021-01-08T19:19:31.737Z","count":1},{"dateTime":"2021-01-15T19:19:31.737Z","count":0},{"dateTime":"2021-01-22T19:19:31.737Z","count":0},{"dateTime":"2021-01-29T19:19:31.737Z","count":0},{"dateTime":"2021-02-05T19:19:31.737Z","count":0},{"dateTime":"2021-02-12T19:19:31.737Z","count":0},{"dateTime":"2021-02-19T19:19:31.737Z","count":0},{"dateTime":"2021-02-26T19:19:31.737Z","count":0},{"dateTime":"2021-03-05T19:19:31.737Z","count":0},{"dateTime":"2021-03-12T19:19:31.737Z","count":1},{"dateTime":"2021-03-19T19:19:31.737Z","count":0},{"dateTime":"2021-03-26T19:19:31.737Z","count":0},{"dateTime":"2021-04-02T19:19:31.737Z","count":0},{"dateTime":"2021-04-09T19:19:31.737Z","count":0},{"dateTime":"2021-04-16T19:19:31.737Z","count":0},{"dateTime":"2021-04-23T19:19:31.737Z","count":0},{"dateTime":"2021-04-30T19:19:31.737Z","count":0},{"dateTime":"2021-05-07T19:19:31.737Z","count":0},{"dateTime":"2021-05-14T19:19:31.737Z","count":0},{"dateTime":"2021-05-21T19:19:31.737Z","count":0},{"dateTime":"2021-05-28T19:19:31.737Z","count":0},{"dateTime":"2021-06-04T19:19:31.737Z","count":0},{"dateTime":"2021-06-11T19:19:31.737Z","count":0},{"dateTime":"2021-06-18T19:19:31.737Z","count":0},{"dateTime":"2021-06-25T19:19:31.737Z","count":0},{"dateTime":"2021-07-02T19:19:31.737Z","count":0},{"dateTime":"2021-07-09T19:19:31.737Z","count":0},{"dateTime":"2021-07-16T19:19:31.737Z","count":0},{"dateTime":"2021-07-23T19:19:31.737Z","count":0},{"dateTime":"2021-07-30T19:19:31.737Z","count":0},{"dateTime":"2021-08-06T19:19:31.737Z","count":0},{"dateTime":"2021-08-13T19:19:31.737Z","count":0},{"dateTime":"2021-08-20T19:19:31.737Z","count":0},{"dateTime":"2021-08-27T19:19:31.737Z","count":0},{"dateTime":"2021-09-03T19:19:31.737Z","count":0},{"dateTime":"2021-09-10T19:19:31.737Z","count":0},{"dateTime":"2021-09-17T19:19:31.737Z","count":0},{"dateTime":"2021-09-24T19:19:31.737Z","count":0},{"dateTime":"2021-10-01T19:19:31.737Z","count":0},{"dateTime":"2021-10-08T19:19:31.737Z","count":1},{"dateTime":"2021-10-15T19:19:31.737Z","count":0}],
+    "sourceDistribution": {
+      "bild": 302,
+      "faz": 102,
+      "spon": 493,
+      "sueddeutsche": 203,
+      "taz": 32,
+      "welt": 320,
+      "zeit-online": 12
+    },
+    "topicDistribution": [
+      {
+        "label": "Finanzen",
+        "count": 94
+      },
+      {
+        "label": "Klima",
+        "count": 435
+      },
+      {
+        "label": "Außenpolitik",
+        "count": 123
+      },
+      {
+        "label": "Landwirtschaft",
+        "count": 543
+      },
+      {
+        "label": "Energie",
+        "count": 85
+      },
+      {
+        "label": "Digitalisierung",
+        "count": 21
+      }
+    ]
+  },
   "id": 79215,
   "entity_type": "politician",
   "label": "Karl Lauterbach",
