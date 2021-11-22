@@ -3,39 +3,9 @@
     <v-container>
       <v-row>
         <v-col lg="8">
-          <v-row>
-            <v-col class="text-center" lg="5">
-              <v-avatar class="mx-5 mt-3" size="128">
-                <img :alt="politician.label" :src="politician.image" class="avatar-image">
-              </v-avatar>
-              <h2 class="mt-1 grey--text text--darken-2">{{ politician.label }}</h2>
-            </v-col>
+          <ProfileCard :politician="politician"/>
 
-            <v-col lg="7">
-              <v-list two-line>
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>Partei</v-list-item-title>
-                    <v-list-item-subtitle>{{ politician.party.label }}</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>Beruf</v-list-item-title>
-                    <v-list-item-subtitle>{{ politician.occupation }}</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>Ausbildung</v-list-item-title>
-                    <v-list-item-subtitle>{{ politician.education }}</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-col>
-          </v-row>
-
-          <v-row>
+          <v-row class="mt-4">
             <v-col lg="12">
               <MentionedWith :mentions="politician.mentionedWith"/>
             </v-col>
@@ -115,6 +85,8 @@ import ArticlesOverTime from "../components/profiles/ArticlesOverTime";
 import TopicDistribution from "../components/profiles/TopicDistribution";
 import MentionedWith from "../components/profiles/MentionedWith";
 import QuotesCard from "../components/profiles/QuotesCard";
+import ProfileCard from "../components/profiles/ProfileCard";
+
 
 export default {
   name: "Politician",
@@ -125,7 +97,8 @@ export default {
     SourceDistribution,
     TopicDistribution,
     QuotesCard,
-    MentionedWith
+    MentionedWith,
+    ProfileCard
   },
   data: () => {
     return {
