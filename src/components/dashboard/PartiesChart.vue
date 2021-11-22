@@ -9,6 +9,8 @@
 import {Chart, registerables} from "chart.js";
 import 'chartjs-adapter-moment';
 import trends from "../../assets/trends.json";
+import parties_config from "../../assets/parties.json"
+
 
 const partyColors = {
   'CDU/CSU': 'black',
@@ -35,8 +37,11 @@ export default {
       let datasets = [];
       Object.entries(this.data.parties).forEach((entry) => {
         let data = [];
-        let party = entry[0]
+        let partyId = entry[0]
         let values = entry[1]
+        let party = parties_config.parties.find(function (item) {
+          return item.id !== null && item.id.toString() === partyId.toString();
+        })
         for (let i = 0; i < values.length; i++) {
           let date = new Date(this.data.x[i]);
           data.push({x: date, y: values[i]});
@@ -44,9 +49,10 @@ export default {
         datasets.push({
           type: "line",
           data: data,
-          label: party,
-          backgroundColor: partyColors[party],
-          borderColor: partyColors[party],
+          label: party.label,
+          backgroundColor: party.color,
+          borderColor: party.color,
+          lineTension: 0.3,
           yAxisID: "y"
         })
       });

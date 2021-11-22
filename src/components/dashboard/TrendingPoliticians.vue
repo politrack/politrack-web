@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas id="trendingPoliticiansChart" style="height: 200px"></canvas>
+    <canvas id="trendingPoliticiansChart" style="height: 250px"></canvas>
   </div>
 </template>
 
@@ -45,15 +45,15 @@ export default {
         images.push(
             {
               src: 'https://image.facethefacts-api.de/' + item.id + '.jpg',
-              width: 40,
-              height: 40
+              width: 35,
+              height: 35
             }
         )
       });
       return {
         datasets: [{
           type: "bar",
-          label: 'test',
+          label: "",
           data: data,
           backgroundColor: colors,
         }],
@@ -100,9 +100,11 @@ export default {
             },
             x: {
               grid: {
-                display: false
+                display: true
               },
-              display: false
+              ticks: {
+                display: false
+              }
             }
           }
         },

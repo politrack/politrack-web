@@ -19,7 +19,7 @@
     <div>
       <div class="headlines-container">
         <v-container>
-          <v-row><h2 style="color: white" class="text--darken-2 mt-5">Schlagzeilen des Tages</h2></v-row>
+          <v-row><h2 class="text--darken-2 mt-5">Schlagzeilen des Tages</h2></v-row>
           <v-row class="mt-5">
             <v-col cols="12" lg="4" sm="6" xl="3" v-for="(topic, idx) in topics" v-bind:key="idx">
               <news-headline :topic="topic"></news-headline>
@@ -27,7 +27,7 @@
           </v-row>
         </v-container>
       </div>
-      <div>
+      <div class="headlines-container">
         <div class="graph-container"></div>
         <v-container>
           <v-row class="py-5">
@@ -83,7 +83,7 @@ export default {
 <style scoped>
 
 .header {
-  background: linear-gradient(180deg, rgba(250, 250, 250, 1) 0%, rgba(194, 229, 230, 1) 50%, rgba(94, 196, 224, 1) 100%);
+  background: #eeeeee;
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   position: absolute;
   height: 350px;
@@ -92,20 +92,20 @@ export default {
 }
 
 .headlines-container {
-  background-color: #34A49B;
+  background-color: #F1FAEE;
   padding-bottom: 60px;
 }
 
 .header-content {
-  background-color: #34A49B;
+  background-color: #F1FAEE;
 }
 
 .graph-container {
   clip-path: polygon(0 20%, 100% 30%, 100% 100%, 0 100%);
   position: absolute;
   width: 100%;
-  height: 500px;
-  background-color: white;
+  height: 600px;
+  background-color: #457B9D;
 }
 
 </style>

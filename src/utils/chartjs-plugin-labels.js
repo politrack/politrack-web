@@ -111,7 +111,7 @@ export default function (Chart) {
             ctx.beginPath();
             ctx.arc(position.x, position.y + label.height / 2, label.width / 2, 0, 2 * Math.PI, true);
             ctx.clip();
-            ctx.drawImage(label, position.x - label.width / 2, position.y, label.width, label.height);
+            ctx.drawImage(label, position.x - label.width/2, position.y, label.width, label.height);
         } else {
             ctx.save();
             ctx.textBaseline = 'top';
