@@ -10,7 +10,8 @@ import {Chart, registerables} from "chart.js";
 export default {
   name: "TopicDistribution",
   props: {
-    statistics: Object
+    statistics: Object,
+    light: Boolean
   },
   mounted() {
     Chart.register(...registerables);
@@ -42,8 +43,9 @@ export default {
     },
     renderArticleDistributionChart() {
       let component = this;
-      let data = this.prepareData();
-      console.log(data);
+      let data = component.prepareData();
+      let gridColor = component.light? "#ffffff": "#b9b9b9";
+      let fontColor = component.light? "#ffffff": "#3a3a3a";
       let ctx = document.getElementById('topicDistributionChart').getContext('2d');
       component.chart = new Chart(ctx, {
         type: 'radar',
@@ -55,6 +57,15 @@ export default {
             r: {
               ticks: {
                 display: false
+              },
+              grid: {
+                color: gridColor
+              },
+              angleLines: {
+                color: gridColor
+              },
+              pointLabels: {
+                color: fontColor
               }
             }
           },
@@ -67,7 +78,7 @@ export default {
         }
       });
 
-      console.log(component.chart);
+      console.log(component.chart.scales);
     }
 
   }

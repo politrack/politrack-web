@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="text-caption me-4">Oft erwähnt mit:</span>
+    <span class="text-caption white--text me-4">Oft erwähnt mit:</span>
     <a v-for="person in mentions" :key="person.id" class="me-3" href="#">
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">

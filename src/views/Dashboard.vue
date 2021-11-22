@@ -43,7 +43,7 @@
             <v-col cols="12" lg="4" sm="12">
               <v-card class="pa-3">
                 <v-card-title>Themenfokus</v-card-title>
-                <topic-distribution :statistics="statistics" class="mt-5"></topic-distribution>
+                <topic-distribution :statistics="statistics" class="mt-5" :light="false"/>
               </v-card>
             </v-col>
           </v-row>

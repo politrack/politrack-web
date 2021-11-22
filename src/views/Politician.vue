@@ -1,78 +1,87 @@
 <template>
   <div>
-    <v-container>
-      <v-row>
-        <v-col lg="8">
-          <ProfileCard :politician="politician"/>
+    <div class="header"></div>
+    <div class="header-content">
+      <v-container>
+        <v-row>
+          <v-col lg="8">
+            <ProfileCard :politician="politician"/>
 
-          <v-row class="mt-4">
-            <v-col lg="12">
-              <MentionedWith :mentions="politician.mentionedWith"/>
-            </v-col>
-          </v-row>
+            <v-row class="mt-4">
+              <v-col lg="12">
+                <MentionedWith :mentions="politician.mentionedWith"/>
+              </v-col>
+            </v-row>
 
-        </v-col>
+          </v-col>
 
-        <v-col lg="4">
-          <TopicDistribution :statistics="this.politician.statistics"/>
-        </v-col>
-      </v-row>
-    </v-container>
-
-    <div class="px-5">
-      <h3 class="mb-2">Aktuelle Berichte</h3>
-      <v-slide-group
-          class="overflow-y-visible"
-          multiple
-          show-arrows
-      >
-        <v-slide-item
-            v-for="article in politician.articles"
-            :key="article.id"
-        >
-          <div class="h-100">
-            <ArticleCard :article="article"/>
-          </div>
-        </v-slide-item>
-      </v-slide-group>
+          <v-col lg="4">
+            <TopicDistribution :light="true" :statistics="this.politician.statistics"/>
+          </v-col>
+        </v-row>
+      </v-container>
     </div>
 
-    <div class="px-5 mt-5">
-      <h3 class="mb-2">Aktuelle Aussagen</h3>
+    <div class="main">
+      <div class="px-5">
+        <h3 class="mb-2">Aktuelle Berichte</h3>
+        <v-slide-group
+            class="overflow-y-visible"
+            multiple
+            show-arrows>
+          <v-slide-item
+              v-for="article in politician.articles"
+              :key="article.id">
+            <div class="h-100">
+              <ArticleCard :article="article"/>
+            </div>
+          </v-slide-item>
+        </v-slide-group>
+      </div>
 
-      <v-row>
-        <v-col lg="8">
-          <v-slide-group
-              class="overflow-y-visible"
-              multiple
-              show-arrows
-          >
-            <v-slide-item
-                v-for="tweet in politician.tweets"
-                :key="tweet.id"
+      <div class="px-5 mt-5">
+        <h3 class="mb-2">Aktuelle Aussagen</h3>
+
+        <v-row>
+          <v-col lg="8">
+            <v-slide-group
+                class="overflow-y-visible"
+                multiple
+                show-arrows
             >
-              <div class="h-100">
-                <TweetCard :tweet="tweet" :user="politician.twitterUser"/>
-              </div>
-            </v-slide-item>
-          </v-slide-group>
-        </v-col>
-        <v-col lg="4">
-          <QuotesCard :politician="politician"/>
-        </v-col>
-      </v-row>
+              <v-slide-item
+                  v-for="tweet in politician.tweets"
+                  :key="tweet.id"
+              >
+                <div class="h-100">
+                  <TweetCard :tweet="tweet" :user="politician.twitterUser"/>
+                </div>
+              </v-slide-item>
+            </v-slide-group>
+          </v-col>
+          <v-col lg="4">
+            <QuotesCard :politician="politician"/>
+          </v-col>
+        </v-row>
+      </div>
+
+      <div class="angle-container">
+        <div class="bottom"></div>
+      </div>
     </div>
 
-    <v-row class="mt-5 px-5">
-      <v-col lg="8">
-        <ArticlesOverTime :articles="this.politician.articles"/>
-      </v-col>
+    <div class="bottom-container">
+      <v-row class="px-5 pb-3">
+        <v-col lg="8">
+          <ArticlesOverTime :articles="this.politician.articles"/>
+        </v-col>
 
-      <v-col lg="4">
-        <SourceDistribution :statistics="this.politician.statistics"/>
-      </v-col>
+        <v-col lg="4">
+          <SourceDistribution :statistics="this.politician.statistics"/>
+        </v-col>
 
-    </v-row>
+      </v-row>
+    </div>
   </div>
 </template>
 
@@ -152,5 +161,41 @@ export default {
 
 div.h-100 {
   height: 100%;
+}
+
+
+.header {
+  background: #457B9D;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  position: absolute;
+  height: 550px;
+  margin-top: -64px;
+  width: 100%;
+}
+
+.header-content {
+  background: #457B9D;
+  position: relative;
+}
+
+
+
+div.main {
+  background: #eeeeee;
+}
+div.angle-container {
+  position: relative;
+  padding-bottom: 100px;
+}
+div.bottom {
+  clip-path: polygon(0 20%, 100% 60%, 100% 100%, 0 100%);
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+}
+
+div.bottom-container, div.bottom {
+  background: #A8DADC;
 }
 </style>

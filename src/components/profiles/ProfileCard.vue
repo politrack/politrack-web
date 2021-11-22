@@ -1,12 +1,11 @@
 <template>
-
-  <v-card light class="mt-5" rounded>
+  <v-card dark class="mt-5 profile-card" rounded elevation="0">
     <v-row>
       <v-col class="text-center" lg="4">
         <v-avatar class="avatar elevation-2" size="128">
           <img :alt="politician.label" :src="politician.image" class="avatar-image">
         </v-avatar>
-        <h2 class="mt-1 grey--text text--darken-2">{{ politician.label }}</h2>
+        <h2 class="mt-1">{{ politician.label }}</h2>
       </v-col>
 
       <v-col lg="8">
@@ -14,7 +13,8 @@
 
         <v-chip
             class="ma-2"
-            color="default"
+            color="#f0f0f0"
+            text-color="#333333"
             label
         >
           <v-icon left small>
@@ -25,7 +25,8 @@
 
         <v-chip
             class="ma-2"
-            color="default"
+            color="#f0f0f0"
+            text-color="#333333"
             label
         >
           <v-icon left small>
@@ -52,11 +53,15 @@ export default {
 
 <style scoped>
   .avatar {
-    margin-top: -40px;
     /*border: 8px solid rgb(245, 245, 245);*/
     border: 2px solid #ffffff;
   }
 
   .avatar-image {
+  }
+
+  .profile-card {
+    background: transparent;
+
   }
 </style>
