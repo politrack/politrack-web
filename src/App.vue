@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="background-color: white">
     <v-app-bar app flat color="transparent">
       <v-container>
         <v-row>
@@ -18,6 +18,9 @@
             </router-link>
           </div>
           <v-spacer></v-spacer>
+          <v-btn small class="me-4" rounded flat outlined>
+            Kontakt
+          </v-btn>
           <a class="text-decoration-none"
              href="https://github.com/politrack"
              target="_blank"
@@ -38,7 +41,7 @@
       </v-container>
     </v-app-bar>
 
-    <v-main :style="{background: $vuetify.theme.themes[theme].background}" class="mt-5">
+    <v-main :style="{'background-color': 'white'}">
       <router-view></router-view>
     </v-main>
     <v-footer
@@ -99,7 +102,7 @@ export default {
 <style>
 
 .v-toolbar__content {
-  background: rgb(245, 245, 245)
+  background: transparent;
 }
 
 .text-decoration-none {

@@ -1,30 +1,53 @@
 <template>
-  <v-container>
-    <div>
-      <v-row>
-        <h2 class="grey--text text--darken-2">Politiker im Fokus</h2>
-      </v-row>
-      <v-row class="px-5 mt-2">
-        <v-col cols="12" lg="6" sm="12">
-          <trending-politicians></trending-politicians>
-        </v-col>
-      </v-row>
-
-      <v-row><h2 class="grey--text text--darken-2 mt-5">Schlagzeilen des Tages</h2></v-row>
-      <v-row class="mt-5">
-        <v-col cols="12" lg="4" sm="6" xl="3" v-for="topic in topics">
-          <news-headline :topic="topic"></news-headline>
-        </v-col>
-      </v-row>
-
-      <v-row><h2 class="grey--text text--darken-2 mt-5">Parteien in den Medien</h2></v-row>
-      <v-row class="px-5 mt-5">
-        <v-col cols="12" lg="7" sm="6">
-          <parties-chart></parties-chart>
-        </v-col>
-      </v-row>
+  <div>
+    <div class="header"></div>
+    <div class="header-content">
+      <v-container>
+        <v-row class="px-5 mt-2" style="">
+          <v-col cols="12" lg="6" sm="12">
+            <v-card class="pa-3">
+              <v-card-title>Politiker im Fokus</v-card-title>
+              <trending-politicians></trending-politicians>
+            </v-card>
+          </v-col>
+          <v-col cols="12" lg="6" sm="12">
+            <quotes-card :politician="politician"></quotes-card>
+          </v-col>
+        </v-row>
+      </v-container>
     </div>
-  </v-container>
+    <div>
+      <div class="headlines-container">
+        <v-container>
+          <v-row><h2 style="color: white" class="text--darken-2 mt-5">Schlagzeilen des Tages</h2></v-row>
+          <v-row class="mt-5">
+            <v-col cols="12" lg="4" sm="6" xl="3" v-for="(topic, idx) in topics" v-bind:key="idx">
+              <news-headline :topic="topic"></news-headline>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
+      <div>
+        <div class="graph-container"></div>
+        <v-container>
+          <v-row class="py-5">
+            <v-col cols="12" lg="6" sm="6">
+              <v-card class="pa-3">
+                <v-card-title>Parteien in den Medien</v-card-title>
+                <parties-chart class="mt-5"></parties-chart>
+              </v-card>
+            </v-col>
+            <v-col cols="12" lg="4" sm="12">
+              <v-card class="pa-3">
+                <v-card-title>Themenfokus</v-card-title>
+                <topic-distribution :statistics="statistics" class="mt-5"></topic-distribution>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -32,23 +55,57 @@ import trends from "../assets/trends.json";
 import PartiesChart from "../components/dashboard/PartiesChart";
 import TrendingPoliticians from "../components/dashboard/TrendingPoliticians";
 import NewsHeadline from "../components/dashboard/NewsHeadline";
+import QuotesCard from "../components/profiles/QuotesCard";
+import TopicDistribution from "../components/profiles/TopicDistribution";
 
 export default {
   name: "Dashboard",
   data: () => {
     return {
       politicians: trends.politicians,
-      topics: trends.topics
+      topics: trends.topics,
+      politician: {'quotes': trends.quotes, 'first_name': 'Karl', 'last_name': 'Lauterbach'},
+      statistics: {
+        'topicDistribution': trends.topicDistribution
+      }
     }
   },
   components: {
+    TopicDistribution,
     PartiesChart,
     TrendingPoliticians,
-    NewsHeadline
+    NewsHeadline,
+    QuotesCard
   }
 }
 </script>
 
 <style scoped>
+
+.header {
+  background: linear-gradient(180deg, rgba(250, 250, 250, 1) 0%, rgba(194, 229, 230, 1) 50%, rgba(94, 196, 224, 1) 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  position: absolute;
+  height: 350px;
+  margin-top: -64px;
+  width: 100%;
+}
+
+.headlines-container {
+  background-color: #34A49B;
+  padding-bottom: 60px;
+}
+
+.header-content {
+  background-color: #34A49B;
+}
+
+.graph-container {
+  clip-path: polygon(0 20%, 100% 30%, 100% 100%, 0 100%);
+  position: absolute;
+  width: 100%;
+  height: 500px;
+  background-color: white;
+}
 
 </style>
