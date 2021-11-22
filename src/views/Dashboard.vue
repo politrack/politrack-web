@@ -25,12 +25,15 @@
               <news-headline :topic="topic"></news-headline>
             </v-col>
           </v-row>
+          <v-row justify="center">
+            <v-btn flat outlined rounded class="mt-3 ">Entdecke alle Schlagzeilen</v-btn>
+          </v-row>
         </v-container>
       </div>
       <div class="headlines-container">
         <div class="graph-container"></div>
         <v-container>
-          <v-row class="py-5">
+          <v-row class="">
             <v-col cols="12" lg="6" sm="6">
               <v-card class="pa-3">
                 <v-card-title>Parteien in den Medien</v-card-title>

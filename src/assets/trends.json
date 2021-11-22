@@ -40,6 +40,59 @@
   ],
   "topics": [
     {
+      "politicians": [
+        {
+          "id": "79475"
+        }
+      ],
+      "articles": [
+        {
+          "id": "4045159359c296c15a7da972b909ab59087ed5934ce3ef4dd6b67417e4dca14f",
+          "url": "https://www.sueddeutsche.de/politik/parteien-baerbock-habe-kein-sachbuch-geschrieben-dpa.urn-newsml-dpa-com-20090101-210701-99-225483",
+          "title": "Baerbock:\u00a0Habe kein Sachbuch geschrieben",
+          "published": "2021-07-01T20:17:40+02:00",
+          "publisher": "Sueddeutsche",
+          "info": {
+            "source": "sueddeutsche",
+            "paid_article": false
+          },
+          "image": "https://www.sueddeutsche.de/image/dpa.urn-newsml-dpa-com-20090101-210701-99-225503/1408x792?v=0&format=webp"
+        },
+        {
+          "id": "c0db60506466376b381ad40c77657eb8043b91d9ec021449b2a8c563470fba83",
+          "published": "2021-07-03T10:34:12+02:00",
+          "url": "https://www.spiegel.de/politik/deutschland/annalena-baerbock-zu-plagiatsvorwuerfen-niemand-schreibt-ein-buch-allein-a-9b7b2d82-af73-4c38-99dd-1f98268c4e4b",
+          "publisher": "SPON",
+          "title": "Baerbock zu Plagiatsvorw\u00fcrfen: \u00bbNiemand schreibt ein Buch allein\u00ab",
+          "info": {
+            "source": "spon",
+            "paid_article": false
+          },
+          "image": "https://cdn.prod.www.spiegel.de/images/200c2e90-fdeb-4f3c-832f-f3b27fdbf055_w948_r1.778_fpx41.32_fpy49.99.jpg"
+        },
+        {
+          "id": "4add6ea66472571b51e2c1737bc6ec56317467823de2d4c96e8edec64b06aeff",
+          "publisher": "WELT",
+          "title": "Autor Ebmeyer distanziert sich von beanstandeten Passagen in Baerbocks Buch",
+          "url": "https://www.welt.de/politik/deutschland/article232490387/Autor-Ebmeyer-distanziert-sich-von-beanstandeten-Passagen-in-Baerbocks-Buch.html",
+          "published": "2021-07-14T08:01:26+00:00",
+          "info": {
+            "source": "welt",
+            "paid_article": false
+          },
+          "image": "https://img.welt.de/img/politik/deutschland/mobile232490551/6391624447-ci23x11-w1136/Bildnummer-52929879-Datum-13-03.jpg"
+        }
+      ]
+    },
+    {
+      "politicians": [
+        {
+          "id": "79215"
+        },
+        {
+          "id": "145862"
+        }
+      ],
       "articles": [
         {
           "url": "https://www.welt.de/politik/deutschland/plus232634253/Hochwasser-Man-haette-das-Ausmass-des-Schadens-reduzieren-koennen.html",
@@ -68,6 +121,14 @@
       ]
     },
     {
+      "politicians": [
+        {
+          "id": "79215"
+        },
+        {
+          "id": "119742"
+        }
+      ],
       "articles": [
         {
           "publisher": "SPON",

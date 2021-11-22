@@ -14,22 +14,23 @@
       <v-carousel-item
           v-for="(article, i) in topic.articles"
           :key="i">
-        <v-card
-            class=""
-            flat
-            max-width="450">
-          <v-img
-              :src="article.image"
-              height="120px">
-          </v-img>
-          <v-card-title class="article-title">
-            {{ article.title }}
-          </v-card-title>
-          <v-card-subtitle class="">
-            <span>{{ sources[article.info.source].label }}</span>
-            <span class="float-right">{{ moment(article.published).fromNow() }}</span>
-          </v-card-subtitle>
-        </v-card>
+        <a :href="article.url" class="text-decoration-none" target="_blank">
+          <v-card
+              flat
+              max-width="450">
+            <v-img
+                :src="article.image"
+                height="120px">
+            </v-img>
+            <v-card-title class="article-title">
+              {{ article.title }}
+            </v-card-title>
+            <v-card-subtitle>
+              <span>{{ sources[article.info.source].label }}</span>
+              <span class="float-right">{{ moment(article.published).fromNow() }}</span>
+            </v-card-subtitle>
+          </v-card>
+        </a>
       </v-carousel-item>
     </v-carousel>
     <v-card-actions style="margin-top: -20px">
@@ -39,7 +40,11 @@
         Mehr zu dem Thema
       </v-btn>
       <v-spacer></v-spacer>
-      <div class="num-articles me-3">{{ topic.articles.length }} Artikel</div>
+      <v-avatar v-for="(person, idx) in topic.politicians" class="avatar elevation-2" v-bind:key="idx" size="32"
+                style="margin-left: -16px">
+        <img :src="'https://image.facethefacts-api.de/' + person.id + '.jpg'"
+             class="avatar-image">
+      </v-avatar>
     </v-card-actions>
   </v-card>
 </template>
@@ -97,11 +102,19 @@ export default {
   opacity: 0;
 }
 
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
 .num-articles {
   color: rgba(0, 0, 0, 0.6);
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.375rem;
   letter-spacing: 0.0071428571em;
+}
+
+.avatar {
+  border: 2px solid #ffffff;
 }
 </style>

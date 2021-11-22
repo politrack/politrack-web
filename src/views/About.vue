@@ -38,7 +38,7 @@
       <v-row>
         <v-col class="offset-lg-2 col-lg-4 col-md-6 col-12">
           <div class="py-5 px-4 text-center mt-2">
-            <img alt="" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+            <img alt="" class="img-fluid rounded-circle mb-3 img-thumbnail elevation-2"
                  src="../assets/img/jonas.jpg" width="200">
             <h3 class="mb-0">Jonas Dippel</h3>
             <span class="small text-muted">Student TU Berlin</span>
@@ -54,7 +54,7 @@
         </v-col>
         <div class="col-lg-4 col-md-6 col-12">
           <div class="py-5 px-4 text-center mt-2">
-            <img alt="" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+            <img alt="" class="img-fluid rounded-circle mb-3 elevation-2 img-thumbnail"
                  src="../assets/img/michael.jpg"
                  width="200">
             <h3 class="mb-0">Michael Perk</h3><span
@@ -153,5 +153,10 @@ blockquote {
 .text-decoration-none {
   text-decoration: none;
 }
+
+.rounded-circle {
+  border: 5px solid #ffffff;
+}
+
 
 </style>
