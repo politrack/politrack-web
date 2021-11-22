@@ -8,7 +8,7 @@
 
 import {Chart, registerables} from "chart.js";
 import 'chartjs-adapter-moment';
-import parties from "../../assets/parties.json";
+import trends from "../../assets/trends.json";
 
 const partyColors = {
   'CDU/CSU': 'black',
@@ -23,7 +23,7 @@ export default {
   name: "PartiesChart",
   data: function () {
     return {
-      data: parties
+      data: trends.parties
     }
   },
   mounted() {
