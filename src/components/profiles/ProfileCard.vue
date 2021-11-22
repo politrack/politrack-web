@@ -10,26 +10,29 @@
       </v-col>
 
       <v-col lg="8">
-        <v-list two-line>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Partei</v-list-item-title>
-              <v-list-item-subtitle>{{ politician.party.label }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Beruf</v-list-item-title>
-              <v-list-item-subtitle>{{ politician.occupation }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Ausbildung</v-list-item-title>
-              <v-list-item-subtitle>{{ politician.education }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+        <PartyChip :partyId="politician.party.id"/>
+
+        <v-chip
+            class="ma-2"
+            color="default"
+            label
+        >
+          <v-icon left small>
+            fas fa-tasks
+          </v-icon>
+          {{ politician.occupation }}
+        </v-chip>
+
+        <v-chip
+            class="ma-2"
+            color="default"
+            label
+        >
+          <v-icon left small>
+            fas fa-school
+          </v-icon>
+          {{ politician.education }}
+        </v-chip>
       </v-col>
     </v-row>
   </v-card>
