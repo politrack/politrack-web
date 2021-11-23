@@ -40,10 +40,12 @@
 </template>
 
 <script>
+import PartyChip from "./PartyChip";
+
 export default {
   name: "ProfileCard",
   components: {
-
+    PartyChip
   },
   props: {
     politician: Object

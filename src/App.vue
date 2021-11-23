@@ -46,6 +46,7 @@
     </v-main>
     <v-footer
         class="footer"
+        dark
         padless >
       <v-row
           justify="center"
@@ -57,7 +58,7 @@
             text
             rounded
             class="my-2">
-          <router-link :to="{name: link.route}" class="text-decoration-none">{{ link.name }}
+          <router-link :to="{name: link.route}" class="text-decoration-none white--text">{{ link.name }}
           </router-link>
         </v-btn>
         <v-col
@@ -103,7 +104,7 @@ export default {
 <style>
 
 .footer {
-  background: white !important;
+  background: #1D3557 !important; /* white */
 }
 .v-toolbar__content {
   background: transparent;

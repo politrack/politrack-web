@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="header"></div>
+    <div class="position-relative">
+      <div class="header"></div>
+    </div>
+
     <div class="header-content">
       <v-container>
         <v-row>
@@ -21,10 +24,14 @@
         </v-row>
       </v-container>
     </div>
+    <div class="position-relative main-bg">
+      <div class="header-end"></div>
+      <h1 class="main-header px-2">Aktuelle Informationen</h1>
+    </div>
 
-    <div class="main">
-      <div class="px-5">
-        <h3 class="mb-2">Aktuelle Berichte</h3>
+    <div class="main main-bg">
+      <div class="px-5 py-5">
+        <h2 class="mb-2">Aktuelle Berichte</h2>
         <v-slide-group
             class="overflow-y-visible"
             multiple
@@ -39,8 +46,8 @@
         </v-slide-group>
       </div>
 
-      <div class="px-5 mt-5">
-        <h3 class="mb-2">Aktuelle Aussagen</h3>
+      <div class="px-5 py-5">
+        <h2 class="mb-2">Aktuelle Aussagen</h2>
 
         <v-row>
           <v-col lg="8">
@@ -65,8 +72,10 @@
         </v-row>
       </div>
 
-      <div class="angle-container">
-        <div class="bottom"></div>
+      <div class="angle-container position-relative">
+        <div class="bottom">
+          <h1 class="mt-5 pt-2 ps-2">Statistiken</h1>
+        </div>
       </div>
     </div>
 
@@ -155,6 +164,10 @@ export default {
   margin-right: 1em;
 }
 
+.position-relative {
+  position: relative;
+}
+
 .overflow-y-visible div {
   overflow-y: visible !important;
 }
@@ -166,27 +179,33 @@ div.h-100 {
 
 .header {
   background: #457B9D;
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-  position: absolute;
-  height: 550px;
+  height: 64px;
   margin-top: -64px;
   width: 100%;
 }
 
+.header-end {
+  clip-path: polygon(0 0%, 100% 0%, 100% 100%);
+  background: #457B9D;
+  height: 100px;
+}
+
 .header-content {
   background: #457B9D;
-  position: relative;
 }
 
-
-
-div.main {
+div.main-bg {
   background: #eeeeee;
 }
+
+.main-header {
+  margin-top: -70px;
+}
+
 div.angle-container {
-  position: relative;
   padding-bottom: 100px;
 }
+
 div.bottom {
   clip-path: polygon(0 20%, 100% 60%, 100% 100%, 0 100%);
   position: absolute;
