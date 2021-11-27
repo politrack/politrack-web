@@ -6,29 +6,29 @@
         :show-arrows-on-hover="true"
         :vertical="true" class="quotes-carousel" height="100%">
       <v-carousel-item
-          v-for="quote in this.politician.quotes"
+          v-for="quote in quotes"
           :key="quote.id"
-          class="text-center"
-      >
+          class="text-center">
         <div
-            :style="{'background-image': 'url(' + getImageFromArticle(quote.article) + ')' }"
-            class="image-background d-flex flex-column justify-center"
-        >
+            :style="{'background-image': 'url(' + getImageFromQuote(quote) + ')' }"
+            class="image-background d-flex flex-column justify-center pa-5">
           <div class="text-left fill-width px-4 pt-1 d-flex">
             <h5 class="white--text d-inline-block text-no-wrap">
-              {{ politician.first_name }} {{ politician.last_name }}:
+              {{ quote.author }}:
             </h5>
-            <small class="white--text font-italic d-inline-block text-truncate ms-2">{{ quote.article.title }}</small>
+            <a :href="quote.article.url" target="_blank">
+              <small class="white--text font-italic d-inline-block text-truncate ms-2">{{ quote.article.title }}</small>
+            </a>
           </div>
 
           <div class="fill-height fill-width d-flex justify-center align-center">
             <blockquote>
-              <h3>{{ quote.text }}</h3>
+              <h3>{{ quote.quote }}</h3>
             </blockquote>
           </div>
 
-          <div class="align-self-end fill-width">
-            <h5 class="white--text">Zitiert von {{ sources[quote.article.source].label }}</h5>
+          <div class="align-self-end fill-width mb-5">
+              <h5 class="white--text mb-5">Zitiert von {{ sources[quote.article.source].label }}</h5>
           </div>
         </div>
 
@@ -39,10 +39,12 @@
 
 <script>
 import sources from "../../assets/sources_config.json";
+
 export default {
   name: "QuotesCard",
   props: {
-    politician: Object
+    quotes: Array,
+    articleImage: Boolean
   },
   data: () => {
     return {
@@ -50,8 +52,14 @@ export default {
     }
   },
   methods: {
-    getImageFromArticle(article) {
-      return article.images.length > 0 ? article.images[0].url : this.politician.image
+    getImageFromQuote(quote) {
+      console.log(quote)
+      let article = quote.article
+      if (this.articleImage) {
+        return article.images && article.images.length > 0 ? article.images[0].url : this.politician.image
+      } else {
+        return 'https://image.facethefacts-api.de/' + quote.politician_id + '.jpg'
+      }
     }
   }
 }

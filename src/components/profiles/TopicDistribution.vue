@@ -25,11 +25,8 @@ export default {
 
       this.statistics.topicDistribution.forEach(function (item) {
         data.push(item.count);
-        labels.push(item.label);
+        labels.push(item.name);
       });
-
-      console.log(this.articles)
-      console.log(labels)
 
       return {
         labels: labels,
@@ -77,10 +74,7 @@ export default {
           }
         }
       });
-
-      console.log(component.chart.scales);
     }
-
   }
 }
 </script>

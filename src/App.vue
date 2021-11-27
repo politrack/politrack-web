@@ -1,6 +1,6 @@
 <template>
   <v-app style="background-color: white">
-    <v-app-bar app flat color="transparent">
+    <v-app-bar app flat color="transparent" absolute>
       <v-container>
         <v-row>
           <div class="d-flex align-center">

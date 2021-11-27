@@ -33,5 +33,10 @@
     "id": "zeit-online",
     "label": "Zeit Online",
     "color": "#ca4566"
+  },
+  "tagesschau": {
+    "id": "tagesschau",
+    "label": "Tagesschau",
+    "color": "#ca4566"
   }
 }

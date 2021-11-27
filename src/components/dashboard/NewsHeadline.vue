@@ -1,7 +1,7 @@
 <template>
   <v-card
       elevation="2"
-      max-width="450"
+      max-width="345"
       class="">
     <v-carousel
         :continuous="false"
@@ -19,14 +19,14 @@
               flat
               max-width="450">
             <v-img
-                :src="article.image"
+                :src="article.images && article.images.length > 0 ? article.images[0] : ''"
                 height="120px">
             </v-img>
             <v-card-title class="article-title">
               {{ article.title }}
             </v-card-title>
             <v-card-subtitle>
-              <span>{{ sources[article.info.source].label }}</span>
+              <span>{{ sources[article.source].label }}</span>
               <span class="float-right">{{ moment(article.published).fromNow() }}</span>
             </v-card-subtitle>
           </v-card>

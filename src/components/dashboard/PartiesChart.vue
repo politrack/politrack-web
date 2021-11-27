@@ -8,33 +8,39 @@
 
 import {Chart, registerables} from "chart.js";
 import 'chartjs-adapter-moment';
-import trends from "../../assets/trends.json";
 import parties_config from "../../assets/parties.json"
-
-
-const partyColors = {
-  'CDU/CSU': 'black',
-  'SPD': 'red',
-  'Grüne': 'green',
-  'Die Linke': 'purple',
-  'FDP': 'yellow',
-  'AfD': 'blue'
-}
 
 export default {
   name: "PartiesChart",
-  data: function () {
-    return {
-      data: trends.parties
+  props: ["data"],
+  watch: {
+    data() {
+      if (this.data != null) {
+        this.renderChart()
+      }
     }
   },
   mounted() {
     Chart.register(...registerables);
-    this.renderChart()
+    if (this.data != null) {
+      this.renderChart()
+    }
   },
   methods: {
     prepareData() {
       let datasets = [];
+
+      let totals = []
+      Object.entries(this.data.parties).forEach((entry) => {
+        let values = entry[1]
+        for (let i = 0; i < values.length; i++) {
+          if (i + 1 > totals.length) {
+            totals.push(0)
+          }
+          totals[i] += values[i]
+        }
+      });
+
       Object.entries(this.data.parties).forEach((entry) => {
         let data = [];
         let partyId = entry[0]
