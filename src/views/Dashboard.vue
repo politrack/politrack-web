@@ -4,9 +4,43 @@
     <div class="header-content">
       <v-container>
         <v-row justify="center">
-          <v-text-field rounded solo label="Suche" style="max-width: 300px"
-                        prepend-inner-icon="fas fa-search">
-          </v-text-field>
+          <v-autocomplete
+              v-model="select"
+              :loading="searchLoading"
+              :items="searchItems"
+              :search-input.sync="search"
+              style="max-width: 400px"
+              label="z.B. Robert Habeck"
+              item-text="label"
+              item-value="_id"
+              hide-no-data
+              solo
+              prepend-inner-icon="fas fa-search"
+              rounded>
+            <template v-slot:item="{ item }">
+              <v-list-item-avatar
+                  :color="partyMap[item.party] ? partyMap[item.party].color : 'indigo'"
+                  class="text-h5 font-weight-light white--text avatar">
+                <v-img
+                    alt="Avatar"
+                    :src="'https://image.facethefacts-api.de/' + item._id + '.jpg'">
+                  <template v-slot:placeholder>
+                    <v-row
+                        class="fill-height ma-0 white--text"
+                        align="center"
+                        justify="center">
+                      {{ item.first_name.charAt(0) + item.last_name.charAt(0) }}
+                    </v-row>
+                  </template>
+                </v-img>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.first_name + ' ' + item.last_name"></v-list-item-title>
+                <v-list-item-subtitle v-if="partyMap[item.party]"
+                                      v-text="partyMap[item.party].name"></v-list-item-subtitle>
+              </v-list-item-content>
+            </template>
+          </v-autocomplete>
         </v-row>
         <v-row class="px-5 mt-2" style="">
           <v-col cols="12" lg="6" sm="6" xs="12">
@@ -72,16 +106,30 @@ import NewsHeadline from "../components/dashboard/NewsHeadline";
 import QuotesCard from "../components/profiles/QuotesCard";
 import TopicDistribution from "../components/profiles/TopicDistribution";
 import axios from 'axios'
+import parties_config from "../assets/parties.json"
 
 export default {
   name: "Dashboard",
   data: () => {
     return {
+      search: '',
+      select: null,
+      searchLoading: null,
+      searchItems: [],
       politicians: null,
       topics: null,
       quotes: null,
       statistics: null,
-      partiesData: null
+      partiesData: null,
+      partyMap: {}
+    }
+  },
+  watch: {
+    search(val) {
+      val && this.querySelections(val)
+    },
+    select(val) {
+      this.$router.push('/politician/' + val)
     }
   },
   mounted() {
@@ -95,7 +143,28 @@ export default {
       }
       this.partiesData = data.data['parties']
       this.quotes = data.data['quotes']
+      parties_config.parties.forEach((party) => {
+        this.partyMap[party.id] = {
+          'name': party.label,
+          'color': party.color
+        }
+      })
+      console.log(this.partyMap)
     })
+  },
+  methods: {
+    querySelections(v) {
+      this.searchLoading = true
+      axios.get('http://localhost:5000/web/search', {
+        params: {'query': v}
+      }).then((data) => {
+        let result = data.data
+        if (result['politicians'].length > 0) {
+          this.searchItems = result['politicians']
+        }
+        this.searchLoading = false
+      })
+    },
   },
   components: {
     TopicDistribution,
@@ -137,6 +206,10 @@ export default {
 
 /deep/ .v-icon.fas.fa-search {
   font-size: 16px;
+}
+
+.avatar {
+  border: 2px solid #ffff;
 }
 
 </style>
