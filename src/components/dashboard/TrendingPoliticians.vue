@@ -21,10 +21,8 @@ const partyColors = {
 
 export default {
   name: "PartiesChart",
+  props: ['data'],
   data: function () {
-    return {
-      data: trends['politicians']
-    }
   },
   mounted() {
     Chart.register(...registerables);
@@ -37,14 +35,14 @@ export default {
       let images = [];
       let colors = []
       let labels = [];
-      Object.entries(this.data).forEach((entry) => {
+      Object.entries(this.data.slice(0, 6)).forEach((entry) => {
         let item = entry[1]
         data.push(item.count);
-        colors.push(partyColors[item.party])
-        labels.push(item.firstName + ' ' + item.lastName)
+        colors.push(item.party.color)
+        labels.push(item.first_name + ' ' + item.last_name)
         images.push(
             {
-              src: 'https://image.facethefacts-api.de/' + item.id + '.jpg',
+              src: 'https://image.facethefacts-api.de/' + item._id + '.jpg',
               width: 35,
               height: 35
             }
@@ -99,12 +97,7 @@ export default {
               },
             },
             x: {
-              grid: {
-                display: true
-              },
-              ticks: {
-                display: false
-              }
+              display: false,
             }
           }
         },

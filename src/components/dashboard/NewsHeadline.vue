@@ -42,7 +42,7 @@
       <v-spacer></v-spacer>
       <v-avatar v-for="(person, idx) in topic.politicians" class="avatar elevation-2" v-bind:key="idx" size="32"
                 style="margin-left: -16px">
-        <img :src="'https://image.facethefacts-api.de/' + person.id + '.jpg'"
+        <img :src="'https://image.facethefacts-api.de/' + person._id + '.jpg'"
              class="avatar-image">
       </v-avatar>
     </v-card-actions>

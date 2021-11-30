@@ -46,7 +46,7 @@
           <v-col cols="12" lg="6" sm="6" xs="12">
             <v-card class="pa-3">
               <v-card-title>Politiker im Fokus</v-card-title>
-              <trending-politicians></trending-politicians>
+              <trending-politicians v-if="politicians" :data="politicians"></trending-politicians>
             </v-card>
           </v-col>
           <v-col cols="12" lg="6" sm="6" xs="12">
@@ -133,22 +133,25 @@ export default {
     }
   },
   mounted() {
+    parties_config.parties.forEach((party) => {
+      this.partyMap[party.id] = {
+        'name': party.label,
+        'color': party.color
+      }
+    })
     axios.get('http://localhost:5000/web/data/trends.json').then((data) => {
       this.topics = data.data['topics']
       console.log(data.data)
-      this.politcians = data.data['politicians']
+      this.politicians = data.data['politicians'].map((x) => {
+        x['party'] = this.partyMap[x['party']]
+        return x
+      })
       this.quotes = data.data.quotes
       this.statistics = {
         'topicDistribution': data.data.topicDistribution
       }
       this.partiesData = data.data['parties']
       this.quotes = data.data['quotes']
-      parties_config.parties.forEach((party) => {
-        this.partyMap[party.id] = {
-          'name': party.label,
-          'color': party.color
-        }
-      })
       console.log(this.partyMap)
     })
   },
