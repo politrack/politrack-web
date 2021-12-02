@@ -4,12 +4,12 @@
       <div class="header headerColor "></div>
     </div>
 
-    <div class="header-content headerColor">
+    <div class="header-content headerColor" v-if="politician">
       <v-container>
         <v-row class="mt-5">
           <v-col lg="8">
             <v-card rounded class="pa-3 h-100 rounded-xl">
-              <ProfileCard :politician="politician"/>
+              <ProfileCard :politician="politician.politician"/>
             </v-card>
           </v-col>
           <v-col lg="4">
@@ -24,7 +24,7 @@
       <div class="header-end headerColor"></div>
     </div>
 
-    <div class="main content1">
+    <div class="main content1" v-if="politician">
       <div class="content-container">
         <h2 class="mb-2">Aktuelle Berichte</h2>
         <v-slide-group
@@ -41,7 +41,7 @@
         </v-slide-group>
       </div>
 
-      <div class="content-container mt-3">
+      <div class="content-container mt-3" v-if="quotes">
         <h2 class="mb-2">Aktuelle Aussagen</h2>
         <v-row>
           <v-col lg="12">
@@ -65,8 +65,8 @@
       </div>
     </div>
 
-    <div class="bottom-container content-container content2">
-      <v-card class="pa-5 rounded-xl" style="margin-bottom: 50px" >
+    <div class="bottom-container content-container content2" v-if="politician">
+      <v-card class="pa-5 rounded-xl" style="margin-bottom: 50px">
         <v-card-title class="mt-5 pt-2 ps-2" style="font-size: 25px">Präsenz in den Medien</v-card-title>
         <v-row class="px-5 pb-3">
           <v-col lg="8">
@@ -89,6 +89,7 @@ import ArticlesOverTime from "../components/profiles/ArticlesOverTime";
 import TopicDistribution from "../components/profiles/TopicDistribution";
 import ProfileCard from "../components/profiles/ProfileCard";
 import SingleQuote from "../components/profiles/SingleQuote";
+import axios from "axios";
 
 
 export default {
@@ -104,12 +105,24 @@ export default {
   data: () => {
     return {
       id: null,
-      politician: mockup,
+      politician: null,
     }
   },
-  created() {
+  mounted() {
     this.id = this.$route.params.id;
-    this.initializeSortedEntries();
+    axios.get('http://localhost:5000/web/data/politicians/' + this.id + '.json').then((resp) => {
+      let result = resp.data
+      this.politician = {
+        'id': this.id,
+        'articles': result['articles'],
+        'politician': result['politician'],
+        'tweets': [],
+        'quotes': [],
+        'statistics': result['statistics']
+      }
+      console.log(resp.data)
+      this.initializeSortedEntries();
+    })
   },
   methods: {
     initializeSortedEntries() {
@@ -135,7 +148,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .avatar-image {
   object-fit: cover
 }

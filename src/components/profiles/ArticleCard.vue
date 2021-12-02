@@ -4,6 +4,7 @@
       max-width="450">
     <v-img
         :src="image"
+        v-if="image"
         height="100px">
     </v-img>
     <v-card-title class="article-title">

@@ -45,7 +45,7 @@
       <router-view></router-view>
     </v-main>
     <v-footer
-        class="footer"
+        class="footer footerColor"
         dark
         padless >
       <v-row
@@ -103,9 +103,6 @@ export default {
 
 <style>
 
-.footer {
-  background: #1D3557 !important; /* white */
-}
 .v-toolbar__content {
   background: transparent;
 }

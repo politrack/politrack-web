@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="header"></div>
-    <div class="header-content">
+    <div class="header headerColor"></div>
+    <div class="header-content content1">
       <v-container>
         <v-row justify="center">
           <v-autocomplete
@@ -56,7 +56,7 @@
       </v-container>
     </div>
     <div>
-      <div class="headlines-container">
+      <div class="content-container content1">
         <v-container v-if="topics">
           <v-row><h2 class="text--darken-2 mt-5">Schlagzeilen des Tages</h2></v-row>
           <v-row class="mt-5">
@@ -76,8 +76,8 @@
           </v-row>
         </v-container>
       </div>
-      <div class="headlines-container">
-        <div class="graph-container"></div>
+      <div class="content-container content1">
+        <div class="graph-container content2"></div>
         <v-container>
           <v-row class="">
             <v-col cols="12" lg="6" sm="6">
@@ -182,7 +182,6 @@ export default {
 <style scoped>
 
 .header {
-  background: #eeeeee;
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   position: absolute;
   height: 350px;
@@ -190,13 +189,8 @@ export default {
   width: 100%;
 }
 
-.headlines-container {
-  background-color: #F1FAEE;
+.content-container {
   padding-bottom: 60px;
-}
-
-.header-content {
-  background-color: #F1FAEE;
 }
 
 .graph-container {
@@ -204,7 +198,6 @@ export default {
   position: absolute;
   width: 100%;
   height: 600px;
-  background-color: #457B9D;
 }
 
 /deep/ .v-icon.fas.fa-search {

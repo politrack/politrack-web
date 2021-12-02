@@ -22,9 +22,10 @@ export default new Vuetify({
                 error: colors.red.accent3,
                 background: colors.grey.lighten4, // Not automatically applied
 
-                headerColor: '#edf2fb',
-                content1: '#e2eafc',
-                content2: '#ccdbfd',
+                headerColor: '#f0f5f5',
+                content1: '#D8B2DFFC',
+                content2: '#eefcfc',
+                footerColor: '#1D3557'
             },
             dark: {
                 primary: colors.blue.lighten3,
