@@ -372,27 +372,27 @@
     },
     "topicDistribution": [
       {
-        "label": "Finanzen",
+        "name": "Finanzen",
         "count": 94
       },
       {
-        "label": "Klima",
+        "name": "Klima",
         "count": 435
       },
       {
-        "label": "Außenpolitik",
+        "name": "Außenpolitik",
         "count": 123
       },
       {
-        "label": "Landwirtschaft",
+        "name": "Landwirtschaft",
         "count": 543
       },
       {
-        "label": "Energie",
+        "name": "Energie",
         "count": 85
       },
       {
-        "label": "Digitalisierung",
+        "name": "Digitalisierung",
         "count": 21
       }
     ]

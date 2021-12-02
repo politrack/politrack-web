@@ -72,7 +72,7 @@
             </v-slide-group>
           </v-row>
           <v-row justify="center">
-            <v-btn text outlined rounded class="mt-3 ">Entdecke alle Schlagzeilen</v-btn>
+            <v-btn flat outlined rounded class="mt-3 ">Entdecke alle Schlagzeilen</v-btn>
           </v-row>
         </v-container>
       </div>

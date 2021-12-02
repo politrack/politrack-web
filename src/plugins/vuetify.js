@@ -21,6 +21,10 @@ export default new Vuetify({
                 accent: colors.shades.black,
                 error: colors.red.accent3,
                 background: colors.grey.lighten4, // Not automatically applied
+
+                headerColor: '#edf2fb',
+                content1: '#e2eafc',
+                content2: '#ccdbfd',
             },
             dark: {
                 primary: colors.blue.lighten3,

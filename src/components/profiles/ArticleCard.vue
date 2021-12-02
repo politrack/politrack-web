@@ -1,22 +1,25 @@
 <template>
   <v-card
-      class="slider-card article-card d-flex flex-column justify-space-between"
-      dark
-      rounded
-      :style="image!==null? { 'background-image': 'url(' + image + ')' }:{}"
-  >
-    <v-card-title>
-      <span class="font-weight-light text-caption ml-auto">{{ moment(article.published).fromNow() }}</span>
-    </v-card-title>
-
-
-    <v-card-text class="font-weight-bold">
+      class="slider-card"
+      max-width="450">
+    <v-img
+        :src="image"
+        height="100px">
+    </v-img>
+    <v-card-title class="article-title">
       {{ article.title }}
-    </v-card-text>
+    </v-card-title>
+    <v-card-subtitle>
+      <span>{{ sources[article.source].label }}</span>
+      <span class="float-right">{{ moment(article.published).fromNow() }}</span>
+    </v-card-subtitle>
   </v-card>
 </template>
 
 <script>
+import sources from "../../assets/sources_config.json";
+
+
 export default {
   name: "ArticleCard",
   props: {
@@ -24,19 +27,12 @@ export default {
   },
   data() {
     return {
-      test: "test",
-      image: this.article.images.length > 0? this.article.images[0].url : null
+      image: this.article.images.length > 0 ? this.article.images[0].url : null,
+      sources: sources
     }
   }
 }
 </script>
 
 <style scoped>
-  .article-card {
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    background-color: #5e5e5e;
-    background-blend-mode: multiply;
-  }
 </style>
