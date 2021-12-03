@@ -11,7 +11,7 @@
     </v-card-title>
 
     <v-card-text class="" style="font-size: 20px">
-      {{ quote.text }}
+      {{ quote.quote }}
     </v-card-text>
 
     <v-card-actions>

@@ -117,7 +117,7 @@ export default {
         'articles': result['articles'],
         'politician': result['politician'],
         'tweets': [],
-        'quotes': [],
+        'quotes': result['quotes'],
         'statistics': result['statistics']
       }
       console.log(resp.data)
