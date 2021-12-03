@@ -11,66 +11,19 @@ import 'chartjs-adapter-moment';
 export default {
   name: "ArticlesOverTime",
   props: {
-    articles: Array
+    statistics: Array
   },
   mounted() {
     Chart.register(...registerables);
     this.renderArticleDistributionChart();
   },
   methods: {
-    createDateTimeHistogram(data, timeAggregation, key) {
-      let dateTimeHistogram = [];
-
-      let minData = +Infinity;
-      let maxData = -Infinity;
-
-      let dateTimes = [];
-
-      for (let i = 0; i < data.length; i++) {
-        if (data[i][key]) {
-          let value = data[i][key].getTime();
-          dateTimes.push(value);
-
-          minData = Math.min(minData, value);
-          maxData = Math.max(maxData, value);
-        }
-      }
-
-      let interval = timeAggregation * 60 * 1000; //Conversion m -> ms
-      let numberOfBeans = (maxData !== minData) ? (1 + ((maxData - minData) / interval)) : 100;
-
-      let numberOfBeansMax = 1000;
-
-      numberOfBeans = Math.min(numberOfBeansMax, numberOfBeans);
-
-      interval = (maxData - minData) / (numberOfBeans - 1);
-      console.log(interval, maxData, minData, numberOfBeans)
-
-      for (let j = 0; j < numberOfBeans; j++) {
-        dateTimeHistogram[j] = {
-          dateTime: new Date(minData + (j + 0.5) * interval),
-          count: 0
-        };
-      }
-
-
-      for (let i = 0; i < data.length; i++) {
-        let beanNumber = Math.floor((dateTimes[i] - minData) / interval);
-        dateTimeHistogram[beanNumber].count += 1;
-      }
-
-      return dateTimeHistogram;
-    },
     prepareData() {
-
-      let histogram = this.createDateTimeHistogram(this.articles, 60 * 24 * 7, "published");
       let bar_data = [];
-
-      histogram.forEach(function (entry, idx) {
+      this.statistics.articlesOverTime.forEach(function (entry, idx) {
         bar_data.push({
-          x: entry.dateTime,
+          x: entry.date,
           y: entry.count,
-          nextX: idx+1 < histogram.length? histogram[idx+1].dateTime : null
         });
       });
       return {
@@ -89,7 +42,6 @@ export default {
     renderArticleDistributionChart() {
       let component = this;
       let data = this.prepareData();
-      console.log(data);
       let ctx = document.getElementById('articlesOverTimeChart').getContext('2d');
       component.chart = new Chart(ctx, {
         data: data,

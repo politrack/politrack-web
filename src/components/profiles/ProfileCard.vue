@@ -7,7 +7,7 @@
                class="avatar-image">
         </v-avatar>
         <h2 class="mt-1">{{ politician.label }}</h2>
-        <PartyChip :partyId="politician.party.id"/>
+        <PartyChip :partyId="politician.party"/>
       </v-col>
 
       <v-col lg="7" sm="12">

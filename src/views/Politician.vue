@@ -41,7 +41,7 @@
         </v-slide-group>
       </div>
 
-      <div class="content-container mt-3" v-if="quotes">
+      <div class="content-container mt-3" v-if="politician && politician.quotes.length > 0">
         <h2 class="mb-2">Aktuelle Aussagen</h2>
         <v-row>
           <v-col lg="12">
@@ -70,10 +70,10 @@
         <v-card-title class="mt-5 pt-2 ps-2" style="font-size: 25px">Präsenz in den Medien</v-card-title>
         <v-row class="px-5 pb-3">
           <v-col lg="8">
-            <ArticlesOverTime :articles="this.politician.articles"/>
+            <ArticlesOverTime :statistics="politician.statistics"/>
           </v-col>
           <v-col lg="4">
-            <SourceDistribution :statistics="this.politician.statistics" style="height: 250px"/>
+            <SourceDistribution :statistics="politician.statistics" style="height: 250px"/>
           </v-col>
         </v-row>
       </v-card>
