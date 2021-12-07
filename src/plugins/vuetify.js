@@ -16,9 +16,9 @@ export default new Vuetify({
     theme: {
         themes: {
             light: {
-                primary: colors.indigo,
+                primary: "#4361ee",
                 secondary: colors.grey.darken1,
-                accent: colors.shades.black,
+                accent: "#b5179e",
                 error: colors.red.accent3,
                 background: colors.grey.lighten4, // Not automatically applied
 

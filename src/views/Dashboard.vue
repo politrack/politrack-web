@@ -1,64 +1,50 @@
 <template>
   <div>
-    <div class="header headerColor"></div>
-    <div class="header-content content1">
-      <v-container>
-        <v-row justify="center">
-          <v-autocomplete
-              v-model="select"
-              :loading="searchLoading"
-              :items="searchItems"
-              :search-input.sync="search"
-              style="max-width: 400px"
-              label="z.B. Robert Habeck"
-              item-text="label"
-              item-value="_id"
-              hide-no-data
-              solo
-              prepend-inner-icon="fas fa-search"
-              rounded>
-            <template v-slot:item="{ item }">
-              <v-list-item-avatar
-                  :color="partyMap[item.party] ? partyMap[item.party].color : 'indigo'"
-                  class="text-h5 font-weight-light white--text avatar">
-                <v-img
-                    alt="Avatar"
-                    :src="'https://image.facethefacts-api.de/' + item._id + '.jpg'">
-                  <template v-slot:placeholder>
-                    <v-row
-                        class="fill-height ma-0 white--text"
-                        align="center"
-                        justify="center">
-                      {{ item.first_name.charAt(0) + item.last_name.charAt(0) }}
-                    </v-row>
-                  </template>
-                </v-img>
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.first_name + ' ' + item.last_name"></v-list-item-title>
-                <v-list-item-subtitle v-if="partyMap[item.party]"
-                                      v-text="partyMap[item.party].name"></v-list-item-subtitle>
-              </v-list-item-content>
-            </template>
-          </v-autocomplete>
-        </v-row>
-        <v-row class="px-5 mt-2" style="">
-          <v-col cols="12" lg="6" sm="6" xs="12">
-            <v-card class="pa-3">
-              <v-card-title>Politiker im Fokus</v-card-title>
-              <trending-politicians v-if="politicians" :data="politicians"></trending-politicians>
-            </v-card>
-          </v-col>
-          <v-col cols="12" lg="6" sm="6" xs="12">
-            <quotes-card :quotes="quotes" v-if="quotes"></quotes-card>
-          </v-col>
-        </v-row>
-      </v-container>
+    <div class="header-content">
+      <v-row justify="center">
+        <v-autocomplete
+            v-model="select"
+            :loading="searchLoading"
+            :items="searchItems"
+            :search-input.sync="search"
+            style="max-width: 400px"
+            label="z.B. Robert Habeck"
+            item-text="label"
+            item-value="_id"
+            hide-no-data
+            solo
+            prepend-inner-icon="fas fa-search"
+            rounded>
+          <template v-slot:item="{ item }">
+            <v-list-item-avatar
+                :color="partyMap[item.party] ? partyMap[item.party].color : 'indigo'"
+                class="text-h5 font-weight-light white--text avatar">
+              <v-img
+                  alt="Avatar"
+                  :src="'https://image.facethefacts-api.de/' + item._id + '.jpg'">
+                <template v-slot:placeholder>
+                  <v-row
+                      class="fill-height ma-0 white--text"
+                      align="center"
+                      justify="center">
+                    {{ item.first_name.charAt(0) + item.last_name.charAt(0) }}
+                  </v-row>
+                </template>
+              </v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.first_name + ' ' + item.last_name"></v-list-item-title>
+              <v-list-item-subtitle v-if="partyMap[item.party]"
+                                    v-text="partyMap[item.party].name"></v-list-item-subtitle>
+            </v-list-item-content>
+          </template>
+        </v-autocomplete>
+      </v-row>
     </div>
-    <div>
-      <div class="content-container content1">
-        <v-container v-if="topics">
-          <v-row><h2 class="text--darken-2 mt-5">Schlagzeilen des Tages</h2></v-row>
+    <div class="mt-5">
+      <v-container>
+        <div v-if="topics">
+          <v-row><h2 class="text--darken-2">Schlagzeilen des Tages</h2></v-row>
           <v-row class="mt-5">
             <v-slide-group
                 class="overflow-y-visible"
@@ -72,22 +58,34 @@
             </v-slide-group>
           </v-row>
           <v-row justify="center">
-            <v-btn flat outlined rounded class="mt-3 ">Entdecke alle Schlagzeilen</v-btn>
+            <v-btn flat outlined rounded color="primary" class="mt-3">Entdecke alle Schlagzeilen</v-btn>
           </v-row>
-        </v-container>
-      </div>
-      <div class="content-container content1">
-        <div class="graph-container content2"></div>
+        </div>
+        <v-row class="mt-5">
+          <v-col cols="12" lg="6" sm="6" xs="12">
+            <v-card class="pa-3 rounded-xl blur-background" rounded>
+              <v-card-title>Politiker im Fokus</v-card-title>
+              <trending-politicians v-if="politicians" :data="politicians"></trending-politicians>
+            </v-card>
+          </v-col>
+          <v-col cols="12" lg="6" sm="12" xs="12">
+            <quotes-card :quotes="quotes" v-if="quotes"></quotes-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
+    <div>
+      <div>
         <v-container>
           <v-row class="">
-            <v-col cols="12" lg="6" sm="6">
-              <v-card class="pa-3">
+            <v-col cols="12" lg="8" sm="12">
+              <v-card class="pa-3 rounded-xl blur-background" rounded>
                 <v-card-title>Parteien in den Medien</v-card-title>
                 <parties-chart class="mt-5" :data="partiesData"></parties-chart>
               </v-card>
             </v-col>
             <v-col cols="12" lg="4" sm="12">
-              <v-card class="pa-3">
+              <v-card class="pa-3 rounded-xl blur-background" rounded>
                 <v-card-title>Themenfokus</v-card-title>
                 <topic-distribution v-if="statistics" :statistics="statistics" class="mt-5" :light="false"/>
               </v-card>
@@ -181,24 +179,11 @@ export default {
 
 <style scoped>
 
-.header {
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-  position: absolute;
-  height: 350px;
-  margin-top: -64px;
-  width: 100%;
+.header-content {
+  padding-top: 84px;
+  padding-bottom: 10px;
 }
 
-.content-container {
-  padding-bottom: 60px;
-}
-
-.graph-container {
-  clip-path: polygon(0 20%, 100% 30%, 100% 100%, 0 100%);
-  position: absolute;
-  width: 100%;
-  height: 600px;
-}
 
 /deep/ .v-icon.fas.fa-search {
   font-size: 16px;

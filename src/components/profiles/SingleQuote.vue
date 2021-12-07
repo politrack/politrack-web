@@ -1,7 +1,6 @@
 <template>
   <v-card
-      class="slider-card d-flex flex-column justify-space-between rounded-xl pa-1"
-      color="white"
+      class="slider-card d-flex flex-column justify-space-between rounded-xl pa-1 opaque blur-background"
       rounded>
     <v-card-title>
       <v-icon left size="16">

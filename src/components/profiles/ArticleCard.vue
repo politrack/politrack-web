@@ -1,6 +1,7 @@
 <template>
   <v-card
       class="slider-card"
+      rounded
       max-width="450">
     <v-img
         :src="image"

@@ -1,30 +1,23 @@
 <template>
   <div>
-    <div class="position-relative">
-      <div class="header headerColor "></div>
-    </div>
-
-    <div class="header-content headerColor" v-if="politician">
+    <div class="header-content" v-if="politician">
       <v-container>
-        <v-row class="mt-5">
+        <v-row>
           <v-col lg="8">
-            <v-card rounded class="pa-3 h-100 rounded-xl">
+            <v-card rounded class="pa-3 h-100 rounded-xl blur-background opaque">
               <ProfileCard :politician="politician.politician"/>
             </v-card>
           </v-col>
           <v-col lg="4">
-            <v-card class="pa-3 rounded-xl">
+            <v-card class="pa-3 rounded-xl blur-background opaque">
               <TopicDistribution :light="false" :statistics="this.politician.statistics" style="height: 180px"/>
             </v-card>
           </v-col>
         </v-row>
       </v-container>
     </div>
-    <div class="position-relative content1">
-      <div class="header-end headerColor"></div>
-    </div>
 
-    <div class="main content1" v-if="politician">
+    <div class="mt-5" v-if="politician">
       <div class="content-container">
         <h2 class="mb-2">Aktuelle Berichte</h2>
         <v-slide-group
@@ -35,7 +28,7 @@
               v-for="article in politician.articles"
               :key="article.id">
             <div class="h-100 pt-2 pb-2">
-              <ArticleCard :article="article"/>
+              <ArticleCard :article="article" class="blur-background opaque rounded-xl"/>
             </div>
           </v-slide-item>
         </v-slide-group>
@@ -59,14 +52,10 @@
           </v-col>
         </v-row>
       </div>
-      <div class="angle-container position-relative content1">
-        <div class="bottom content2">
-        </div>
-      </div>
     </div>
 
-    <div class="bottom-container content-container content2" v-if="politician">
-      <v-card class="pa-5 rounded-xl" style="margin-bottom: 50px">
+    <div class="bottom-container" v-if="politician">
+      <v-card class="pa-5 rounded-xl blur-background opaque" style="margin-bottom: 50px">
         <v-card-title class="mt-5 pt-2 ps-2" style="font-size: 25px">Präsenz in den Medien</v-card-title>
         <v-row class="px-5 pb-3">
           <v-col lg="8">
@@ -160,10 +149,6 @@ export default {
   margin-right: 1em;
 }
 
-.position-relative {
-  position: relative;
-}
-
 .overflow-y-visible div {
   overflow-y: visible !important;
 }
@@ -173,42 +158,12 @@ div.h-100 {
 }
 
 
-.header {
-  height: 64px;
-  margin-top: -64px;
-  width: 100%;
-}
-
-.header-end {
-  clip-path: polygon(0 0%, 100% 0%, 100% 100%);
-  height: 50px;
-}
-
 .header-content {
-  background: #eeeeee;
+  padding-bottom: 10px;
+  padding-top: 60px;
 }
-
-.main-header {
-  margin-top: -70px;
-}
-
-div.angle-container {
-  padding-bottom: 100px;
-}
-
-div.bottom {
-  clip-path: polygon(0 20%, 100% 60%, 100% 100%, 0 100%);
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  bottom: 0;
-}
-
-.content-container {
+.content-container, .bottom-container {
   padding: 0 70px 10px 70px
 }
 
-div.bottom-container, div.bottom {
-  background: #A8DADC;
-}
 </style>
