@@ -16,7 +16,7 @@
           :key="i">
         <a :href="article.url" class="text-decoration-none" target="_blank">
           <v-card
-              flat
+              elevation="0"
               max-width="450">
             <v-img
                 :src="article.images && article.images.length > 0 ? article.images[0] : ''"

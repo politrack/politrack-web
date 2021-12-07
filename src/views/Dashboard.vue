@@ -58,7 +58,7 @@
             </v-slide-group>
           </v-row>
           <v-row justify="center">
-            <v-btn flat outlined rounded color="primary" class="mt-3">Entdecke alle Schlagzeilen</v-btn>
+            <v-btn text outlined rounded color="primary" class="mt-3">Entdecke alle Schlagzeilen</v-btn>
           </v-row>
         </div>
         <v-row class="mt-5">
@@ -68,7 +68,7 @@
               <trending-politicians v-if="politicians" :data="politicians"></trending-politicians>
             </v-card>
           </v-col>
-          <v-col cols="12" lg="6" sm="12" xs="12">
+          <v-col cols="12" lg="6" sm="12" xs="12" class="px-4">
             <quotes-card :quotes="quotes" v-if="quotes"></quotes-card>
           </v-col>
         </v-row>
@@ -81,7 +81,7 @@
             <v-col cols="12" lg="8" sm="12">
               <v-card class="pa-3 rounded-xl blur-background" rounded>
                 <v-card-title>Parteien in den Medien</v-card-title>
-                <parties-chart class="mt-5" :data="partiesData"></parties-chart>
+                <PartiesChart class="mt-5" :partiesData="partiesData"/>
               </v-card>
             </v-col>
             <v-col cols="12" lg="4" sm="12">
@@ -108,7 +108,7 @@ import parties_config from "../assets/parties.json"
 
 export default {
   name: "Dashboard",
-  data: () => {
+  data() {
     return {
       search: '',
       select: null,
@@ -139,7 +139,6 @@ export default {
     })
     axios.get('http://localhost:5000/web/data/trends.json').then((data) => {
       this.topics = data.data['topics']
-      console.log(data.data)
       this.politicians = data.data['politicians'].map((x) => {
         x['party'] = this.partyMap[x['party']]
         return x
@@ -150,8 +149,7 @@ export default {
       }
       this.partiesData = data.data['parties']
       this.quotes = data.data['quotes']
-      console.log(this.partyMap)
-    })
+    });
   },
   methods: {
     querySelections(v) {

@@ -91,7 +91,7 @@ export default {
     TopicDistribution,
     ProfileCard
   },
-  data: () => {
+  data() {
     return {
       id: null,
       politician: null,

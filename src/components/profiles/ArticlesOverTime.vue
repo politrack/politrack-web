@@ -11,7 +11,7 @@ import 'chartjs-adapter-moment';
 export default {
   name: "ArticlesOverTime",
   props: {
-    statistics: Array
+    statistics: Object
   },
   mounted() {
     Chart.register(...registerables);

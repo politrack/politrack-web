@@ -8,21 +8,12 @@
 
 import {Chart, registerables} from "chart.js";
 import ChartPluginLabels from '../../utils/chartjs-plugin-labels'
-import trends from "../../assets/trends.json";
-
-const partyColors = {
-  'CDU/CSU': 'black',
-  'SPD': 'red',
-  'Grüne': 'green',
-  'Die Linke': 'purple',
-  'FDP': 'yellow',
-  'AfD': 'blue'
-}
 
 export default {
   name: "PartiesChart",
   props: ['data'],
-  data: function () {
+  data() {
+    return {}
   },
   mounted() {
     Chart.register(...registerables);

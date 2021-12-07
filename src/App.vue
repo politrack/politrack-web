@@ -1,6 +1,6 @@
 <template>
   <v-app style="background-color: white">
-    <v-app-bar app flat dark color="#4895EF" absolute>
+    <v-app-bar elevation="0" app dark color="#4895EF" absolute>
       <v-container>
         <v-row>
           <div class="d-flex align-center">
@@ -18,7 +18,7 @@
             </router-link>
           </div>
           <v-spacer></v-spacer>
-          <v-btn small class="me-4" rounded flat outlined>
+          <v-btn small class="me-4" rounded text outlined>
             Kontakt
           </v-btn>
           <a class="text-decoration-none"
@@ -79,22 +79,24 @@
 export default {
   name: 'App',
   components: {},
-  data: () => ({
-    'footerLinks': [
-      {
-        'name': 'Impressum',
-        'route': 'imprint'
-      },
-      {
-        'name': 'Datenschutzerklärung',
-        'route': 'privacy'
-      },
-      {
-        'name': 'Über uns',
-        'route': 'about'
-      }
-    ]
-  }),
+  data() {
+    return {
+      'footerLinks': [
+        {
+          'name': 'Impressum',
+          'route': 'imprint'
+        },
+        {
+          'name': 'Datenschutzerklärung',
+          'route': 'privacy'
+        },
+        {
+          'name': 'Über uns',
+          'route': 'about'
+        }
+      ]
+    }
+  },
   computed: {
     theme() {
       return (this.$vuetify.theme.dark) ? 'dark' : 'light'
