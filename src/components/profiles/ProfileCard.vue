@@ -23,7 +23,7 @@
           </v-icon>
           {{ chip.text }}
         </v-chip>
-        <MentionedWith :mentions="politician.mentionedWith" class="mt-4"/>
+        <MentionedWith :mentions="mentionedWith" class="mt-4"/>
       </v-col>
     </v-row>
   </div>
@@ -41,8 +41,10 @@ export default {
   },
   props: {
     politician: Object,
+    mentionedWith: Array,
   },
   data: function () {
+    console.log(this.mentionedWith)
     return {
       chips: [
         {

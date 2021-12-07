@@ -5,7 +5,7 @@
         <v-row>
           <v-col lg="8">
             <v-card rounded class="pa-3 h-100 rounded-xl blur-background opaque">
-              <ProfileCard :politician="politician.politician"/>
+              <ProfileCard :politician="politician.politician" :mentionedWith="politician.mentionedWith"/>
             </v-card>
           </v-col>
           <v-col lg="4">
@@ -71,7 +71,6 @@
 </template>
 
 <script>
-import mockup from "../assets/politicians/mockup.json";
 import ArticleCard from "../components/profiles/ArticleCard";
 import SourceDistribution from "../components/profiles/SourceDistribution";
 import ArticlesOverTime from "../components/profiles/ArticlesOverTime";
@@ -107,7 +106,8 @@ export default {
         'politician': result['politician'],
         'tweets': [],
         'quotes': result['quotes'],
-        'statistics': result['statistics']
+        'statistics': result['statistics'],
+        'mentionedWith': result['mentionedWith']
       }
       console.log(resp.data)
       this.initializeSortedEntries();

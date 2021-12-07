@@ -10,7 +10,7 @@
                     v-on="on">
             <img
                 :alt="person.first_name + ' ' + person.last_name"
-                :src="person.image"
+                :src="'https://image.facethefacts-api.de/' + person.id + '.jpg'"
                 class="avatar-image"
             >
           </v-avatar>
