@@ -15,6 +15,8 @@
       <span>{{ sources[article.source].label }}</span>
       <span class="float-right">{{ moment(article.published).fromNow() }}</span>
     </v-card-subtitle>
+    <div class="highlight-text ma-5" v-html="article.highlight">
+    </div>
   </v-card>
 </template>
 
@@ -36,5 +38,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.highlight-text {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.0071428571em;
+}
+
+.highlight-text em {
+  color: #000000;
+  font-style: normal;
+  font-weight: bold;
+}
+
 </style>

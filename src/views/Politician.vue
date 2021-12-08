@@ -109,7 +109,6 @@ export default {
         'statistics': result['statistics'],
         'mentionedWith': result['mentionedWith']
       }
-      console.log(resp.data)
       this.initializeSortedEntries();
     })
   },
