@@ -1,0 +1,17 @@
+name: Cloudflare Deployment
+
+jobs:
+  deployment:
+      runs-on: ubuntu-latest
+      steps: 
+        - name: deploy
+          uses: joelwmale/webhook-action@master
+          with:
+            url: https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/101f01b0-403d-4aa5-be40-55810c6bc1df
+
+# Controls when the workflow will run
+on:
+   # Triggers the workflow on push or pull request events but only for the main branch
+     push:
+        branches: [ production ]
+     workflow_dispatch:
