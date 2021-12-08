@@ -98,7 +98,7 @@ export default {
   },
   mounted() {
     this.id = this.$route.params.id;
-    axios.get('http://localhost:5000/web/data/politicians/' + this.id + '.json').then((resp) => {
+    axios.get(process.env.VUE_APP_URL + '/web/data/politicians/' + this.id + '.json').then((resp) => {
       let result = resp.data
       this.politician = {
         'id': this.id,
@@ -161,6 +161,7 @@ div.h-100 {
   padding-bottom: 10px;
   padding-top: 60px;
 }
+
 .content-container, .bottom-container {
   padding: 0 70px 10px 70px
 }

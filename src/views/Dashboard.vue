@@ -154,7 +154,7 @@ export default {
   methods: {
     querySelections(v) {
       this.searchLoading = true
-      axios.get('http://localhost:5000/web/search', {
+      axios.get(process.env.VUE_APP_URL + '/web/search', {
         params: {'query': v}
       }).then((data) => {
         let result = data.data
