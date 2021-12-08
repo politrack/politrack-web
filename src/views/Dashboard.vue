@@ -137,7 +137,7 @@ export default {
         'color': party.color
       }
     })
-    axios.get('http://localhost:5000/web/data/trends.json').then((data) => {
+    axios.get(process.env.VUE_APP_URL + '/web/data/trends.json').then((data) => {
       this.topics = data.data['topics']
       this.politicians = data.data['politicians'].map((x) => {
         x['party'] = this.partyMap[x['party']]
