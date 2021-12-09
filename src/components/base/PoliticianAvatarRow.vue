@@ -25,7 +25,7 @@ export default {
   name: "PoliticianAvatarRow",
   props: {
     persons: Array,
-    size: Number
+    size: Number,
   }
 }
 </script>

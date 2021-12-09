@@ -4,15 +4,7 @@
       <v-container class="py-5">
         <v-row>
           <v-col lg="12" class="align-self-center">
-            <v-card class="rounded d-flex header-card align-center rounded-xl" rounded elevation="0">
-              <p>
-                Mithilfe von künstlicher Intelligenz haben wir Artikel über politisch relevante Ereignisse nach Themen
-                gruppiert und diese zeitlich mit den Umfragewerten zur Bundestagswahl verknüpft. Die Punkte
-                repräsentieren
-                die Ergebnisse einzelner Umfragen, während die Linien den Trend über die wichtigsten Umfragen im
-                jeweiligen Zeitraum widerspiegeln. In der nächsten Zeit werden wir weitere Analysen über die politische
-                Berichterstattung in Deutschland erstellen.
-              </p>
+            <v-card class="rounded d-flex header-card align-center rounded-xl" rounded elevation="2">
               <v-sheet
                   class="sheet mx-auto transition-swing rounded-circle pa-0"
                   height="250"
@@ -22,12 +14,22 @@
                 <v-img
                     src="../assets/img/news.png"
                     contain
-                    alt="Nachrichten"
-                />
+                    alt="Nachrichten"/>
               </v-sheet>
+              <p>
+                Mithilfe von künstlicher Intelligenz haben wir Artikel über politisch relevante Ereignisse nach Themen
+                gruppiert und diese zeitlich mit den Umfragewerten zur Bundestagswahl verknüpft. Die Punkte
+                repräsentieren
+                die Ergebnisse einzelner Umfragen, während die Linien den Trend über die wichtigsten Umfragen im
+                jeweiligen Zeitraum widerspiegeln. In der nächsten Zeit werden wir weitere Analysen über die politische
+                Berichterstattung in Deutschland erstellen.
+              </p>
             </v-card>
-
-
+          </v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-col cols="12" lg="4">
+            <SearchBar :partyMap="partyMap"/>
           </v-col>
         </v-row>
       </v-container>
@@ -35,53 +37,6 @@
     <div>
       <div class="mt-5">
         <v-container>
-          <v-row>
-            <v-col lg="7">
-              <v-autocomplete
-                  v-model="select"
-                  :loading="searchLoading"
-                  :items="searchItems"
-                  :search-input.sync="search"
-                  label="z.B. Robert Habeck"
-                  item-text="label"
-                  item-value="_id"
-                  hide-no-data
-                  solo
-                  prepend-inner-icon="fas fa-search"
-                  rounded>
-                <template v-slot:item="{ item }">
-                  <v-list-item-avatar
-                      :color="partyMap[item.party] ? partyMap[item.party].color : 'indigo'"
-                      class="text-h5 font-weight-light white--text avatar">
-                    <v-img
-                        alt="Avatar"
-                        :src="'https://image.facethefacts-api.de/' + item._id + '.jpg'">
-                      <template v-slot:placeholder>
-                        <v-row
-                            class="fill-height ma-0 white--text"
-                            align="center"
-                            justify="center">
-                          {{ item.first_name.charAt(0) + item.last_name.charAt(0) }}
-                        </v-row>
-                      </template>
-                    </v-img>
-                  </v-list-item-avatar>
-                  <v-list-item-content>
-                    <v-list-item-title v-text="item.first_name + ' ' + item.last_name"></v-list-item-title>
-                    <v-list-item-subtitle v-if="partyMap[item.party]"
-                                          v-text="partyMap[item.party].name"></v-list-item-subtitle>
-                  </v-list-item-content>
-                </template>
-              </v-autocomplete>
-            </v-col>
-            <v-col lg="5">
-              <div class="d-flex align-center">
-                <div class="me-3 caption">Derzeit populär:</div>
-                <PoliticianAvatarRow v-if="politicians" :persons="politicians.slice(0,6)" :size="48"/>
-
-              </div>
-            </v-col>
-          </v-row>
           <v-row justify="center">
             <v-col cols="12" v-if="topics">
               <v-row justify="center"><h2 class="text--darken-2">Schlagzeilen</h2></v-row>
@@ -161,6 +116,7 @@ import NewsHeadline from "../components/dashboard/NewsHeadline";
 import QuotesCard from "../components/profiles/QuotesCard";
 import TopicDistribution from "../components/profiles/TopicDistribution";
 import PoliticianAvatarRow from "../components/base/PoliticianAvatarRow";
+import SearchBar from "../components/dashboard/SearchBar";
 import axios from 'axios'
 import parties_config from "../assets/parties.json"
 
@@ -168,24 +124,12 @@ export default {
   name: "Dashboard",
   data() {
     return {
-      search: '',
-      select: null,
-      searchLoading: null,
-      searchItems: [],
       politicians: null,
       topics: null,
       quotes: null,
       statistics: null,
       partiesData: null,
       partyMap: {}
-    }
-  },
-  watch: {
-    search(val) {
-      val && this.querySelections(val)
-    },
-    select(val) {
-      this.$router.push('/politician/' + val)
     }
   },
   mounted() {
@@ -209,27 +153,13 @@ export default {
       this.quotes = data.data['quotes']
     });
   },
-  methods: {
-    querySelections(v) {
-      this.searchLoading = true
-      axios.get(process.env.VUE_APP_URL + '/web/search', {
-        params: {'query': v}
-      }).then((data) => {
-        let result = data.data
-        if (result['politicians'].length > 0) {
-          this.searchItems = result['politicians']
-        }
-        this.searchLoading = false
-      })
-    },
-  },
   components: {
     TopicDistribution,
     PartiesChart,
     TrendingPoliticians,
     NewsHeadline,
-    PoliticianAvatarRow,
-    QuotesCard
+    QuotesCard,
+    SearchBar
   }
 }
 </script>
@@ -240,15 +170,6 @@ export default {
   padding-top: 80px;
   padding-bottom: 10px;
   color: #efefef;
-}
-
-
-/deep/ .v-icon.fas.fa-search {
-  font-size: 16px;
-}
-
-.avatar {
-  border: 2px solid #ffff;
 }
 
 .content-start {
@@ -264,17 +185,19 @@ export default {
 }
 
 .header-card {
-  position: relative;
-  background: #efefef;
-  margin-right: 125px !important;
+  background: #efefef99;
+  backdrop-filter: blur(5px);
+  margin-left: 120px !important;
+  margin-right: 120px !important;
 }
+
 .header-card p {
-  padding: 2em 140px 2em 2em;
+  padding: 2em 2em 2em 140px;
 }
 
 .header-card .sheet {
   position: absolute;
-  right: -125px;
-  background: #efefef
+  left: -125px;
+  background: transparent;
 }
 </style>
