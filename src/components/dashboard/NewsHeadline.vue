@@ -1,8 +1,7 @@
 <template>
   <v-card
       elevation="2"
-      max-width="345"
-      class="">
+      width="345">
     <v-carousel
         :continuous="false"
         :cycle="true"
@@ -40,7 +39,9 @@
         Mehr zu dem Thema
       </v-btn>
       <v-spacer></v-spacer>
-      <v-avatar v-for="(person, idx) in topic.politicians.slice(0, 4)" class="avatar elevation-2" v-bind:key="idx" size="32"
+      <v-avatar v-for="(person, idx) in topic.politicians.slice(0, 4)"
+                class="avatar elevation-2" v-bind:key="idx" size="32"
+                @click="$router.push('politician/' + person._id)"
                 style="margin-left: -16px">
         <img :src="'https://image.facethefacts-api.de/' + person._id + '.jpg'"
              class="avatar-image">

@@ -5,7 +5,8 @@
         <v-row>
           <v-col lg="8">
             <v-card rounded class="pa-3 h-100 rounded-xl blur-background opaque">
-              <ProfileCard :politician="politician.politician" :mentionedWith="politician.mentionedWith"/>
+              <ProfileCard :politician="politician.politician" :mentionedWith="politician.mentionedWith"
+                           :statistics="politician.statistics"/>
             </v-card>
           </v-col>
           <v-col lg="4">
@@ -26,10 +27,11 @@
             show-arrows>
           <v-slide-item
               v-for="article in politician.articles"
+              justify="center"
               :key="article.id">
-            <div class="h-100 pt-2 pb-2">
-              <ArticleCard :article="article" class="blur-background opaque rounded-xl"/>
-            </div>
+              <div class="pb-2 pt-2 d-flex align-center justify-center">
+                <ArticleCard :article="article" class="blur-background opaque rounded-xl"/>
+              </div>
           </v-slide-item>
         </v-slide-group>
       </div>
@@ -100,6 +102,7 @@ export default {
     this.id = this.$route.params.id;
     axios.get(process.env.VUE_APP_URL + '/web/data/politicians/' + this.id + '.json').then((resp) => {
       let result = resp.data
+      console.log(result)
       this.politician = {
         'id': this.id,
         'articles': result['articles'],
@@ -141,13 +144,6 @@ export default {
   object-fit: cover
 }
 
-.slider-card {
-  width: 300px;
-  height: 100%;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
 .overflow-y-visible div {
   overflow-y: visible !important;
 }
@@ -155,7 +151,6 @@ export default {
 div.h-100 {
   height: 100%;
 }
-
 
 .header-content {
   padding-bottom: 10px;

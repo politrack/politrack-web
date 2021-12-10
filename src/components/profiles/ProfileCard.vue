@@ -42,6 +42,7 @@ export default {
   props: {
     politician: Object,
     mentionedWith: Array,
+    statistics: Object
   },
   data: function () {
     console.log(this.mentionedWith)
@@ -61,7 +62,7 @@ export default {
         },
         {
           'icon': 'fas fa-newspaper',
-          'text': '1231 Articles'
+          'text': this.statistics.basic.lastWeekArticles + ' Artikel letzte Woche'
         },
         {
           'icon': 'fas fa-external-link-alt',

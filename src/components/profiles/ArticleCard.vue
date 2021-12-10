@@ -1,8 +1,8 @@
 <template>
   <v-card
-      class="slider-card"
+      class="slider-card pb-4"
       rounded
-      max-width="450">
+      width="300">
     <v-img
         :src="image"
         v-if="image"
@@ -15,7 +15,8 @@
       <span>{{ sources[article.source].label }}</span>
       <span class="float-right">{{ moment(article.published).fromNow() }}</span>
     </v-card-subtitle>
-    <div class="highlight-text ma-5" v-html="article.highlight">
+    <div class="highlight-text ms-5 me-5">
+      <span v-html="highlight" v-bind:key="index" v-for="(highlight, index) in article.highlight"/>
     </div>
   </v-card>
 </template>
@@ -45,6 +46,13 @@ export default {
   font-weight: 400;
   letter-spacing: 0.0071428571em;
 }
+
+.slider-card {
+  width: 300px;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 
 .highlight-text em {
   color: #000000;
