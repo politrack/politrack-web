@@ -43,8 +43,7 @@
                 class="avatar elevation-2" v-bind:key="idx" size="32"
                 @click="$router.push('politician/' + person._id)"
                 style="margin-left: -16px">
-        <img :src="'https://image.facethefacts-api.de/' + person._id + '.jpg'"
-             class="avatar-image">
+        <PoliticianImage :id="person._id"/>
       </v-avatar>
     </v-card-actions>
   </v-card>
@@ -52,7 +51,7 @@
 
 <script>
 import sources from "../../assets/sources_config.json";
-
+import PoliticianImage from "../base/PoliticianImage";
 export default {
   name: "PoliticiansCard",
   props: {
@@ -62,15 +61,14 @@ export default {
     return {
       sources: sources
     }
+  },
+  components: {
+    PoliticianImage
   }
 }
 </script>
 
 <style>
-.avatar-image {
-  object-fit: cover
-}
-
 .article-title.v-card__title {
   line-height: 1.2rem;
   font-size: 16px;

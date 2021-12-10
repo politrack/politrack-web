@@ -7,11 +7,7 @@
                     :size="size"
                     class="avatar elevation-2"
                     v-on="on">
-            <img
-                :alt="person.first_name + ' ' + person.last_name"
-                :src="'https://image.facethefacts-api.de/' + person.id + '.jpg'"
-                class="avatar-image"
-            >
+            <PoliticianImage :id="person.id"/>
           </v-avatar>
         </template>
         <span>{{ person.first_name }} {{ person.last_name }}</span>
@@ -21,11 +17,15 @@
 </template>
 
 <script>
+import PoliticianImage from "./PoliticianImage";
 export default {
   name: "PoliticianAvatarRow",
   props: {
     persons: Array,
     size: Number,
+  },
+  components: {
+    PoliticianImage
   }
 }
 </script>

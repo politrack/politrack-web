@@ -3,8 +3,7 @@
     <v-row>
       <v-col class="text-center" lg="5" sm="12" style="margin-top: -50px">
         <v-avatar class="avatar elevation-2" size="128">
-          <img :alt="politician.label" :src="'https://image.facethefacts-api.de/' + politician._id + '.jpg'"
-               class="avatar-image">
+          <PoliticianImage :id="politician._id"/>
         </v-avatar>
         <h2 class="mt-1">{{ politician.label }}</h2>
         <PartyChip :partyId="politician.party"/>
@@ -23,7 +22,11 @@
           </v-icon>
           {{ chip.text }}
         </v-chip>
-        <MentionedWith :mentions="mentionedWith" class="mt-4"/>
+
+        <div class="d-flex align-center">
+          <span class="text-caption me-4">Oft erwähnt mit:</span>
+          <PoliticianAvatarRow :persons="mentionedWith"/>
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -31,13 +34,15 @@
 
 <script>
 import PartyChip from "./PartyChip";
-import MentionedWith from "./MentionedWith";
+import PoliticianImage from "../base/PoliticianImage";
+import PoliticianAvatarRow from "../base/PoliticianAvatarRow";
 
 export default {
   name: "ProfileCard",
   components: {
     PartyChip,
-    MentionedWith
+    PoliticianImage,
+    PoliticianAvatarRow
   },
   props: {
     politician: Object,

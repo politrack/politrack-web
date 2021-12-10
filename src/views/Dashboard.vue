@@ -41,16 +41,7 @@
             <v-col cols="12" v-if="topics">
               <v-row justify="center"><h2 class="text--darken-2">Schlagzeilen</h2></v-row>
               <v-row class="mt-5">
-                <v-slide-group
-                    class="overflow-y-visible"
-                    multiple
-                    show-arrows>
-                  <v-slide-item v-for="(topic, idx) in topics" v-bind:key="idx">
-                    <div class="pa-2 h-100">
-                      <news-headline :topic="topic"></news-headline>
-                    </div>
-                  </v-slide-item>
-                </v-slide-group>
+                <TopicSlider :topics="topics"/>
               </v-row>
               <v-row justify="center">
                 <v-btn text outlined rounded class="mt-3">Entdecke alle Schlagzeilen</v-btn>
@@ -112,11 +103,10 @@
 <script>
 import PartiesChart from "../components/dashboard/PartiesChart";
 import TrendingPoliticians from "../components/dashboard/TrendingPoliticians";
-import NewsHeadline from "../components/dashboard/NewsHeadline";
 import QuotesCard from "../components/profiles/QuotesCard";
 import TopicDistribution from "../components/profiles/TopicDistribution";
-import PoliticianAvatarRow from "../components/base/PoliticianAvatarRow";
 import SearchBar from "../components/dashboard/SearchBar";
+import TopicSlider from "../components/dashboard/TopicSlider";
 import axios from 'axios'
 import parties_config from "../assets/parties.json"
 
@@ -157,8 +147,8 @@ export default {
     TopicDistribution,
     PartiesChart,
     TrendingPoliticians,
-    NewsHeadline,
     QuotesCard,
+    TopicSlider,
     SearchBar
   }
 }

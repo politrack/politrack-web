@@ -12,37 +12,36 @@
       solo
       prepend-inner-icon="fas fa-search"
       rounded>
-    <template v-slot:item="{ item }">
-      <v-list-item-avatar
-          :color="partyMap[item.party] ? partyMap[item.party].color : 'indigo'"
-          class="text-h5 font-weight-light white--text avatar">
-        <v-img
-            alt="Avatar"
-            :src="'https://image.facethefacts-api.de/' + item._id + '.jpg'">
-          <template v-slot:placeholder>
-            <v-row
-                class="fill-height ma-0 white--text"
-                align="center"
-                justify="center">
-              {{ item.first_name.charAt(0) + item.last_name.charAt(0) }}
-            </v-row>
-          </template>
-        </v-img>
-      </v-list-item-avatar>
-      <v-list-item-content>
-        <v-list-item-title v-text="item.first_name + ' ' + item.last_name"></v-list-item-title>
-        <v-list-item-subtitle v-if="partyMap[item.party]"
-                              v-text="partyMap[item.party].name"></v-list-item-subtitle>
-      </v-list-item-content>
+    <template v-slot:item="data">
+      <template v-if="typeof data.item !== 'object'">
+        <v-list-item-content v-text="data.item">
+          <v-list-item-title text="Keine Politiker mit diesem Namen gefunden."></v-list-item-title>
+        </v-list-item-content>
+      </template>
+      <template v-else>
+        <v-list-item-avatar
+            :color="partyMap[data.item.party] ? partyMap[data.item.party].color : 'indigo'"
+            class="text-h5 font-weight-light white--text avatar">
+          <PoliticianImage :id="data.item._id"/>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title
+              v-text="data.item._id + ' ' +data.item.first_name + ' ' + data.item.last_name"></v-list-item-title>
+          <v-list-item-subtitle v-if="partyMap[data.item.party]"
+                                v-text="partyMap[data.item.party].name"></v-list-item-subtitle>
+        </v-list-item-content>
+      </template>
     </template>
   </v-autocomplete>
 </template>
 
 <script>
 import axios from "axios";
+import PoliticianImage from "../base/PoliticianImage";
 
 export default {
   name: "SearchBar",
+  components: {PoliticianImage},
   props: {
     partyMap: Object
   },

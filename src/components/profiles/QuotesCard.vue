@@ -24,7 +24,7 @@
 
         <div>
           <v-avatar class="avatar elevation-2" size="128">
-            <img :src="getImageFromQuote(quote)" class="avatar-image">
+           <PoliticianImage :id="quote.politician_id"/>
           </v-avatar>
         </div>
       </v-card>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import PoliticianImage from "../base/PoliticianImage";
 import sources from "../../assets/sources_config.json";
 import {Flicking} from "@egjs/vue-flicking";
 import {Pagination} from "@egjs/flicking-plugins";
@@ -47,7 +48,8 @@ export default {
     articleImage: Boolean
   },
   components: {
-    Flicking
+    Flicking,
+    PoliticianImage
   },
   data() {
     return {
@@ -62,15 +64,6 @@ export default {
     }
   },
   methods: {
-    getImageFromQuote(quote) {
-      console.log(quote)
-      let article = quote.article
-      if (this.articleImage) {
-        return article.images && article.images.length > 0 ? article.images[0].url : this.politician.image
-      } else {
-        return 'https://image.facethefacts-api.de/' + quote.politician_id + '.jpg'
-      }
-    },
     getQuoteText(quote) {
       return quote.quote.replace(/['"]+/g, '')
     },
