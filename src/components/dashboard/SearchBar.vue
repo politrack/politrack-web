@@ -26,7 +26,7 @@
         </v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title
-              v-text="data.item._id + ' ' +data.item.first_name + ' ' + data.item.last_name"></v-list-item-title>
+              v-text="data.item.first_name + ' ' + data.item.last_name"></v-list-item-title>
           <v-list-item-subtitle v-if="partyMap[data.item.party]"
                                 v-text="partyMap[data.item.party].name"></v-list-item-subtitle>
         </v-list-item-content>
