@@ -41,7 +41,7 @@ export default {
     renderArticleDistributionChart() {
       let component = this;
       let data = component.prepareData();
-      let gridColor = component.light ? "#ffffff" : "#888888";
+      let gridColor = component.light ? "#ffffff" : "#8a7474";
       let fontColor = component.light ? "#ffffff" : "#1a1a1a";
       let ctx = document.getElementById('topicDistributionChart').getContext('2d');
       component.chart = new Chart(ctx, {
@@ -56,6 +56,7 @@ export default {
                 display: false
               },
               grid: {
+                circular: true,
                 color: gridColor
               },
               angleLines: {
