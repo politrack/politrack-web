@@ -18,60 +18,62 @@
       </v-container>
     </div>
 
-    <div class="mt-5" v-if="politician">
-      <div class="content-container">
-        <h2 class="mb-2">Aktuelle Berichte</h2>
-        <div class="overflow-x-hidden position-relative">
-          <Flicking
-              :plugins="pluginsArticles"
-              :options="options">
-            <div v-for="article in politician.articles"
-                :key="article.id" class="align-self-center">
-              <div class="pb-2 pt-2 d-flex align-center justify-center">
-                <ArticleCard :article="article" class="blur-background opaque rounded-xl"/>
+    <div class="content-container pt-5">
+      <div class="content" v-if="politician">
+        <div>
+          <h2 class="mb-2">Aktuelle Berichte</h2>
+          <div class="overflow-x-hidden position-relative">
+            <Flicking
+                :plugins="pluginsArticles"
+                :options="options">
+              <div v-for="article in politician.articles"
+                   :key="article.id" class="align-self-center">
+                <div class="pb-2 pt-2 d-flex align-center justify-center">
+                  <ArticleCard :article="article" class="blur-background opaque rounded-xl"/>
+                </div>
               </div>
-            </div>
-          </Flicking>
-          <span class="flicking-arrow-prev flicking-arrow-prev-articles"></span>
-          <span class="flicking-arrow-next flicking-arrow-next-articles"></span>
+            </Flicking>
+            <span class="flicking-arrow-prev flicking-arrow-prev-articles"></span>
+            <span class="flicking-arrow-next flicking-arrow-next-articles"></span>
+          </div>
+        </div>
+
+        <div class="content mt-3" v-if="politician && politician.quotes.length > 0">
+          <h2 class="mb-2">Aktuelle Aussagen</h2>
+          <v-row>
+            <v-col lg="12">
+              <div class="overflow-x-hidden position-relative">
+                <Flicking
+                    :plugins="pluginsQuotes"
+                    :options="options">
+                  <div v-for="(quote, index) in politician.quotes"
+                       :key="index" class="align-self-center">
+                    <div class="pb-2 pt-2 d-flex align-center justify-center">
+                      <SingleQuote :quote="quote"/>
+                    </div>
+                  </div>
+                </Flicking>
+                <span class="flicking-arrow-prev flicking-arrow-prev-quotes"></span>
+                <span class="flicking-arrow-next flicking-arrow-next-quotes"></span>
+              </div>
+            </v-col>
+          </v-row>
         </div>
       </div>
 
-      <div class="content-container mt-3" v-if="politician && politician.quotes.length > 0">
-        <h2 class="mb-2">Aktuelle Aussagen</h2>
-        <v-row>
-          <v-col lg="12">
-            <div class="overflow-x-hidden position-relative">
-              <Flicking
-                  :plugins="pluginsQuotes"
-                  :options="options">
-                <div v-for="(quote, index) in politician.quotes"
-                     :key="index" class="align-self-center">
-                  <div class="pb-2 pt-2 d-flex align-center justify-center">
-                    <SingleQuote :quote="quote"/>
-                  </div>
-                </div>
-              </Flicking>
-              <span class="flicking-arrow-prev flicking-arrow-prev-quotes"></span>
-              <span class="flicking-arrow-next flicking-arrow-next-quotes"></span>
-            </div>
-          </v-col>
-        </v-row>
-      </div>
+      <div class="content-end"></div>
     </div>
 
     <div class="bottom-container" v-if="politician">
-      <v-card class="pa-5 rounded-xl blur-background opaque" style="margin-bottom: 50px">
-        <v-card-title class="mt-5 pt-2 ps-2" style="font-size: 25px">Präsenz in den Medien</v-card-title>
-        <v-row class="px-5 pb-3">
-          <v-col lg="8">
-            <ArticlesOverTime :statistics="politician.statistics"/>
-          </v-col>
-          <v-col lg="4">
-            <SourceDistribution :statistics="politician.statistics" style="height: 250px"/>
-          </v-col>
-        </v-row>
-      </v-card>
+      <h2 class="mb-2 text-center mt-5">Präsenz in den Medien</h2>
+      <v-row class="px-5 pb-3">
+        <v-col lg="8">
+          <ArticlesOverTime :statistics="politician.statistics"/>
+        </v-col>
+        <v-col lg="4">
+          <SourceDistribution :statistics="politician.statistics" style="height: 250px"/>
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>
@@ -179,7 +181,10 @@ export default {
   padding-top: 60px;
 }
 
-.content-container, .bottom-container {
+.content-container > .content {
+  padding: 0 70px 0 70px
+}
+.bottom-container {
   padding: 0 70px 10px 70px
 }
 
@@ -189,5 +194,14 @@ export default {
 
 .flicking-arrow-prev:not(.flicking-arrow-disabled)::before, .flicking-arrow-prev:not(.flicking-arrow-disabled)::after, .flicking-arrow-next:not(.flicking-arrow-disabled)::before, .flicking-arrow-next:not(.flicking-arrow-disabled)::after {
   background-color: #b5179e !important;
+}
+
+.content-container {
+
+}
+.content-end {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' transform='scale(-1 1)' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='300' preserveAspectRatio='none' viewBox='0 0 1440 300'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1055%26quot%3b)' fill='none'%3e%3cpath d='M 0%2c182 C 96%2c167.6 288%2c105 480%2c110 C 672%2c115 768%2c207.6 960%2c207 C 1152%2c206.4 1344%2c127 1440%2c107L1440 300L0 300z' fill='rgba(76%2c 201%2c 240%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c81 C 96%2c110.2 288%2c225.8 480%2c227 C 672%2c228.2 768%2c98.2 960%2c87 C 1152%2c75.8 1344%2c154.2 1440%2c171L1440 300L0 300z' fill='rgba(72%2c 149%2c 239%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c93 C 96%2c118.8 288%2c214.8 480%2c222 C 672%2c229.2 768%2c118.6 960%2c129 C 1152%2c139.4 1344%2c245 1440%2c274L1440 300L0 300z' fill='rgba(247%2c 37%2c 133%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c113 C 96%2c145.2 288%2c269.2 480%2c274 C 672%2c278.8 768%2c159 960%2c137 C 1152%2c115 1344%2c158.6 1440%2c164L1440 300L0 300z' fill='rgba(239%2c 239%2c 239%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1055'%3e%3crect width='1440' height='300' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-size: 100% 100%;
+  height: 4em;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <v-card
-      class="slider-card pb-4"
+      class="slider-card pb-4 opaque blur-background"
       rounded
       width="300">
     <v-img
