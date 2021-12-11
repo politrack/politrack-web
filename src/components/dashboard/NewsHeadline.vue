@@ -7,8 +7,8 @@
         :cycle="true"
         :show-arrows="false"
         hide-delimiter-background
-        delimiter-icon="fas fa-minus"
-        class="custom"
+        delimiter-icon="fas fa-circle"
+        class="topic-carousel"
         height="250">
       <v-carousel-item
           v-for="(article, i) in topic.articles"
@@ -68,43 +68,42 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .article-title.v-card__title {
   line-height: 1.2rem;
   font-size: 16px;
   word-break: keep-all;
 }
 
-.custom .v-carousel__controls__item.v-btn.v-btn--icon {
+.topic-carousel >>> .v-carousel__controls__item.v-btn.v-btn--icon {
   color: grey;
-  margin: 10px;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.custom .v-carousel__controls__item.v-btn.v-btn--icon i {
-  font-size: 20px !important;
-  margin: 15px;
+.topic-carousel >>> .v-carousel__controls__item.v-btn.v-btn--icon i {
+  font-size: 9px !important;
 }
 
-.custom .v-carousel__controls__item.v-btn.v-btn--active {
-  color: black;
+.topic-carousel >>> .v-carousel__controls__item.v-btn.v-btn--active {
+  color: #4361ee;
 }
 
-.custom .v-carousel__controls__item.v-btn.v-btn--active:before {
+.topic-carousel >>> .v-carousel__controls__item.v-btn.v-btn--active:before {
   opacity: 0;
 }
 
-.custom .v-carousel__controls__item.v-btn:hover {
-  color: black;
+.topic-carousel >>> .v-carousel__controls__item.v-btn:hover {
+  color: #4361ee;
 }
 
-.custom .v-carousel__controls__item.v-btn:hover:before {
+.topic-carousel >>> .v-carousel__controls__item.v-btn:hover:before {
   opacity: 0;
 }
 
 .text-decoration-none {
   text-decoration: none !important;
 }
-
 .num-articles {
   color: rgba(0, 0, 0, 0.6);
   font-size: 0.875rem;
@@ -116,4 +115,6 @@ export default {
 .avatar {
   border: 2px solid #ffffff;
 }
+
+
 </style>

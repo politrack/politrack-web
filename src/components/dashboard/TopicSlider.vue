@@ -25,7 +25,6 @@ export default {
     topics: Array
   },
   data() {
-    let element = document.getElementById("topicSliderContainer");
     return {
       options: {
         align: "prev",

@@ -21,36 +21,40 @@
     <div class="mt-5" v-if="politician">
       <div class="content-container">
         <h2 class="mb-2">Aktuelle Berichte</h2>
-        <v-slide-group
-            class="overflow-y-visible"
-            multiple
-            show-arrows>
-          <v-slide-item
-              v-for="article in politician.articles"
-              justify="center"
-              :key="article.id">
+        <div class="overflow-x-hidden position-relative">
+          <Flicking
+              :plugins="pluginsArticles"
+              :options="options">
+            <div v-for="article in politician.articles"
+                :key="article.id" class="align-self-center">
               <div class="pb-2 pt-2 d-flex align-center justify-center">
                 <ArticleCard :article="article" class="blur-background opaque rounded-xl"/>
               </div>
-          </v-slide-item>
-        </v-slide-group>
+            </div>
+          </Flicking>
+          <span class="flicking-arrow-prev flicking-arrow-prev-articles"></span>
+          <span class="flicking-arrow-next flicking-arrow-next-articles"></span>
+        </div>
       </div>
 
       <div class="content-container mt-3" v-if="politician && politician.quotes.length > 0">
         <h2 class="mb-2">Aktuelle Aussagen</h2>
         <v-row>
           <v-col lg="12">
-            <v-slide-group
-                multiple
-                show-arrows>
-              <v-slide-item
-                  v-for="(quote, index) in politician.quotes"
-                  :key="index">
-                <div class="h-100 pt-2 pb-2">
-                  <SingleQuote :quote="quote"/>
+            <div class="overflow-x-hidden position-relative">
+              <Flicking
+                  :plugins="pluginsQuotes"
+                  :options="options">
+                <div v-for="(quote, index) in politician.quotes"
+                     :key="index" class="align-self-center">
+                  <div class="pb-2 pt-2 d-flex align-center justify-center">
+                    <SingleQuote :quote="quote"/>
+                  </div>
                 </div>
-              </v-slide-item>
-            </v-slide-group>
+              </Flicking>
+              <span class="flicking-arrow-prev flicking-arrow-prev-quotes"></span>
+              <span class="flicking-arrow-next flicking-arrow-next-quotes"></span>
+            </div>
           </v-col>
         </v-row>
       </div>
@@ -79,6 +83,10 @@ import ArticlesOverTime from "../components/profiles/ArticlesOverTime";
 import TopicDistribution from "../components/profiles/TopicDistribution";
 import ProfileCard from "../components/profiles/ProfileCard";
 import SingleQuote from "../components/profiles/SingleQuote";
+import {Flicking} from "@egjs/vue-flicking";
+import {Arrow} from "@egjs/flicking-plugins";
+import "@egjs/flicking-plugins/dist/arrow.css";
+
 import axios from "axios";
 
 
@@ -90,12 +98,32 @@ export default {
     ArticlesOverTime,
     SourceDistribution,
     TopicDistribution,
-    ProfileCard
+    ProfileCard,
+    Flicking
   },
   data() {
     return {
       id: null,
       politician: null,
+      options: {
+        align: "prev",
+        bound: true,
+        moveType: "snap"
+      },
+      pluginsArticles: [new Arrow(
+          {
+            parentEl: document.body,
+            prevElSelector: ".flicking-arrow-prev-articles",
+            nextElSelector: ".flicking-arrow-next-articles"
+          }
+      )],
+      pluginsQuotes: [new Arrow(
+          {
+            parentEl: document.body,
+            prevElSelector: ".flicking-arrow-prev-quotes",
+            nextElSelector: ".flicking-arrow-next-quotes"
+          }
+      )]
     }
   },
   mounted() {
@@ -140,16 +168,10 @@ export default {
 </script>
 
 <style scoped>
-.avatar-image {
-  object-fit: cover
-}
+@import url("../../node_modules/@egjs/vue-flicking/dist/flicking.css");
 
 .overflow-y-visible div {
   overflow-y: visible !important;
-}
-
-div.h-100 {
-  height: 100%;
 }
 
 .header-content {
@@ -161,4 +183,11 @@ div.h-100 {
   padding: 0 70px 10px 70px
 }
 
+.position-relative {
+  position: relative;
+}
+
+.flicking-arrow-prev:not(.flicking-arrow-disabled)::before, .flicking-arrow-prev:not(.flicking-arrow-disabled)::after, .flicking-arrow-next:not(.flicking-arrow-disabled)::before, .flicking-arrow-next:not(.flicking-arrow-disabled)::after {
+  background-color: #b5179e !important;
+}
 </style>

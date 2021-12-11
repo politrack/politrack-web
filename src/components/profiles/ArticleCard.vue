@@ -40,6 +40,10 @@ export default {
 </script>
 
 <style>
+
+.article-title {
+  font-size: 16px;
+}
 .highlight-text {
   color: rgba(0, 0, 0, 0.6);
   font-size: 0.75rem;
