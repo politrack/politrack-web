@@ -39,7 +39,7 @@
         <v-container>
           <v-row justify="center">
             <v-col cols="12" v-if="topics">
-              <v-row justify="center"><h2 class="text--darken-2">Schlagzeilen</h2></v-row>
+              <v-row><h2 class="text--darken-2">Schlagzeilen</h2></v-row>
               <v-row class="mt-5">
                 <TopicSlider :topics="topics"/>
               </v-row>
