@@ -32,8 +32,8 @@ export default {
         labels: labels,
         datasets: [{
           data: data,
-          borderColor: "rgb(183,60,92)",
-          backgroundColor: "rgba(183,60,92,0.55)",
+          borderColor: "#F72585",
+          backgroundColor: "rgba(247,37,133,0.73)",
         }],
 
       }
@@ -41,8 +41,8 @@ export default {
     renderArticleDistributionChart() {
       let component = this;
       let data = component.prepareData();
-      let gridColor = component.light ? "#ffffff" : "#b9b9b9";
-      let fontColor = component.light ? "#ffffff" : "#3a3a3a";
+      let gridColor = component.light ? "#ffffff" : "#888888";
+      let fontColor = component.light ? "#ffffff" : "#1a1a1a";
       let ctx = document.getElementById('topicDistributionChart').getContext('2d');
       component.chart = new Chart(ctx, {
         type: 'radar',
@@ -62,7 +62,8 @@ export default {
                 color: gridColor
               },
               pointLabels: {
-                backdropColor: '#f0f0f0',
+                color: fontColor,
+                //backdropColor: '#f0f0f0',
                 backdropPadding: 3
               }
             }

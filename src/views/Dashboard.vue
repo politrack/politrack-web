@@ -68,30 +68,24 @@
     </div>
     <div class="py-5">
       <v-container>
-        <v-row justify="center">
-          <h2>Statistiken von Heute</h2>
+        <v-row justify="center" class="mb-5">
+          <h1>Statistiken von Heute</h1>
         </v-row>
         <v-row>
           <v-col cols="12" lg="6" sm="6" xs="12">
-            <v-card class="pa-3 rounded-xl blur-background" rounded>
-              <v-card-title>Politiker im Fokus</v-card-title>
-              <trending-politicians v-if="politicians" :data="politicians"></trending-politicians>
-            </v-card>
+            <h3 class="text-center">Politiker im Fokus</h3>
+            <trending-politicians v-if="politicians" :data="politicians"></trending-politicians>
           </v-col>
 
           <v-col cols="12" lg="6" sm="12">
-            <v-card class="pa-3 rounded-xl blur-background" rounded>
-              <v-card-title>Themenfokus</v-card-title>
+              <h3 class="text-center">Themenfokus</h3>
               <topic-distribution v-if="statistics" :statistics="statistics" class="mt-5" :light="false"/>
-            </v-card>
           </v-col>
         </v-row>
-        <v-row class="">
+        <v-row>
           <v-col cols="12" lg="12" sm="12">
-            <v-card class="pa-3 rounded-xl blur-background" rounded>
-              <v-card-title>Parteien in den Medien</v-card-title>
+              <h3 class="text-center">Parteien in den Medien</h3>
               <PartiesChart class="mt-5" :partiesData="partiesData"/>
-            </v-card>
           </v-col>
 
         </v-row>

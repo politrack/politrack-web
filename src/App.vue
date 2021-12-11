@@ -131,7 +131,7 @@ export default {
 }
 
 .blur-background.dark {
-  background-color: rgba(60, 60, 60, .3) !important;
+  background-color: rgba(60, 60, 60, .5) !important;
   backdrop-filter: blur(10px);
   color: #efefef !important;
 }
