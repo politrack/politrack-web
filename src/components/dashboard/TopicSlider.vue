@@ -14,10 +14,12 @@
 </template>
 
 <script>
+import NewsHeadline from "./NewsHeadline";
+
 import {Flicking} from "@egjs/vue-flicking";
 import { Arrow } from "@egjs/flicking-plugins";
+import "@egjs/vue-flicking/dist/flicking.css";
 import "@egjs/flicking-plugins/dist/arrow.css";
-import NewsHeadline from "./NewsHeadline";
 
 export default {
   name: "TopicSlider",
@@ -42,7 +44,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../../node_modules/@egjs/vue-flicking/dist/flicking.css");
 
 .flicking-container {
   padding: 0 80px 0 80px;

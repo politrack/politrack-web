@@ -40,6 +40,7 @@ import PoliticianImage from "../base/PoliticianImage";
 import sources from "../../assets/sources_config.json";
 import {Flicking} from "@egjs/vue-flicking";
 import {Pagination} from "@egjs/flicking-plugins";
+import "@egjs/vue-flicking/dist/flicking.css";
 import "@egjs/flicking-plugins/dist/pagination.css";
 
 export default {
@@ -87,7 +88,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../../node_modules/@egjs/vue-flicking/dist/flicking.css");
 
 h3.quote.mark {
   font-family: Georgia, "Times New Roman", Times, serif;
