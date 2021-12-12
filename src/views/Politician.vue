@@ -173,6 +173,8 @@ export default {
 </script>
 
 <style scoped>
+@import "../../node_modules/@egjs/vue-flicking/dist/flicking.css";
+@import "../../node_modules/@egjs/flicking-plugins/dist/arrow.css";
 
 .overflow-y-visible div {
   overflow-y: visible !important;

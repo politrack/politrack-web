@@ -43,6 +43,8 @@ export default {
 </script>
 
 <style scoped>
+@import "../../../node_modules/@egjs/vue-flicking/dist/flicking.css";
+@import "../../../node_modules/@egjs/flicking-plugins/dist/arrow.css";
 
 .flicking-container {
   padding: 0 80px 0 80px;

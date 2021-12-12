@@ -86,6 +86,8 @@ export default {
 </script>
 
 <style scoped>
+@import "../../../node_modules/@egjs/vue-flicking/dist/flicking.css";
+@import "../../../node_modules/@egjs/flicking-plugins/dist/pagination.css";
 
 h3.quote.mark {
   font-family: Georgia, "Times New Roman", Times, serif;
