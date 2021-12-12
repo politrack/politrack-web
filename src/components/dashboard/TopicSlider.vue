@@ -18,8 +18,7 @@ import NewsHeadline from "./NewsHeadline";
 
 import {Flicking} from "@egjs/vue-flicking";
 import { Arrow } from "@egjs/flicking-plugins";
-import "@egjs/vue-flicking/dist/flicking.css";
-import "@egjs/flicking-plugins/dist/arrow.css";
+
 
 export default {
   name: "TopicSlider",

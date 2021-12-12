@@ -86,8 +86,6 @@ import ProfileCard from "../components/profiles/ProfileCard";
 import SingleQuote from "../components/profiles/SingleQuote";
 import {Flicking} from "@egjs/vue-flicking";
 import {Arrow} from "@egjs/flicking-plugins";
-import "@egjs/vue-flicking/dist/flicking.css";
-import "@egjs/flicking-plugins/dist/arrow.css";
 
 import axios from "axios";
 import NewsCard from "../components/base/NewsCard";
