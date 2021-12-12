@@ -434,7 +434,6 @@ export default function (Chart) {
     Chart.register({
         id: 'labels',
         beforeDatasetsUpdate: function (chart, args, options) {
-            console.log('beforeDatasetsUpdate')
             if (!SUPPORTED_TYPES[chart.config.type]) {
                 return;
             }

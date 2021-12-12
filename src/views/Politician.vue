@@ -132,7 +132,6 @@ export default {
     this.id = this.$route.params.id;
     axios.get(process.env.VUE_APP_URL + '/web/data/politicians/' + this.id + '.json').then((resp) => {
       let result = resp.data
-      console.log(result)
       this.politician = {
         'id': this.id,
         'articles': result['articles'],

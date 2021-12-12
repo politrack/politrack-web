@@ -50,7 +50,6 @@ export default {
     statistics: Object
   },
   data: function () {
-    console.log(this.mentionedWith)
     return {
       chips: [
         {

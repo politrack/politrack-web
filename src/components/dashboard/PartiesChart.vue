@@ -16,14 +16,12 @@ export default {
     partiesData: Object
   },
   mounted() {
-    console.log("mounted");
     Chart.register(...registerables);
     if (this.partiesData != null) {
       this.renderChart()
     }
   },
   data() {
-    console.log("Data")
     return {}
   },
   watch: {
@@ -38,8 +36,6 @@ export default {
   },
   methods: {
     prepareData() {
-      console.log("prepare data");
-      console.log(this.partiesData);
       let datasets = [];
 
       let totals = []

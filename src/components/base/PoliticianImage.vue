@@ -12,7 +12,7 @@
 export default {
   name: "PoliticianImage",
   props: {
-    id: Number
+    id: [Number, String]
   },
   data() {
     return {

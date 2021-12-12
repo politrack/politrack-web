@@ -66,7 +66,10 @@
         <v-col
             class=" py-4 text-center"
             cols="12">
-          {{ new Date().getFullYear() }} — <strong>PoliTrack</strong>
+          <span>{{ new Date().getFullYear() }} — <strong>PoliTrack</strong></span><br>
+          <small class="me-3 float-end">
+            <a href="http://www.freepik.com" class="white--text text-decoration-none">Vektorgrafiken designed von pikisuperstar / Freepik</a>
+          </small>
         </v-col>
       </v-row>
     </v-footer>

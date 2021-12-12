@@ -18,9 +18,15 @@
               elevation="0"
               max-width="450">
             <v-img
-                :src="article.images && article.images.length > 0 ? article.images[0] : ''"
-                height="120px">
+                v-if="article.images && article.images.length > 0"
+                :src="article.images[0]"
+                class="news-image">
             </v-img>
+            <div class="news-image pa-3" v-if="!article.images || !article.images.length">
+              <v-icon size="60" color="#999">fas fa-newspaper</v-icon>
+            </div>
+
+
             <v-card-title class="article-title">
               {{ article.title }}
             </v-card-title>
@@ -116,5 +122,9 @@ export default {
   border: 2px solid #ffffff;
 }
 
+.news-image {
+  background-color: #aaa;
+  height: 120px;
+}
 
 </style>

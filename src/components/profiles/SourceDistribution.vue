@@ -32,9 +32,6 @@ export default {
         labels.push(sources[source].label);
       });
 
-      console.log(this.articles)
-      console.log(labels)
-
       return {
         labels: labels,
         datasets: [{
@@ -51,7 +48,6 @@ export default {
     renderArticleDistributionChart() {
       let component = this;
       let data = this.prepareData();
-      console.log(data);
       let ctx = document.getElementById('articleDistributionChart').getContext('2d');
       component.chart = new Chart(ctx, {
         type: 'doughnut',

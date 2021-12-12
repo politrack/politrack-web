@@ -2,9 +2,10 @@
   <flicking
       :options="options"
       :plugins="plugins"
+      id="quotesViewport"
   >
-    <div class="align-self-start justify-center quote-card mx-5" v-for="quote in quotes"
-         :key="quote.id">
+    <div class="align-self-start justify-center quote-card" v-for="quote in quotes"
+         :key="quote.id" :style="{'width': width+'px'}">
       <v-card class="d-flex flex-row ma-2 pa-3"
               rounded
       >
@@ -22,7 +23,7 @@
           </a>
         </div>
 
-        <div>
+        <div class="ml-auto">
           <v-avatar class="avatar elevation-2" size="128">
            <PoliticianImage :id="quote.politician_id"/>
           </v-avatar>
@@ -51,8 +52,18 @@ export default {
     Flicking,
     PoliticianImage
   },
+  mounted() {
+    this.resizeObserver = new ResizeObserver(this.onResize)
+    this.resizeObserver.observe(document.getElementById("quotesViewport"))
+    this.onResize()
+  },
+  beforeUnmount() {
+    this.resizeObserver.unobserve(document.getElementById("quotesViewport"))
+  },
   data() {
     return {
+      width: 0,
+      resizeObserver: null,
       sources: sources,
       plugins: [new Pagination()],
       options: {
@@ -67,7 +78,9 @@ export default {
     getQuoteText(quote) {
       return quote.quote.replace(/['"]+/g, '')
     },
-
+    onResize() {
+      this.width = document.getElementById("quotesViewport").offsetWidth
+    }
   }
 }
 </script>
@@ -80,10 +93,6 @@ export default {
   height: 100%;
   background-size: 100% 100%;*/
   margin-left: 5em;
-}
-
-.quote-card {
-  max-width: 750px;
 }
 
 
