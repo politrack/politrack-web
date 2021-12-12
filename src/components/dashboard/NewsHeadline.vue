@@ -13,29 +13,7 @@
       <v-carousel-item
           v-for="(article, i) in topic.articles"
           :key="i">
-        <a :href="article.url" class="text-decoration-none" target="_blank">
-          <v-card
-              elevation="0"
-              max-width="450">
-            <v-img
-                v-if="article.images && article.images.length > 0"
-                :src="article.images[0]"
-                class="news-image">
-            </v-img>
-            <div class="news-image pa-3" v-if="!article.images || !article.images.length">
-              <v-icon size="60" color="#999">fas fa-newspaper</v-icon>
-            </div>
-
-
-            <v-card-title class="article-title">
-              {{ article.title }}
-            </v-card-title>
-            <v-card-subtitle>
-              <span>{{ sources[article.source].label }}</span>
-              <span class="float-right">{{ moment(article.published).fromNow() }}</span>
-            </v-card-subtitle>
-          </v-card>
-        </a>
+         <news-card :article="article" :showPlaceholderImage="true" :elevation="0"/>
       </v-carousel-item>
     </v-carousel>
     <v-card-actions style="margin-top: -20px">
@@ -56,19 +34,15 @@
 </template>
 
 <script>
-import sources from "../../assets/sources_config.json";
 import PoliticianImage from "../base/PoliticianImage";
+import NewsCard from "../base/NewsCard";
 export default {
   name: "PoliticiansCard",
   props: {
     topic: Object
   },
-  data() {
-    return {
-      sources: sources
-    }
-  },
   components: {
+    NewsCard,
     PoliticianImage
   }
 }
@@ -107,24 +81,8 @@ export default {
   opacity: 0;
 }
 
-.text-decoration-none {
-  text-decoration: none !important;
-}
-.num-articles {
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.375rem;
-  letter-spacing: 0.0071428571em;
-}
-
 .avatar {
-  border: 2px solid #ffffff;
-}
-
-.news-image {
-  background-color: #aaa;
-  height: 120px;
+  border: 1px solid #ffffff;
 }
 
 </style>

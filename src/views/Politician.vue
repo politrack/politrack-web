@@ -22,14 +22,14 @@
       <div class="content" v-if="politician">
         <div>
           <h2 class="mb-2">Aktuelle Berichte</h2>
-          <div class="overflow-x-hidden position-relative">
+          <div class="overflow-x-hidden flicking-container">
             <Flicking
                 :plugins="pluginsArticles"
                 :options="options">
               <div v-for="article in politician.articles"
                    :key="article.id" class="align-self-center">
-                <div class="pb-2 pt-2 d-flex align-center justify-center">
-                  <ArticleCard :article="article" class="blur-background opaque rounded-xl"/>
+                <div class="pb-2 pt-2 mx-3 d-flex align-center justify-center">
+                  <news-card :article="article" :showPlaceholderImage="false" class="rounded-xl blur-background opaque"/>
                 </div>
               </div>
             </Flicking>
@@ -42,13 +42,13 @@
           <h2 class="mb-2">Aktuelle Aussagen</h2>
           <v-row>
             <v-col lg="12">
-              <div class="overflow-x-hidden position-relative">
+              <div class="overflow-x-hidden flicking-container">
                 <Flicking
                     :plugins="pluginsQuotes"
                     :options="options">
                   <div v-for="(quote, index) in politician.quotes"
                        :key="index" class="align-self-center">
-                    <div class="pb-2 pt-2 d-flex align-center justify-center">
+                    <div class="pb-2 pt-2 d-flex align-center justify-center mx-5">
                       <SingleQuote :quote="quote"/>
                     </div>
                   </div>
@@ -79,7 +79,6 @@
 </template>
 
 <script>
-import ArticleCard from "../components/profiles/ArticleCard";
 import SourceDistribution from "../components/profiles/SourceDistribution";
 import ArticlesOverTime from "../components/profiles/ArticlesOverTime";
 import TopicDistribution from "../components/profiles/TopicDistribution";
@@ -90,13 +89,14 @@ import {Arrow} from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/arrow.css";
 
 import axios from "axios";
+import NewsCard from "../components/base/NewsCard";
 
 
 export default {
   name: "Politician",
   components: {
+    NewsCard,
     SingleQuote,
-    ArticleCard,
     ArticlesOverTime,
     SourceDistribution,
     TopicDistribution,
@@ -187,7 +187,8 @@ export default {
   padding: 0 70px 10px 70px
 }
 
-.position-relative {
+.flicking-container {
+  padding: 0 80px 0 80px;
   position: relative;
 }
 

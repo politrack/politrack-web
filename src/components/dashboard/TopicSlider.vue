@@ -1,6 +1,6 @@
 <template>
-  <div id="topicSliderContainer" class="overflow-x-hidden" style="position: relative">
-    <flicking :plugins="plugins" :options="options" style="width: 100%;">
+  <div id="topicSliderContainer" class="overflow-x-hidden flicking-container">
+    <flicking :plugins="plugins" :options="options">
       <div v-for="(topic, idx) in topics" v-bind:key="idx">
         <div class="pa-2 h-100">
           <news-headline :topic="topic"></news-headline>
@@ -43,6 +43,11 @@ export default {
 
 <style scoped>
 @import url("../../../node_modules/@egjs/vue-flicking/dist/flicking.css");
+
+.flicking-container {
+  padding: 0 80px 0 80px;
+  position: relative;
+}
 
 .flicking-arrow-prev:not(.flicking-arrow-disabled)::before, .flicking-arrow-prev:not(.flicking-arrow-disabled)::after, .flicking-arrow-next:not(.flicking-arrow-disabled)::before, .flicking-arrow-next:not(.flicking-arrow-disabled)::after {
   background-color: #b5179e !important;

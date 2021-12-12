@@ -7,6 +7,9 @@
 <script>
 import {Chart, registerables} from "chart.js";
 import 'chartjs-adapter-moment';
+import moment from 'moment'
+
+moment.locale('de');
 
 export default {
   name: "ArticlesOverTime",
@@ -59,9 +62,9 @@ export default {
               callbacks: {
                 title(item) {
                   let currentX = item[0].raw.x;
-                  let nextX = item[0].raw.nextX;
+                  //let nextX = item[0].raw.nextX;
 
-                  return moment(currentX).format('Do MMMM YYYY') + " bis " + moment(nextX).format('Do MMMM YYYY')
+                  return moment(currentX).format('Do MMMM YYYY'); //+ " bis " + moment(nextX).format('Do MMMM YYYY')
                 }
               }
             }

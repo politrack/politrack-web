@@ -18,11 +18,10 @@
               </v-sheet>
               <p>
                 Mithilfe von künstlicher Intelligenz haben wir Artikel über politisch relevante Ereignisse nach Themen
-                gruppiert und diese zeitlich mit den Umfragewerten zur Bundestagswahl verknüpft. Die Punkte
-                repräsentieren
-                die Ergebnisse einzelner Umfragen, während die Linien den Trend über die wichtigsten Umfragen im
-                jeweiligen Zeitraum widerspiegeln. In der nächsten Zeit werden wir weitere Analysen über die politische
-                Berichterstattung in Deutschland erstellen.
+                gruppiert. Diese Gruppierung erlaubt es uns verschiedene Auswertungen über Meinungen und
+                Aüßerungen von Politikern zu erstellen. Gleichzeitig können wir
+                die Berichterstattung zu bestimmten Ereignissen
+                transparenter und übersichtlicher machen.
               </p>
             </v-card>
           </v-col>

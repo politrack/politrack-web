@@ -2,41 +2,49 @@
   "bild": {
     "label": "BILD",
     "id": "bild",
-    "color": "#3f5cb7"
+    "color": "#3f5cb7",
+    "url": "https://www.bild.de/"
   },
   "faz": {
     "id": "faz",
     "label": "Frankfurter Allgemeine",
-    "color": "#5c8bad"
+    "color": "#5c8bad",
+    "url": "https://www.faz.de/"
   },
   "spon": {
     "id": "spon",
     "label": "Spiegel Online",
-    "color": "#bedbc5"
+    "color": "#bedbc5",
+    "url": "https://www.spon.de/"
   },
   "sueddeutsche": {
     "id": "sueddeutsche",
     "label": "Süddeutsche",
-    "color": "#fed0b9"
+    "color": "#fed0b9",
+    "url": "https://www.sueddeutsche.de/"
   },
   "taz": {
     "id": "taz",
     "label": "TAZ",
-    "color": "#f6a094"
+    "color": "#f6a094",
+    "url": "https://www.taz.de/"
   },
   "welt": {
     "id": "welt",
     "label": "Welt",
-    "color": "#e87074"
+    "color": "#e87074",
+    "url": "https://www.welt.de/"
   },
   "zeit-online": {
     "id": "zeit-online",
     "label": "Zeit Online",
-    "color": "#ca4566"
+    "color": "#ca4566",
+    "url": "https://www.zeit.de/"
   },
   "tagesschau": {
     "id": "tagesschau",
     "label": "Tagesschau",
-    "color": "#ca4566"
+    "color": "#ca4566",
+    "url": "https://www.tagesschau.de/"
   }
 }
