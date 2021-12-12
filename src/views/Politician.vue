@@ -148,7 +148,7 @@ export default {
   methods: {
     cleanupQuotes(quotes){
       return quotes.filter(function (item){
-        return item.quote.split(' ').length > 8;
+        return item.quote.split(' ').length > 4;
       })
     },
     initializeSortedEntries() {
