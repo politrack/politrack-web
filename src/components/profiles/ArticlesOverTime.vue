@@ -71,6 +71,7 @@ export default {
           },
           scales: {
             y: {
+              beginAtZero: true,
               display: false,
               title: {
                 text: "#Artikel",
@@ -85,6 +86,7 @@ export default {
               time: {
                 unit: 'day'
               },
+              min: new Date(2021, 0 , 1),
               grid: {
                 display: false,
                 drawBorder: false

@@ -29,7 +29,7 @@
               <div v-for="article in politician.articles"
                    :key="article.id" class="align-self-center">
                 <div class="pb-2 pt-2 mx-3 d-flex align-center justify-center">
-                  <news-card :article="article" max-width="300" :showPlaceholderImage="false" class="rounded-xl blur-background opaque"/>
+                  <news-card :article="article" :max-width="300" :showPlaceholderImage="true" class="rounded-xl blur-background opaque"/>
                 </div>
               </div>
             </Flicking>
@@ -110,7 +110,7 @@ export default {
       options: {
         align: "prev",
         bound: true,
-        moveType: "snap"
+        moveType: "snap",
       },
       pluginsArticles: [new Arrow(
           {
@@ -137,7 +137,7 @@ export default {
         'articles': result['articles'],
         'politician': result['politician'],
         'tweets': [],
-        'quotes': result['quotes'],
+        'quotes': this.cleanupQuotes(result['quotes']),
         'statistics': result['statistics'],
         'mentionedWith': result['mentionedWith']
       }
@@ -145,6 +145,11 @@ export default {
     })
   },
   methods: {
+    cleanupQuotes(quotes){
+      return quotes.filter(function (item){
+        return item.quote.split(' ').length > 8;
+      })
+    },
     initializeSortedEntries() {
       this.politician.tweets.forEach(function (item) {
         item["entryType"] = "tweet";
@@ -203,5 +208,9 @@ export default {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' transform='scale(-1 1)' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='300' preserveAspectRatio='none' viewBox='0 0 1440 300'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1055%26quot%3b)' fill='none'%3e%3cpath d='M 0%2c182 C 96%2c167.6 288%2c105 480%2c110 C 672%2c115 768%2c207.6 960%2c207 C 1152%2c206.4 1344%2c127 1440%2c107L1440 300L0 300z' fill='rgba(76%2c 201%2c 240%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c81 C 96%2c110.2 288%2c225.8 480%2c227 C 672%2c228.2 768%2c98.2 960%2c87 C 1152%2c75.8 1344%2c154.2 1440%2c171L1440 300L0 300z' fill='rgba(72%2c 149%2c 239%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c93 C 96%2c118.8 288%2c214.8 480%2c222 C 672%2c229.2 768%2c118.6 960%2c129 C 1152%2c139.4 1344%2c245 1440%2c274L1440 300L0 300z' fill='rgba(247%2c 37%2c 133%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c113 C 96%2c145.2 288%2c269.2 480%2c274 C 672%2c278.8 768%2c159 960%2c137 C 1152%2c115 1344%2c158.6 1440%2c164L1440 300L0 300z' fill='rgba(239%2c 239%2c 239%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1055'%3e%3crect width='1440' height='300' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
   background-size: 100% 100%;
   height: 4em;
+}
+
+.flicking-viewport {
+  transition: height 500ms;
 }
 </style>

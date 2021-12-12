@@ -25,7 +25,7 @@
 
         <div class="d-flex align-center">
           <span class="text-caption me-4">Oft erwähnt mit:</span>
-          <PoliticianAvatarRow :persons="mentionedWith"/>
+          <PoliticianAvatarRow :persons="mentionedWith.slice(0,5)" class="mt-5"/>
         </div>
       </v-col>
     </v-row>

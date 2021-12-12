@@ -18,7 +18,7 @@
             </router-link>
           </div>
           <v-spacer></v-spacer>
-          <v-btn small class="me-4" rounded text outlined>
+          <v-btn small class="me-4" rounded outlined>
             Kontakt
           </v-btn>
           <a class="text-decoration-none"

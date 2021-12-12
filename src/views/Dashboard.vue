@@ -43,7 +43,7 @@
                 <TopicSlider :topics="topics"/>
               </v-row>
               <v-row justify="center">
-                <v-btn text outlined rounded class="mt-3">Entdecke alle Schlagzeilen</v-btn>
+                <v-btn outlined rounded class="mt-3">Entdecke alle Schlagzeilen</v-btn>
               </v-row>
             </v-col>
           </v-row>
