@@ -13,10 +13,10 @@
           <h3 class="quote mark">&ldquo;</h3>
           <h3 class="quote text">{{ getQuoteText(quote) }}</h3>
 
-          <h5 class="d-inline-block text-no-wrap">
+          <h5 class="d-block text-no-wrap">
             {{ quote.author }} in {{ sources[quote.article.source].label }}
           </h5>
-          <a :href="quote.article.url" target="_blank">
+          <a :href="quote.article.url" target="_blank" class="d-block">
             <small class="grey--text text--darken-3 font-italic text-decoration-none d-inline-block">
               {{ quote.article.title }}
             </small>

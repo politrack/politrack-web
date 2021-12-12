@@ -1,6 +1,7 @@
 <template>
   <v-card
       class="slider-card d-flex flex-column justify-space-between rounded-xl pa-1 opaque blur-background"
+      :maxWidth="maxWidth"
       rounded>
     <v-card-title>
       <v-icon left size="16">
@@ -28,7 +29,8 @@ import sources from "../../assets/sources_config.json";
 export default {
   name: "ArticleCard",
   props: {
-    quote: Object
+    quote: Object,
+    maxWidth: Number
   },
   data() {
     return {

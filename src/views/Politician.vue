@@ -29,7 +29,7 @@
               <div v-for="article in politician.articles"
                    :key="article.id" class="align-self-center">
                 <div class="pb-2 pt-2 mx-3 d-flex align-center justify-center">
-                  <news-card :article="article" :showPlaceholderImage="false" class="rounded-xl blur-background opaque"/>
+                  <news-card :article="article" max-width="300" :showPlaceholderImage="false" class="rounded-xl blur-background opaque"/>
                 </div>
               </div>
             </Flicking>
@@ -48,8 +48,8 @@
                     :options="options">
                   <div v-for="(quote, index) in politician.quotes"
                        :key="index" class="align-self-center">
-                    <div class="pb-2 pt-2 d-flex align-center justify-center mx-5">
-                      <SingleQuote :quote="quote"/>
+                    <div class="pb-2 pt-2 d-flex align-center justify-center mx-3">
+                      <SingleQuote :quote="quote" :maxWidth="300"/>
                     </div>
                   </div>
                 </Flicking>

@@ -9,11 +9,11 @@
         hide-delimiter-background
         delimiter-icon="fas fa-circle"
         class="topic-carousel"
-        height="250">
+        height="280">
       <v-carousel-item
           v-for="(article, i) in topic.articles"
           :key="i">
-         <news-card :article="article" :showPlaceholderImage="true" :elevation="0"/>
+         <news-card max-width="345" :article="article" :showPlaceholderImage="true" :elevation="0"/>
       </v-carousel-item>
     </v-carousel>
     <v-card-actions style="margin-top: -20px">
