@@ -27,11 +27,11 @@
       <div class="highlight-text ms-5 me-5 mb-3">
         <v-divider class="mb-2"></v-divider>
         <v-fade-transition group>
-          <span v-html="highlight+' [...] '" v-bind:key="index" v-for="(highlight, index) in highlights"/>
+          <span v-html="highlight+ (index < highlights.length-1?' [...] ': '')" v-bind:key="index" v-for="(highlight, index) in highlights"/>
         </v-fade-transition>
 
         <div class="primary--text text-center caption highlight-show mt-1"
-             v-if="!highlightsVisible"
+             v-if="!highlightsVisible && article.highlight.length > highlights.length"
              @click="highlightsVisible = !highlightsVisible">
           alle Textstellen anzeigen
         </div>

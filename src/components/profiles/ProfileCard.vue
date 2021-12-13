@@ -50,12 +50,16 @@ export default {
     statistics: Object
   },
   data: function () {
+
+    let occupation = this.politician.occupation.split(",").map(function(item){
+      return {
+        'icon': 'fas fa-tasks',
+        'text': item.trim()
+      }
+    })
+
     return {
-      chips: [
-        {
-          'icon': 'fas fa-tasks',
-          'text': this.politician.occupation
-        },
+      chips: occupation.concat([
         {
           'icon': 'fas fa-school',
           'text': this.politician.education
@@ -78,7 +82,7 @@ export default {
           'text': 'Twitter',
           'color': '#1DA1F2'
         }
-      ]
+      ])
     }
   }
 }
