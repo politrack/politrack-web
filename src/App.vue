@@ -3,7 +3,7 @@
     <v-app-bar elevation="0" app dark color="#4895EF" absolute>
       <v-container>
         <v-row>
-          <div class="d-flex align-center">
+          <div class="d-flex align-center" v-if="$route.meta.headerLogo">
             <router-link to="/" class="text-decoration-none">
               <v-img
                   alt="PoliTrack Logo"

@@ -15,8 +15,10 @@
     "chartjs-adapter-moment": "^1.0.0",
     "chartjs-plugin-datalabels": "^2.0.0",
     "core-js": "^3.6.5",
+    "countup.js": "^2.0.8",
     "moment": "^2.29.1",
     "vue": "^2.6.11",
+    "vue-countup-v2": "^4.0.0",
     "vue-router": "^3.5.3",
     "vuetify": "^2.4.0"
   },

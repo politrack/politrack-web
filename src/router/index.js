@@ -4,6 +4,7 @@ import Dashboard from '../views/Dashboard'
 import Politician from '../views/Politician'
 import Imprint from "../views/Imprint";
 import DataProtectionPolicy from "../views/DataProtectionPolicy";
+import LandingPage from "../views/LandingPage";
 import About from "../views/About";
 
 Vue.use(Router)
@@ -13,27 +14,50 @@ export default new Router({
         {
             path: '/',
             name: 'dashboard',
-            component: Dashboard
+            component: Dashboard,
+            meta: {
+                headerLogo: true
+            }
         },
         {
             path: '/politician/:id',
             name: 'politician',
-            component: Politician
+            component: Politician,
+            meta: {
+                headerLogo: true
+            }
         },
         {
             path: '/imprint',
             name: 'imprint',
-            component: Imprint
+            component: Imprint,
+            meta: {
+                headerLogo: true
+            }
         },
         {
             path: '/privacy',
             name: 'privacy',
-            component: DataProtectionPolicy
+            component: DataProtectionPolicy,
+            meta: {
+                headerLogo: true
+            }
         },
         {
             path: '/about',
             name: 'about',
-            component: About
+            component: About,
+            meta: {
+                headerLogo: true
+            }
+        },
+        {
+            path: '/landing',
+            name: 'landing',
+            component: LandingPage,
+            meta: {
+                headerLogo: false
+            }
         }
     ]
 })
