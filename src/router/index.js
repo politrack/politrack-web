@@ -16,7 +16,7 @@ export default new Router({
             name: 'dashboard',
             component: Dashboard,
             meta: {
-                headerLogo: true
+                headerTransparent: false
             }
         },
         {
@@ -24,7 +24,7 @@ export default new Router({
             name: 'politician',
             component: Politician,
             meta: {
-                headerLogo: true
+                headerTransparent: false
             }
         },
         {
@@ -32,7 +32,7 @@ export default new Router({
             name: 'imprint',
             component: Imprint,
             meta: {
-                headerLogo: true
+                headerTransparent: false
             }
         },
         {
@@ -40,7 +40,7 @@ export default new Router({
             name: 'privacy',
             component: DataProtectionPolicy,
             meta: {
-                headerLogo: true
+                headerTransparent: false
             }
         },
         {
@@ -48,7 +48,7 @@ export default new Router({
             name: 'about',
             component: About,
             meta: {
-                headerLogo: true
+                headerTransparent: false
             }
         },
         {
@@ -56,7 +56,7 @@ export default new Router({
             name: 'landing',
             component: LandingPage,
             meta: {
-                headerLogo: false
+                headerTransparent: true
             }
         }
     ]

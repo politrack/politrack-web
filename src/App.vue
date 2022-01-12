@@ -1,9 +1,9 @@
 <template>
   <v-app style="background-color: white">
-    <v-app-bar elevation="0" app dark color="#4895EF" absolute>
+    <v-app-bar elevation="0" app dark :color="$route.meta.headerTransparent? 'transparent':'#4895EF'" absolute>
       <v-container>
         <v-row>
-          <div class="d-flex align-center" v-if="$route.meta.headerLogo">
+          <div class="d-flex align-center">
             <router-link to="/" class="text-decoration-none">
               <v-img
                   alt="PoliTrack Logo"

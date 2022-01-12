@@ -1,62 +1,44 @@
 <template>
   <div>
-    <div class="header-content">
 
-      <v-container class="white--text">
-        <div class="text-h2 header-title">PoliTrack</div>
-      </v-container>
-    </div>
-
-    <div>
-
-      <v-container>
-        <v-row align="center">
-          <v-col lg="8">
-            <h1>Was passiert in der Politik?</h1>
-            <p class="grey--text text--darken-2">
-              Mithilfe von künstlicher Intelligenz haben wir Artikel über politisch relevante Ereignisse nach Themen
-              gruppiert. Diese Gruppierung erlaubt es uns verschiedene Auswertungen über Meinungen und
-              Aüßerungen von Politikern zu erstellen.
-            </p>
-          </v-col>
-          <v-col lg="4">
-            <v-img src="../assets/img/website-mock.png" class="mockup-image"></v-img>
-          </v-col>
-        </v-row>
-      </v-container>
-    </div>
-
-    <div class="white py-5">
-      <v-container>
-        <v-row align="center">
-          <v-col lg="4">
-            <v-img src="../assets/img/landing_page/logos.png"></v-img>
-          </v-col>
-          <v-col lg="8">
-            <h1 class="text-center">Alle Informationen auf einen Blick</h1>
-            <p class="grey--text text--darken-2">
-              Mithilfe von künstlicher Intelligenz haben wir Artikel über politisch relevante Ereignisse nach Themen
-              gruppiert. Diese Gruppierung erlaubt es uns verschiedene Auswertungen über Meinungen und
-              Aüßerungen von Politikern zu erstellen. Gleichzeitig können wir
-              die Berichterstattung zu bestimmten Ereignissen
-              transparenter und übersichtlicher machen.
-            </p>
+    <div class="background-news">
+      <div style="background-color: rgba(60,60,60, .65)">
+        <v-container>
+          <div class="text-h2 text-center">Endlich Politik versteh'n</div>
+          <div class="text-h6 text-center caption grey--text text--lighten-2">
+            Wir gruppieren Meinungen und Entscheidungen von Politikern basierend auf Nachrichtenartikeln.
+            Die Informationen und Statistiken stehen jedem kostenlos zur Verfügung.
+          </div>
+          <div class="d-flex mt-5 justify-center">
             <v-btn
                 color="accent"
-                class="float-end"
                 elevation="4"
                 rounded
+                x-large
+                class="me-5"
             >
               Zum Dashboard
             </v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
+
+            <v-btn
+                color="white"
+                class="ms-5"
+                outlined
+                elevation="4"
+                rounded
+                x-large
+                @click="scrollToElement('functionality-container', {behavior: 'smooth'})"
+            >
+              Mehr erfahren
+            </v-btn>
+          </div>
+        </v-container>
+      </div>
     </div>
 
-    <div class="py-5 transition-container">
+    <div class="transition-container">
       <v-container>
-        <v-row align="center" justify="center">
+        <v-row justify="center">
           <v-col lg="4">
             <v-card class="rounded-circle round-count-card news" elevation="1">
               <div class="count-text text-center text-h5">Artikel</div>
@@ -93,52 +75,73 @@
       </v-container>
     </div>
 
-    <div>
-
+    <div class="functionality-container">
       <v-container class="py-5">
         <h1 class="text-center">So funktioniert's</h1>
         <v-row class="mt-5">
           <v-col lg="3" class="text-center" v-for="(step, key) in politrackSteps" :key="key">
-            <v-card class="info-card pa-5 rounded-xl" :color="key===activeStepIndex? 'accent':'white'" @click="activeStepIndex=key">
+            <v-card class="info-card pa-5 rounded-xl" :color="key===activeStepIndex? 'accent':'white'"
+                    @click="changeActiveStep(key)">
               <div class="content">
-                <v-img width="96" class="mx-auto" :src="step.image"></v-img>
+                <v-img width="96" class="mx-auto" :src="step.icon"></v-img>
                 <h4 class="mt-5">{{ step.title }}</h4>
               </div>
             </v-card>
           </v-col>
         </v-row>
 
-        <v-row justify="center">
-          <v-col lg="8">
-            <v-fade-transition :hide-on-leave="true">
-              <v-card class="info-details pa-5 mt-5 rounded-xl" :key="activeStepIndex">
-                <h2 class="text-center">{{ activeStep.title }}</h2>
-                <p>{{ activeStep.description }}}</p>
-              </v-card>
-            </v-fade-transition>
-          </v-col>
-        </v-row>
+        <v-scale-transition :hide-on-leave="true">
+          <div :key="activeStepIndex">
+            <v-row justify="center" align="center">
+
+              <v-col lg="4" v-if="(activeStepIndex+1) % 2 !== 0">
+                <v-img :src="activeStep.image"></v-img>
+              </v-col>
+              <v-col lg="8">
+                <v-card class="info-details pa-5 mt-5 rounded-xl">
+                  <v-progress-circular
+                      :rotate="270"
+                      :value="this.currentTimingStep/this.updateProgressSteps * 100"
+                      v-if="this.timer !== null"
+                      class="float-end" color="accent"/>
+                  <h2>{{ activeStep.title }}</h2>
+                  <p>{{ activeStep.description }}}</p>
+                </v-card>
+              </v-col>
+              <v-col lg="4" v-if="(activeStepIndex+1) % 2 === 0">
+                <v-img :src="activeStep.image"></v-img>
+              </v-col>
+            </v-row>
+          </div>
+        </v-scale-transition>
       </v-container>
     </div>
 
-    <div class="white">
-      <v-container class="py-5">
-        <h1>Über uns</h1>
-        <p>
-          PoliTrack ist ein durch das <a href="https://www.bmbf.de/">Bundesministerium für Bildung und Forschung</a>
-          gefördertes Projekt, das ein größeres Ziel verfolgt. Hierzu zitieren wir aus unserer Vorhabensbeschreibung.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-          aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-          gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </p>
-
-
-      </v-container>
+    <div class="half-blue">
+      <div>
+        <v-container class="py-5">
+          <v-row>
+            <v-col lg="6">
+              <div class="text-h3 text-right">Über uns</div>
+            </v-col>
+            <v-col lg="6">
+              <p>
+                PoliTrack ist ein durch das <a href="https://www.bmbf.de/">Bundesministerium für Bildung und
+                Forschung</a>
+                gefördertes Projekt, das ein größeres Ziel verfolgt. Hierzu zitieren wir aus unserer
+                Vorhabensbeschreibung.
+              </p>
+              <p>
+                Mithilfe von künstlicher Intelligenz haben wir Artikel über politisch relevante Ereignisse nach Themen
+                gruppiert. Diese Gruppierung erlaubt es uns verschiedene Auswertungen über Meinungen und
+                Aüßerungen von Politikern zu erstellen. Gleichzeitig können wir
+                die Berichterstattung zu bestimmten Ereignissen
+                transparenter und übersichtlicher machen.
+              </p>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
     </div>
 
     <div>
@@ -168,13 +171,31 @@ export default {
   components: {
     ICountUp
   },
+  mounted() {
+    this.timer = setInterval(() => {
+      this.currentTimingStep = (this.currentTimingStep + 1) % this.updateProgressSteps;
+      if (this.currentTimingStep === 0) {
+        this.activeStepIndex = (this.activeStepIndex + 1) % this.politrackSteps.length;
+      }
+    }, this.changeInterval / this.updateProgressSteps)
+  },
+  beforeDestroy() {
+    if (this.timer !== null) {
+      clearInterval(this.timer);
+    }
+  },
   data() {
     return {
+      timer: null,
+      currentTimingStep: 0,
+      changeInterval: 5000,
+      updateProgressSteps: 50,
       activeStepIndex: 0,
       politrackSteps: [
         {
           title: "Nachrichtenartikel extrahieren",
-          image: require("@/assets/img/landing_page/newspaper.png"),
+          icon: require("@/assets/img/landing_page/newspaper.png"),
+          image: require("@/assets/img/landing_page/logos.png"),
           description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n" +
               "          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
               "          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n" +
@@ -184,7 +205,8 @@ export default {
         },
         {
           title: "Analyse der Daten",
-          image: require("@/assets/img/landing_page/evaluation.png"),
+          icon: require("@/assets/img/landing_page/evaluation.png"),
+          image: require("@/assets/img/landing_page/machine-learning.png"),
           description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n" +
               "          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
               "          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n" +
@@ -194,7 +216,8 @@ export default {
         },
         {
           title: "Meinungen und Äußerungen von Politker:innen",
-          image: require("@/assets/img/landing_page/choice.png"),
+          icon: require("@/assets/img/landing_page/choice.png"),
+          image: require("@/assets/img/website-mock.png"),
           description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n" +
               "          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
               "          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n" +
@@ -204,7 +227,8 @@ export default {
         },
         {
           title: "Statistiken",
-          image: require("@/assets/img/landing_page/bar-chart.png"),
+          icon: require("@/assets/img/landing_page/bar-chart.png"),
+          image: require("@/assets/img/landing_page/website-mock-statistics.png"),
           description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n" +
               "          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
               "          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n" +
@@ -219,11 +243,29 @@ export default {
     activeStep() {
       return this.politrackSteps[this.activeStepIndex];
     }
+  },
+  methods: {
+    changeActiveStep(step) {
+      this.activeStepIndex = step;
+      clearInterval(this.timer);
+      this.timer = null;
+    },
+    scrollToElement(cls, options) {
+      const el = this.$el.getElementsByClassName(cls)[0];
+
+      if (el) {
+        el.scrollIntoView(options);
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
+
+.v-progress-circular >>> circle, .v-progress-circular--visible >>> circle {
+  transition: all 100ms;
+}
 
 .info-details > h2 {
   color: #b5179e;
@@ -244,13 +286,47 @@ export default {
   color: white;
 }
 
-.info-card p {
-  display: none;
+.transition-container {
+  margin-top: -112px;
+  /*background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, #efefef 0%, #efefef 50%, #ffffff 50%, #ffffff 100%);*/
 }
 
-.transition-container {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(0deg, #efefef 0%, #efefef 50%, #ffffff 50%, #ffffff 100%);
+.background-news {
+  margin-top: -64px;
+  background-image: url('../assets/img/landing_page/news-image.jpg');
+  background-size: cover;
+  color: white;
+}
+
+.background-news > div {
+  padding-bottom: 180px;
+  padding-top: 84px;
+}
+
+.background-news > div div.cover-text-container {
+  background-image: url("../assets/img/landing_page/cover-image.png");
+  background-position: center right;
+  background-size: contain;
+}
+
+.functionality-container {
+  padding-bottom: 50px;
+}
+
+.half-blue {
+  background-image: url("../assets/img/landing_page/bundestag.jpg");
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.half-blue > div {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: rgba(60,60,60, .85);
+  color: white;
 }
 
 .count-text {
@@ -311,33 +387,12 @@ export default {
   max-height: 50px;
 }
 
-.count-card {
-  color: #4895EF;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  font-size: 1.5rem;
-  background: #fcfcfc;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.count-card .v-image {
-  max-width: 32px;
-}
-
 .mockup-image {
   margin-top: -64px;
 }
 
 .header-content {
-  height: 64px;
+  height: 32px;
 }
 
-.header-title {
-  margin-top: -64px;
-  position: absolute;
-  z-index: 3;
-}
 </style>
