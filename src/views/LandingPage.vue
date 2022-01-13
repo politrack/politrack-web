@@ -9,20 +9,22 @@
             Wir gruppieren Meinungen und Entscheidungen von Politikern basierend auf Nachrichtenartikeln.
             Die Informationen und Statistiken stehen jedem kostenlos zur Verfügung.
           </div>
-          <div class="d-flex mt-5 justify-center">
-            <v-btn
-                color="accent"
-                elevation="4"
-                rounded
-                x-large
-                class="me-5"
-            >
-              Zum Dashboard
-            </v-btn>
+          <div class="d-flex justify-center flex-md-row flex-column">
+            <router-link :to="{'name': 'dashboard'}" class="me-md-5 mt-5 text-decoration-none">
+              <v-btn
+                  color="accent"
+                  elevation="4"
+                  rounded
+                  x-large
+
+              >
+                Zum Dashboard
+              </v-btn>
+            </router-link>
 
             <v-btn
                 color="white"
-                class="ms-5"
+                class="ms-md-5 mt-5"
                 outlined
                 elevation="4"
                 rounded
@@ -79,11 +81,11 @@
       <v-container class="py-5">
         <h1 class="text-center">So funktioniert's</h1>
         <v-row class="mt-5">
-          <v-col lg="3" class="text-center" v-for="(step, key) in politrackSteps" :key="key">
+          <v-col lg="3" cols="12" sm="6" md="6" class="text-center" v-for="(step, key) in politrackSteps" :key="key">
             <v-card class="info-card pa-5 rounded-xl" :color="key===activeStepIndex? 'accent':'white'"
                     @click="changeActiveStep(key)">
               <div class="content">
-                <v-img width="96" class="mx-auto" :src="step.icon"></v-img>
+                <v-img width="64" class="mx-auto" :src="step.icon"></v-img>
                 <h4 class="mt-5">{{ step.title }}</h4>
               </div>
             </v-card>
@@ -92,13 +94,13 @@
 
         <v-scale-transition :hide-on-leave="true">
           <div :key="activeStepIndex">
-            <v-row justify="center" align="center">
-
-              <v-col lg="4" v-if="(activeStepIndex+1) % 2 !== 0">
+            <v-row justify="center"
+                   align="center">
+              <v-col lg="4" v-if="(activeStepIndex+1) % 2 !== 0" cols="9" sm="6" md="5" class="order-0">
                 <v-img :src="activeStep.image"></v-img>
               </v-col>
-              <v-col lg="8">
-                <v-card class="info-details pa-5 mt-5 rounded-xl">
+              <v-col lg="8" cols="12" class="order-1">
+                <div class="info-details pa-5 mt-5 rounded-xl">
                   <v-progress-circular
                       :rotate="270"
                       :value="this.currentTimingStep/this.updateProgressSteps * 100"
@@ -106,9 +108,9 @@
                       class="float-end" color="accent"/>
                   <h2>{{ activeStep.title }}</h2>
                   <p>{{ activeStep.description }}}</p>
-                </v-card>
+                </div>
               </v-col>
-              <v-col lg="4" v-if="(activeStepIndex+1) % 2 === 0">
+              <v-col lg="4" v-if="(activeStepIndex+1) % 2 === 0" cols="10" sm="7" md="6" class="order-0 order-lg-2">
                 <v-img :src="activeStep.image"></v-img>
               </v-col>
             </v-row>
@@ -121,10 +123,10 @@
       <div class="overlay">
         <v-container class="py-5">
           <v-row>
-            <v-col lg="6">
-              <div class="text-h3 text-right">Über uns</div>
+            <v-col lg="6" cols="12">
+              <div class="text-h3 text-lg-right">Über uns</div>
             </v-col>
-            <v-col lg="6">
+            <v-col lg="6" cols="12">
               <p>
                 PoliTrack ist ein durch das <a href="https://www.bmbf.de/">Bundesministerium für Bildung und
                 Forschung</a>
@@ -142,17 +144,23 @@
           </v-row>
 
           <v-row align="center">
-            <v-col lg="6">
-              <div class="text-h4 text-right">Partner</div>
+            <v-col lg="6" cols="12">
+              <div class="text-h4 text-lg-right">Partner</div>
             </v-col>
-            <v-col lg="2">
-              <a href="https://www.bmbf.de/"><v-img src="../assets/img/bmbf_logo_white.png" contain height="100"/></a>
+            <v-col lg="2" cols="12" sm="4">
+              <a href="https://www.bmbf.de/">
+                <v-img src="../assets/img/bmbf_logo_white.png" contain height="100"/>
+              </a>
             </v-col>
-            <v-col lg="2">
-              <a href="https://prototypefund.de/"><v-img src="../assets/img/prototypefund.png" contain height="100"/></a>
+            <v-col lg="2" cols="12" sm="4">
+              <a href="https://prototypefund.de/">
+                <v-img src="../assets/img/prototypefund.png" contain height="100"/>
+              </a>
             </v-col>
-            <v-col lg="2">
-              <a href="https://facethefacts.app/"><v-img src="../assets/img/face_the_facts_logo.png" contain height="100"/></a>
+            <v-col lg="2" cols="12" sm="4">
+              <a href="https://facethefacts.app/">
+                <v-img src="../assets/img/face_the_facts_logo.png" contain height="100"/>
+              </a>
             </v-col>
           </v-row>
         </v-container>
@@ -302,7 +310,7 @@ export default {
 .header-container > div.overlay {
   padding-bottom: 180px;
   padding-top: 84px;
-  background-color: rgba(60,60,60, .65)
+  background-color: rgba(60, 60, 60, .65)
 }
 
 
@@ -322,7 +330,7 @@ export default {
 .about-us-container > div.overlay {
   padding-top: 100px;
   padding-bottom: 100px;
-  background-color: rgba(60,60,60, .9);
+  background-color: rgba(60, 60, 60, .9);
   color: white;
 }
 
