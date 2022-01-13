@@ -1,8 +1,8 @@
 <template>
   <div>
 
-    <div class="background-news">
-      <div style="background-color: rgba(60,60,60, .65)">
+    <div class="header-container">
+      <div class="overlay">
         <v-container>
           <div class="text-h2 text-center">Endlich Politik versteh'n</div>
           <div class="text-h6 text-center caption grey--text text--lighten-2">
@@ -40,7 +40,7 @@
       <v-container>
         <v-row justify="center">
           <v-col lg="4">
-            <v-card class="rounded-circle round-count-card news" elevation="1">
+            <v-card class="rounded-circle count-card news" elevation="1">
               <div class="count-text text-center text-h5">Artikel</div>
               <ICountUp
                   class="count-text"
@@ -51,7 +51,7 @@
           </v-col>
 
           <v-col lg="4">
-            <v-card class="rounded-circle round-count-card politician" elevation="1">
+            <v-card class="rounded-circle count-card politician" elevation="1">
               <div class="count-text text-center text-h5">Politiker:innen</div>
               <ICountUp
                   class="count-text"
@@ -62,7 +62,7 @@
           </v-col>
 
           <v-col lg="4">
-            <v-card class="rounded-circle round-count-card microphone" elevation="1">
+            <v-card class="rounded-circle count-card microphone" elevation="1">
               <div class="count-text text-center text-h5">Zitate</div>
               <ICountUp
                   class="count-text"
@@ -117,8 +117,8 @@
       </v-container>
     </div>
 
-    <div class="half-blue">
-      <div>
+    <div class="about-us-container">
+      <div class="overlay">
         <v-container class="py-5">
           <v-row>
             <v-col lg="6">
@@ -140,22 +140,23 @@
               </p>
             </v-col>
           </v-row>
+
+          <v-row align="center">
+            <v-col lg="6">
+              <div class="text-h4 text-right">Partner</div>
+            </v-col>
+            <v-col lg="2">
+              <a href="https://www.bmbf.de/"><v-img src="../assets/img/bmbf_logo_white.png" contain height="100"/></a>
+            </v-col>
+            <v-col lg="2">
+              <a href="https://prototypefund.de/"><v-img src="../assets/img/prototypefund.png" contain height="100"/></a>
+            </v-col>
+            <v-col lg="2">
+              <a href="https://facethefacts.app/"><v-img src="../assets/img/face_the_facts_logo.png" contain height="100"/></a>
+            </v-col>
+          </v-row>
         </v-container>
       </div>
-    </div>
-
-    <div>
-      <v-container class="py-5">
-        <h2 class="mb-0 text-center">Gefördert durch</h2>
-        <v-row>
-          <v-col cols="12" sm="6">
-            <v-img src="../assets/img/bmbf_logo.png" contain height="200"/>
-          </v-col>
-          <v-col cols="12" sm="6" class="pa-5">
-            <v-img src="../assets/img/prototypefund.png" contain height="200"/>
-          </v-col>
-        </v-row>
-      </v-container>
     </div>
   </div>
 
@@ -288,61 +289,53 @@ export default {
 
 .transition-container {
   margin-top: -112px;
-  /*background: rgb(255, 255, 255);
-  background: linear-gradient(0deg, #efefef 0%, #efefef 50%, #ffffff 50%, #ffffff 100%);*/
 }
 
-.background-news {
+.header-container {
   margin-top: -64px;
   background-image: url('../assets/img/landing_page/news-image.jpg');
+  background-attachment: fixed;
   background-size: cover;
   color: white;
 }
 
-.background-news > div {
+.header-container > div.overlay {
   padding-bottom: 180px;
   padding-top: 84px;
+  background-color: rgba(60,60,60, .65)
 }
 
-.background-news > div div.cover-text-container {
-  background-image: url("../assets/img/landing_page/cover-image.png");
-  background-position: center right;
-  background-size: contain;
-}
 
 .functionality-container {
   padding-bottom: 50px;
 }
 
-.half-blue {
+.about-us-container {
   background-image: url("../assets/img/landing_page/bundestag.jpg");
   background-color: white;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  margin-bottom: -80px;
 }
 
-.half-blue > div {
+.about-us-container > div.overlay {
   padding-top: 100px;
   padding-bottom: 100px;
-  background-color: rgba(60,60,60, .85);
+  background-color: rgba(60,60,60, .9);
   color: white;
 }
 
-.count-text {
-  font-size: 1.75rem;
-  /*color: #4895EF;*/
-  color: white;
-  position: relative;
-
+.about-us-container > div.overlay a {
+  color: #4CC9F0;
+  text-decoration: none;
 }
 
-
-.round-count-card::before, .count-text {
+.count-card::before, .count-text {
   transition: all 1s;
 }
 
-.round-count-card::before {
+.count-card::before {
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -355,23 +348,11 @@ export default {
   filter: grayscale(100%) brightness(30%);
 }
 
-.round-count-card.news::before {
-  background-image: url("../assets/img/landing_page/news-image.jpg");
-}
-
-.round-count-card.politician::before {
-  background-image: url("../assets/img/landing_page/politician-image.jpeg");
-}
-
-.round-count-card.microphone::before {
-  background-image: url("../assets/img/landing_page/microphone-image.jpg");
-}
-
-.round-count-card:hover::before {
+.count-card:hover::before {
   filter: grayscale(0%) brightness(50%);
 }
 
-.round-count-card {
+.count-card {
   width: 200px;
   height: 200px;
   display: flex;
@@ -382,17 +363,27 @@ export default {
   margin-right: auto;
 }
 
-.round-count-card .v-image {
+.count-card .v-image {
   max-width: 50px;
   max-height: 50px;
 }
 
-.mockup-image {
-  margin-top: -64px;
+.count-card .count-text {
+  font-size: 1.75rem;
+  color: white;
+  position: relative;
 }
 
-.header-content {
-  height: 32px;
+.count-card.news::before {
+  background-image: url("../assets/img/landing_page/news-image.jpg");
+}
+
+.count-card.politician::before {
+  background-image: url("../assets/img/landing_page/politician-image.jpeg");
+}
+
+.count-card.microphone::before {
+  background-image: url("../assets/img/landing_page/microphone-image.jpg");
 }
 
 </style>

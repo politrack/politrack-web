@@ -115,6 +115,7 @@ export default {
   background-color: transparent!important;
   height: 80px;
   width: 100%;
+  position: relative;
 }
 .v-toolbar__content {
   background: transparent;
