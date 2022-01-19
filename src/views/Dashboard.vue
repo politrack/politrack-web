@@ -57,10 +57,10 @@
               <TopicSlider class="mt-5" :topics="topics"/>
             </div>
             <v-slide-y-reverse-transition>
-              <v-card class="topic-distribution-container blur-background dark rounded-xl"
+              <v-card elevation="4" class="topic-distribution-container rounded-xl blur-background"
                       v-if="topicDistributionVisible" :key="topicDistributionVisible">
                 <h3 class="text-center">Themenfokus</h3>
-                <topic-distribution v-if="statistics" :statistics="statistics" :light="true"/>
+                <topic-distribution v-if="statistics" :statistics="statistics"/>
               </v-card>
             </v-slide-y-reverse-transition>
           </div>
