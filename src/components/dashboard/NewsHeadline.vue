@@ -1,7 +1,7 @@
 <template>
   <v-card
       elevation="2"
-      width="345">
+      :width="width">
     <v-carousel
         :continuous="false"
         :cycle="true"
@@ -13,15 +13,10 @@
       <v-carousel-item
           v-for="(article, i) in topic.articles"
           :key="i">
-         <news-card :max-width="345" :article="article" :showPlaceholderImage="true" :elevation="0"/>
+         <news-card :max-width="width" :article="article" :showPlaceholderImage="true" :elevation="0"/>
       </v-carousel-item>
     </v-carousel>
     <v-card-actions style="margin-top: -20px">
-      <v-btn
-          color="deep-blue lighten-2"
-          text>
-        Mehr zu dem Thema
-      </v-btn>
       <v-spacer></v-spacer>
       <v-avatar v-for="(person, idx) in topic.politicians.slice(0, 4)"
                 class="avatar elevation-2" v-bind:key="idx" size="32"
@@ -39,7 +34,8 @@ import NewsCard from "../base/NewsCard";
 export default {
   name: "PoliticiansCard",
   props: {
-    topic: Object
+    topic: Object,
+    width: Number,
   },
   components: {
     NewsCard,

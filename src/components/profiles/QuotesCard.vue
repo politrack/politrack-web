@@ -6,12 +6,12 @@
   >
     <div class="align-self-start justify-center quote-card" v-for="quote in quotes"
          :key="quote.id" :style="{'width': width+'px'}">
-      <v-card class="d-flex flex-row ma-2 pa-3"
+      <v-card class="d-flex flex-row ma-2 pa-3 rounded-xl"
               rounded
       >
         <div class="text-left px-5 pt-1">
           <h3 class="quote mark">&ldquo;</h3>
-          <h3 class="quote text">{{ getQuoteText(quote) }}</h3>
+          <h4 class="quote text">{{ getQuoteText(quote) }}</h4>
 
           <h5 class="d-block text-no-wrap">
             {{ quote.author }} in {{ sources[quote.article.source].label }}
@@ -24,7 +24,7 @@
         </div>
 
         <div class="ml-auto">
-          <v-avatar class="avatar elevation-2" size="128">
+          <v-avatar class="avatar elevation-2" size="64">
            <PoliticianImage :id="quote.politician_id"/>
           </v-avatar>
         </div>
@@ -118,6 +118,10 @@ h3.quote {
 
 .flicking-pagination >>> .flicking-pagination-bullet-active {
   background: #b5179e !important;
+}
+
+.flicking-pagination >>> .flicking-pagination-bullet:not(.flicking-pagination-bullet-active) {
+  background: #b0b0b0 !important;
 }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-card class="blur-background rounded-xl pa-5">
     <canvas id="partiesChart"></canvas>
-  </div>
+  </v-card>
 </template>
 
 <script>
@@ -75,6 +75,7 @@ export default {
       }
     },
     renderChart() {
+      let gridColor = "#ffffff";
       let component = this;
       let data = component.prepareData();
       let ctx = document.getElementById('partiesChart').getContext('2d');
@@ -83,13 +84,28 @@ export default {
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: gridColor,
+
+              }
+            }
+          },
           scales: {
             y: {
               beginAtZero: true,
               title: {
                 text: "#Artikel",
+                color: gridColor,
                 display: true
-              }
+              },
+              grid: {
+                color: gridColor
+              },
+              ticks: {
+                color: gridColor
+              },
             },
             x: {
               type: 'time',
@@ -97,7 +113,10 @@ export default {
                 unit: 'day'
               },
               grid: {
-                display: false
+                display: false,
+              },
+              ticks: {
+                color: gridColor
               }
             }
           }

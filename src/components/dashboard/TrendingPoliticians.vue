@@ -86,6 +86,9 @@ export default {
               grid: {
                 display: false
               },
+              ticks: {
+                color: "#ffffff"
+              }
             },
             x: {
               display: false,

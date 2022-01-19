@@ -4,7 +4,7 @@
       :loading="searchLoading"
       :items="searchItems"
       :search-input.sync="search"
-      label="z.B. Robert Habeck"
+      label="Nach Politiker:innen suchen"
       item-text="label"
       item-value="_id"
       hide-no-data

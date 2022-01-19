@@ -12,11 +12,11 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/',
+            path: '/dashboard',
             name: 'dashboard',
             component: Dashboard,
             meta: {
-                headerTransparent: false
+                headerTransparent: true
             }
         },
         {
@@ -52,7 +52,7 @@ export default new Router({
             }
         },
         {
-            path: '/landing',
+            path: '/',
             name: 'landing',
             component: LandingPage,
             meta: {

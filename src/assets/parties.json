@@ -1,46 +1,53 @@
 {
   "parties": [
     {
-      "label": "AfD",
-      "dawum_id": "7",
-      "id": 9,
-      "color": "#009ee0"
-    },
-    {
-      "label": "Grüne",
-      "dawum_id": "4",
-      "id": 5,
-      "color": "#5BA700"
+      "label": "SPD",
+      "dawum_id": "2",
+      "id": 1,
+      "color": "#E31D34",
+      "backgroundColor": "#E2001A"
     },
     {
       "label": "CDU",
       "dawum_id": null,
       "id": 2,
-      "color": "#333333"
+      "color": "#333333",
+      "backgroundColor": "#EFEFEF"
     },
     {
       "label": "CSU",
       "dawum_id": null,
       "id": 3,
-      "color": "#333333"
-    },
-    {
-      "label": "Linke",
-      "dawum_id": "5",
-      "id": 8,
-      "color": "#C13197"
-    },
-    {
-      "label": "SPD",
-      "dawum_id": "2",
-      "id": 1,
-      "color": "#E31D34"
+      "color": "#333333",
+      "backgroundColor": "#EFEFEF"
     },
     {
       "label": "FDP",
       "dawum_id": "3",
       "id": 4,
-      "color": "#F3D43B"
+      "color": "#F3D43B",
+      "backgroundColor": "#ffed00"
+    },
+    {
+      "label": "Grüne",
+      "dawum_id": "4",
+      "id": 5,
+      "color": "#5BA700",
+      "backgroundColor": "#1fa12d"
+    },
+    {
+      "label": "Linke",
+      "dawum_id": "5",
+      "id": 8,
+      "color": "#C13197",
+      "backgroundColor": "#dc0000"
+    },
+    {
+      "label": "AfD",
+      "dawum_id": "7",
+      "id": 9,
+      "color": "#009ee0",
+      "backgroundColor": "#009fe1"
     }
   ]
 }

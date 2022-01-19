@@ -19,6 +19,12 @@ export default {
       failed: false
     }
   },
+  watch: {
+    id: function (oldValue, newValue)
+    {
+      this.failed = false;
+    }
+  },
   computed: {
     url: function () {
       return this.failed ? require("../../assets/img/user.png") : "https://image.facethefacts-api.de/" + this.id + ".jpg";
