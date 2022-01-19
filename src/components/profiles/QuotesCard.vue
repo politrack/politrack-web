@@ -13,7 +13,7 @@
           <h3 class="quote mark">&ldquo;</h3>
           <h4 class="quote text">{{ getQuoteText(quote) }}</h4>
 
-          <h5 class="d-block text-no-wrap">
+          <h5 class="d-block">
             {{ quote.author }} in {{ sources[quote.article.source].label }}
           </h5>
           <a :href="quote.article.url" target="_blank" class="d-block">
@@ -24,9 +24,7 @@
         </div>
 
         <div class="ml-auto">
-          <v-avatar class="avatar elevation-2" size="64">
-           <PoliticianImage :id="quote.politician_id"/>
-          </v-avatar>
+           <PoliticianAvatar :politician="{'id': quote.politician_id, 'first_name': quote.author, 'last_name': ''}" :size="64"/>
         </div>
       </v-card>
     </div>
@@ -40,6 +38,7 @@ import PoliticianImage from "../base/PoliticianImage";
 import sources from "../../assets/sources_config.json";
 import {Flicking} from "@egjs/vue-flicking";
 import {Pagination} from "@egjs/flicking-plugins";
+import PoliticianAvatar from "../base/PoliticianAvatar";
 
 export default {
   name: "QuotesCard",
@@ -48,6 +47,7 @@ export default {
     articleImage: Boolean
   },
   components: {
+    PoliticianAvatar,
     Flicking,
     PoliticianImage
   },

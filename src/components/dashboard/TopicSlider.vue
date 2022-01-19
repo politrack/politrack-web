@@ -5,7 +5,7 @@
         <flicking :plugins="plugins" :options="options">
           <div v-for="(topic, idx) in topics" v-bind:key="idx">
             <div class="pa-2 h-100">
-              <news-headline :width="345" :topic="topic"></news-headline>
+              <news-headline :width="cardWidth" :topic="topic"></news-headline>
             </div>
           </div>
         </flicking>
@@ -50,18 +50,29 @@ export default {
   },
   data() {
     return {
+      windowWidth: window.innerWidth,
       options: {
         align: "prev",
         bound: true,
-        moveType: "snap"
+        moveType: ["freeScroll", { stopAtEdge: true }]
       },
       allTopicsVisible: false,
       plugins: [new Arrow({parentEl: document.body})]
     }
   },
+  mounted() {
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth;
+    })
+  },
   components: {
     NewsHeadline,
     Flicking
+  },
+  computed: {
+    cardWidth: function (){
+      return Math.min(this.windowWidth - 50, 345);
+    },
   }
 }
 </script>
@@ -76,11 +87,17 @@ export default {
   min-width: 100%;
 }
 
+@media (max-width: 960px) {
+  .flicking-container {
+    padding: 0;
+  }
+}
+
 .flicking-arrow-prev.flicking-arrow-disabled::before, .flicking-arrow-prev.flicking-arrow-disabled::after, .flicking-arrow-next.flicking-arrow-disabled::before, .flicking-arrow-next.flicking-arrow-disabled::after {
   background-color: #949494 !important;
 }
 
 .flicking-arrow-prev:not(.flicking-arrow-disabled)::before, .flicking-arrow-prev:not(.flicking-arrow-disabled)::after, .flicking-arrow-next:not(.flicking-arrow-disabled)::before, .flicking-arrow-next:not(.flicking-arrow-disabled)::after {
-  background-color: #ffffff !important;
+  background-color: #b5179e !important;
 }
 </style>

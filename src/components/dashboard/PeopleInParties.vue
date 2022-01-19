@@ -15,7 +15,7 @@
           <v-avatar
               class="avatar party-avatar" size="52"
               :class="{'disabled': selectedPartyId !== party.id}"
-              @click="selectedPartyId = selectedPartyId===party.id? null : party.id"
+              @click="selectedPartyId = party.id"
               :style="{'background-color': party.backgroundColor}">
             <v-img contain :src="getPartyImage(party)"/>
           </v-avatar>

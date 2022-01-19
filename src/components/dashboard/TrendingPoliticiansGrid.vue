@@ -1,21 +1,19 @@
 <template>
   <div class="d-flex flex-wrap justify-center pa-5">
-    <v-avatar size="64" v-for="item in politicians" :key="item._id" class="ma-1">
-      <PoliticianImage :id="item._id"/>
-    </v-avatar>
+    <PoliticianAvatar :size="64" v-for="item in politicians" :key="item._id" :politician="item" class="ma-1"/>
   </div>
 </template>
 
 <script>
-import PoliticianImage from "../base/PoliticianImage";
+import PoliticianAvatar from "../base/PoliticianAvatar";
 
 export default {
   name: "TrendingPoliticiansGrid",
   props: {
-    politicians: Object
+    politicians: Array
   },
   components: {
-    PoliticianImage
+    PoliticianAvatar
   },
   data() {
     return {}

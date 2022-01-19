@@ -1,7 +1,7 @@
 <template>
   <div style="margin-top: 10px">
     <v-row>
-      <v-col class="text-center" lg="5" sm="12" style="margin-top: -50px">
+      <v-col class="text-center" md="5" cols="12" style="margin-top: -50px">
         <v-avatar class="avatar elevation-2" size="128">
           <PoliticianImage :id="politician._id"/>
         </v-avatar>
@@ -9,7 +9,7 @@
         <PartyChip :partyId="politician.party"/>
       </v-col>
 
-      <v-col lg="7" sm="12">
+      <v-col md="7" cols="12">
         <v-chip
             v-for="chip in chips"
             :key="chip.text"

@@ -10,13 +10,13 @@
             Die Informationen und Statistiken stehen jedem kostenlos zur Verfügung.
           </div>
           <div class="d-flex justify-center flex-md-row flex-column">
-            <router-link :to="{'name': 'dashboard'}" class="me-md-5 mt-5 text-decoration-none">
+            <router-link :to="{'name': 'dashboard'}" class="me-md-5 mt-5 text-decoration-none d-block">
               <v-btn
                   color="accent"
                   elevation="4"
                   rounded
                   x-large
-
+                  class="w-100"
               >
                 Zum Dashboard
               </v-btn>
@@ -181,12 +181,17 @@ export default {
     ICountUp
   },
   mounted() {
-    this.timer = setInterval(() => {
-      this.currentTimingStep = (this.currentTimingStep + 1) % this.updateProgressSteps;
-      if (this.currentTimingStep === 0) {
-        this.activeStepIndex = (this.activeStepIndex + 1) % this.politrackSteps.length;
-      }
-    }, this.changeInterval / this.updateProgressSteps)
+    switch (this.$vuetify.breakpoint.name) {
+      case "lg":
+      case "xl":
+      case "md":
+        this.timer = setInterval(() => {
+          this.currentTimingStep = (this.currentTimingStep + 1) % this.updateProgressSteps;
+          if (this.currentTimingStep === 0) {
+            this.activeStepIndex = (this.activeStepIndex + 1) % this.politrackSteps.length;
+          }
+        }, this.changeInterval / this.updateProgressSteps)
+    }
   },
   beforeDestroy() {
     if (this.timer !== null) {
@@ -271,6 +276,11 @@ export default {
 </script>
 
 <style scoped>
+
+.w-100 {
+  min-width: 100%;
+  width: 100%;
+}
 
 .v-progress-circular >>> circle, .v-progress-circular--visible >>> circle {
   transition: all 100ms;

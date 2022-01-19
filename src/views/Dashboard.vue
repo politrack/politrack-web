@@ -31,7 +31,7 @@
               <h3 class="text-center">Aktuelle Zitate</h3>
               <quotes-card :quotes="quotes" v-if="quotes"></quotes-card>
             </v-col>
-            <v-col cols="12" lg="4" sm="6" xs="12">
+            <v-col cols="12" lg="4">
               <h3 class="text-center">Politiker in den Medien</h3>
               <trending-politicians v-if="politicians" :data="politicians"></trending-politicians>
             </v-col>
@@ -41,12 +41,12 @@
         </v-container>
       </div>
     </div>
-    <div class="py-5">
+    <div class="py-5 middle-container">
       <div>
         <v-container>
 
           <div class="text-h2">Schlagzeilen</div>
-          <div class="d-flex justify-end">
+          <div class="d-flex justify-end mt-5">
             <v-btn color="accent" rounded @click="topicDistributionVisible=!topicDistributionVisible">
               <span v-if="topicDistributionVisible"><v-icon>fas fa-chevron-right</v-icon></span>
               <span v-else>Aktuelle Themen</span>
@@ -54,7 +54,7 @@
           </div>
           <div class="position-relative">
             <div v-if="topics">
-              <TopicSlider class="mt-5" :topics="topics"/>
+              <TopicSlider class="mt-2" :topics="topics"/>
             </div>
             <v-slide-y-reverse-transition>
               <v-card elevation="4" class="topic-distribution-container rounded-xl blur-background"
@@ -76,10 +76,10 @@
           <div class="text-h3">Parteien im Fokus</div>
 
           <v-row class="mt-5">
-            <v-col lg="6">
+            <v-col md="6" cols="12">
               <PeopleInParties v-if="partiesData !== null" :parties-data="partiesData"/>
             </v-col>
-            <v-col cols="12" lg="6" sm="12">
+            <v-col cols="12" md="6">
               <h3 class="text-center">Parteien in den Medien</h3>
               <PartiesChart class="mt-5" :partiesData="partiesData"/>
             </v-col>
@@ -220,5 +220,61 @@ export default {
   padding-bottom: 100px;
   background-color: rgba(60, 60, 60, .75);
   color: white;
+}
+
+.middle-container {
+  overflow: hidden;
+  background: #efefef;
+  margin-top: -2%;
+  margin-bottom: -2%;
+  clip-path: polygon(
+      0% 0%,
+      1% 2%,
+      3.5% 0.1%,
+      8.9% 2.7%,
+      16.2% 1.2%,
+      19.7% 0.8%,
+      24.7% 2%,
+      31.2% 0%,
+      35.9% 2.3%,
+      40.6% 0.5%,
+      47.1% 1.8%,
+      49.9% 1%,
+      53.8% 2.5%,
+      62.2% 0.4%,
+      67.3% 1.2%,
+      70.3% 0.3%,
+      75.8% 1.4%,
+      78.5% 1.7%,
+      84% 2.6%,
+      91.1% 0.5%,
+      93.6% 2.4%,
+      97.3% 0.3%,
+      98.9% 2%,
+      100% 0,
+      100% 100%,
+      98% 98.6%,
+      93.6% 97.4%,
+      90.3% 98.3%,
+      86.8% 98.3%,
+      78.6% 98.5%,
+      76.4% 99.2%,
+      69.7% 99.8%,
+      64.2% 99.3%,
+      61.8% 99.2%,
+      57.2% 98.1%,
+      48.7% 98.3%,
+      46.8% 99%,
+      39.6% 98.9%,
+      33.8% 97.3%,
+      28.2% 99.4%,
+      27% 98.3%,
+      22.1% 98.6%,
+      13.1% 97.1%,
+      8.7% 99.3%,
+      2.7% 97.4%,
+      2% 98.2%,
+      0% 100%
+  );
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <v-card
       elevation="2"
-      :width="width">
+      :width="width"
+      max-width="100%">
     <v-carousel
         :continuous="false"
         :cycle="true"
@@ -18,19 +19,15 @@
     </v-carousel>
     <v-card-actions style="margin-top: -20px">
       <v-spacer></v-spacer>
-      <v-avatar v-for="(person, idx) in topic.politicians.slice(0, 4)"
-                class="avatar elevation-2" v-bind:key="idx" size="32"
-                @click="$router.push('politician/' + person._id)"
-                style="margin-left: -16px">
-        <PoliticianImage :id="person._id"/>
-      </v-avatar>
+      <PoliticianAvatar v-for="(person, idx) in topic.politicians.slice(0, 4)" :key="idx"
+                        :size="32" :politician="person" style="margin-left: -16px"/>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
-import PoliticianImage from "../base/PoliticianImage";
 import NewsCard from "../base/NewsCard";
+import PoliticianAvatar from "../base/PoliticianAvatar";
 export default {
   name: "PoliticiansCard",
   props: {
@@ -38,8 +35,8 @@ export default {
     width: Number,
   },
   components: {
-    NewsCard,
-    PoliticianImage
+    PoliticianAvatar,
+    NewsCard
   }
 }
 </script>
