@@ -25,7 +25,7 @@
       <v-scroll-x-transition hide-on-leave>
 
         <div class="ms-5 flex-fill" :key="selectedPartyId"
-             v-if="selectedPartyId !== null && peopleInParties[selectedPartyId] !== undefined">
+             v-if="selectedPartyId !== null && stars[selectedPartyId] !== undefined">
           <div
               class="rounded-xl overflow-hidden justify-center d-flex"
               style="height: 50px; max-width: 100%;"
@@ -57,25 +57,21 @@
 
             <v-tabs-items v-model="tab" class="py-3 transparent">
               <v-tab-item value="most-mentions-tab">
-                <div>
-                  <v-avatar
-                      class="avatar elevation-2 ms-2"
-                      :size="calculateSize(item.count)" v-for="item in peopleInParties[selectedPartyId]" :key="item.id">
-                    <PoliticianImage :id="item.id"/>
-                  </v-avatar>
+                <div class="d-flex flex-wrap">
+                  <PoliticianAvatar class="ms-2" :politician="item" :size="calculateSize(item.count)"
+                                    v-for="item in stars[selectedPartyId]" :key="item._id"/>
                 </div>
               </v-tab-item>
               <v-tab-item value="newcomers-tab">
-                <div class="d-flex justify-space-between">
-                  <div v-for="item in peopleInParties[selectedPartyId].slice(0,5)" :key="item.id"
-                       class="d-flex flex-column align-center">
-                    <v-avatar
-                        class="avatar elevation-2"
-                        size="60">
-                      <PoliticianImage :id="item.id"/>
-                    </v-avatar>
-                    <span class="green--text">{{ randomInt(20, 100) }}  <v-icon x-small class="green--text">fas fa-arrow-up</v-icon></span>
-                  </div>
+                <div>
+                  <v-row>
+                    <v-col cols="12" xs="6" sm="4" v-for="item in newcomers[selectedPartyId].slice(0,6)" :key="item.id"
+                         class="d-flex flex-column align-center">
+                      <PoliticianAvatar :politician="item" :size="60"/>
+                      <span class="green--text">{{ calculateTrend(item) }}</span>
+                      <span class="white--text text-center">{{ item.first_name }} {{ item.last_name }}</span>
+                    </v-col>
+                  </v-row>
                 </div>
               </v-tab-item>
             </v-tabs-items>
@@ -87,32 +83,34 @@
 </template>
 
 <script>
-import PoliticianImage from "../base/PoliticianImage";
 import parties_config from "../../assets/parties.json"
+import PoliticianAvatar from "../base/PoliticianAvatar";
 
 export default {
   name: "PeopleInParties",
   props: {
-    partiesData: Object
+    stars: Object,
+    newcomers: Object,
+    partiesOverTime: Object
   },
   components: {
-    PoliticianImage
+    PoliticianAvatar
   },
   data() {
     return {
       tab: null,
       selectedPartyId: parties_config.parties[0].id,
-      parties: parties_config.parties,
-      peopleInParties: {
-        1: this.generateRandomPersons(),
-        2: this.generateRandomPersons(),
-        3: this.generateRandomPersons(),
-        4: this.generateRandomPersons(),
-        5: this.generateRandomPersons(),
-        8: this.generateRandomPersons(),
-        9: this.generateRandomPersons()
-      }
+      parties: parties_config.parties
     }
+  },
+  mounted() {
+    let component = this;
+
+    parties_config.parties.forEach(function (p) {
+      component.stars[p.id].sort(function (a, b) {
+        return b.count - a.count;
+      });
+    });
   },
   computed: {
     selectedParty() {
@@ -120,24 +118,27 @@ export default {
       return this.parties.find(function (a) {
         return a.id === component.selectedPartyId;
       })
+    },
+    minStarsCount() {
+      return Math.min.apply(Math, this.stars[this.selectedPartyId].map(function (o) {
+        return o.count;
+      }));
+    },
+    maxStarsCount() {
+      return Math.max.apply(Math, this.stars[this.selectedPartyId].map(function (o) {
+        return o.count;
+      }));
     }
   },
   methods: {
     calculateSize(count) {
-      let maxInput = Math.max.apply(Math, this.peopleInParties[this.selectedPartyId].map(function (o) {
-        return o.count;
-      }));
-
-      let minInput = Math.min.apply(Math, this.peopleInParties[this.selectedPartyId].map(function (o) {
-        return o.count;
-      }));
       let maxOutput = 100;
       let minOutput = 30;
-
-      return ((count - minInput) / (maxInput - minInput)) * (maxOutput - minOutput) + minOutput;
+      return ((count - this.minStarsCount) / (this.maxStarsCount - this.minStarsCount)) * (maxOutput - minOutput) + minOutput;
     },
-    getPartyImageUrl(party) {
-      return '@/assets/img/parties/' + party.id + '.svg'
+    calculateTrend(item) {
+      let denominator = (item.articles_last_year - item.articles_last_month) / 11
+      return denominator > 0 ? "+" + Math.round((item.articles_last_month / denominator) * 100) + "%" : "neu";
     },
     getPartyImage(party) {
       return require('@/assets/img/parties/' + party.id + '.svg');
@@ -145,7 +146,7 @@ export default {
     getCurrentPartyMentionPercentage(party) {
       let count = 0;
       let total = 0;
-      for (const [key, value] of Object.entries(this.partiesData.parties)) {
+      for (const [key, value] of Object.entries(this.partiesOverTime)) {
         total += value[value.length - 1];
         if (Number(key) === party.id) {
           count = value[value.length - 1];
@@ -153,45 +154,12 @@ export default {
       }
 
       return count / total * 100;
-    },
-    randomInt(min, max) {
-      return Math.floor((Math.random()) * (max - min + 1)) + min;
-    },
-    generateRandomPersons() {
-      let component = this;
-      let ids = [79475, 79474, 79477, 79479, 79215, 79213, 79219, 79210, 79221, 79230, 79232, 79234, 79235,
-        79241, 79242, 79245, 79249, 79250, 79253, 79254, 79255]
-      let return_value = ids.map(function (id) {
-        return {
-          id: id,
-          count: component.randomInt(20, 100)
-        }
-      });
-
-      let array = Array.from(return_value).sort((a, b) => b.count - a.count);
-
-      return array;
-
-      /*array = Array
-          .from(array, (_, i) => i)
-          .sort((a, b) => b % 2 - a % 2 || (a % 2 ? a - b : b - a))
-          .map(i => array[i]);*/
-
     }
-  },
+  }
 }
 </script>
 
 <style scoped>
-.w-100 {
-  width: 100%;
-  max-height: 100%;
-  min-height: 100%;
-}
-
-.border-none {
-  border: none;
-}
 
 .party-avatar {
   transition: 0.2s all ease-in-out;

@@ -77,11 +77,14 @@
 
           <v-row class="mt-5">
             <v-col md="6" cols="12">
-              <PeopleInParties v-if="partiesData !== null" :parties-data="partiesData"/>
+              <PeopleInParties
+                  v-if="partiesData !== null && partiesData.stars !== undefined && partiesData.newcomers !== undefined && partiesData.partiesOverTime !== undefined"
+                  :stars="partiesData.stars" :newcomers="partiesData.newcomers"
+                  :parties-over-time="partiesData.partiesOverTime"/>
             </v-col>
             <v-col cols="12" md="6">
               <h3 class="text-center">Parteien in den Medien</h3>
-              <PartiesChart class="mt-5" :partiesData="partiesData"/>
+              <PartiesChart class="mt-5" v-if="partiesData !== null && partiesData.partiesOverTime !== undefined" :partiesData="partiesData.partiesOverTime"/>
             </v-col>
 
           </v-row>

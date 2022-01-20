@@ -2,12 +2,12 @@
   <div>
     <v-tooltip bottom>
       <template v-slot:activator="{ on, attrs }">
-        <router-link :to="{'name': 'politician', 'params': {'id': politician.id}}" v-bind="attrs">
+        <router-link :to="{'name': 'politician', 'params': {'id': politicianId}}" v-bind="attrs">
           <v-avatar
               :size="size"
               class="avatar elevation-2"
               v-on="on">
-            <PoliticianImage :id="politician.id === undefined? politician._id : politician.id"/>
+            <PoliticianImage :id="politicianId"/>
           </v-avatar>
         </router-link>
       </template>
@@ -27,6 +27,11 @@ export default {
   },
   components: {
     PoliticianImage
+  },
+  computed: {
+    politicianId() {
+      return this.politician.id === undefined? this.politician._id : this.politician.id;
+    }
   }
 }
 </script>
