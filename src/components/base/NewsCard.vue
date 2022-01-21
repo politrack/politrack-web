@@ -20,7 +20,7 @@
     <v-card-subtitle>
       <a :href="sources[article.source].url" target="_blank"
          class="text-decoration-none">{{ sources[article.source].label }}</a>
-      <span class="float-right">{{ moment(article.published).fromNow() }}</span>
+      <span class="float-right">{{ formatDate(article.published) }}</span>
     </v-card-subtitle>
 
     <div v-if="highlights.length">
@@ -42,6 +42,7 @@
 
 <script>
 import sources from "../../assets/sources_config.json";
+import moment from 'moment'
 
 export default {
   name: "NewsCard",
@@ -64,6 +65,21 @@ export default {
         return highlightsVisible || index === 0;
       });
       else return [];
+    }
+  },
+  methods: {
+    formatDate(date) {
+      date = moment(date);
+      let today = moment();
+      let yesterday = moment().subtract(1, 'day');
+
+      if(today.isSame(date, 'day')) {
+        return date.format("[heute um] HH:mm")
+      } else if(yesterday.isSame(date, 'day')) {
+        return date.format("[gestern um] HH:mm")
+      } else {
+        return date.format('DD.MM.YYYY HH:mm')
+      }
     }
   }
 }
