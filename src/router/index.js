@@ -7,6 +7,7 @@ import DataProtectionPolicy from "../views/DataProtectionPolicy";
 import LandingPage from "../views/LandingPage";
 import About from "../views/About";
 import Animation from "../views/Animation";
+import VideoQuotes from "../views/VideoQuotes";
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
             path: '/animation',
             name: 'animation',
             component: Animation
+        },
+        {
+            path: '/video-quotes',
+            name: 'video-quotes',
+            component: VideoQuotes
         }
     ]
 })
