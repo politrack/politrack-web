@@ -3,19 +3,17 @@
       :elevation="elevation"
       :max-width="maxWidth">
     <v-img
-        v-if="article.images && article.images.length > 0"
+        v-if="showImage && article.images && article.images.length > 0"
         :src="article.images[0].url"
         class="news-image">
     </v-img>
-    <div class="news-image pa-3" v-if="showPlaceholderImage && (!article.images || !article.images.length)">
+    <div class="news-image pa-3" v-if="showImage && showPlaceholderImage && (!article.images || !article.images.length)">
       <v-icon size="60" color="#999">fas fa-newspaper</v-icon>
     </div>
     <v-card-title class="article-title d-block">
       <a :href="article.url" class="text-decoration-none black--text" target="_blank">
         {{ article.title }}
-      </a> <sup>
-      <v-icon size="10">fas fa-external-link-alt</v-icon>
-    </sup>
+      </a>
     </v-card-title>
     <v-card-subtitle>
       <a :href="sources[article.source].url" target="_blank"
@@ -23,7 +21,7 @@
       <span class="float-right">{{ formatDate(article.published) }}</span>
     </v-card-subtitle>
 
-    <div v-if="highlights.length">
+    <div v-if="showText && highlights.length">
       <div class="highlight-text ms-5 me-5 mb-3">
         <v-divider class="mb-2"></v-divider>
         <v-fade-transition group>
@@ -50,7 +48,9 @@ export default {
     article: Object,
     showPlaceholderImage: Boolean,
     elevation: Number,
-    maxWidth: Number
+    maxWidth: Number,
+    showImage: Boolean,
+    showText: Boolean
   },
   data() {
     return {

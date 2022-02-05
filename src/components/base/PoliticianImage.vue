@@ -1,8 +1,6 @@
 <template>
-  <v-img
+  <img
       :src="url"
-      lazy-src="../../assets/img/user.png"
-      contain
       @error="onError"
       class="white"
   />

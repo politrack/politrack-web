@@ -2,18 +2,33 @@
   <v-container style="background: white">
     <div class="py-5" style="margin: 100px; background: white">
       <v-row>
-        <v-col v-if="politician" class="text-center" md="4" cols="12">
+        <v-col v-if="politician" md="6" cols="12">
           <div>
-            <v-avatar class="avatar elevation-2" size="128">
-              <PoliticianImage :id="politician._id"/>
-            </v-avatar>
-            <h2 class="mt-1">{{ politician.label }}</h2>
-            <PartyChip :partyId="politician.party"/>
+            <v-scroll-y-reverse-transition hide-on-leave>
+              <div :key="politician._id">
+                <div class="pa-2">
+                  <div class="pa-3 rounded-xl text-center">
+                    <v-avatar class="avatar elevation-2" size="128" style="margin-top: -50px">
+                      <PoliticianImage :id="politician._id"/>
+                    </v-avatar>
+                    <h2 class="mt-1">{{ politician.label }}</h2>
+                    <PartyChip :partyId="politician.party"/>
+                  </div>
+                </div>
+                <div v-if="selectedArticles" v-for="article in selectedArticles" class="pa-2">
+                  <news-card :show-image="false" :show-text="false" :article="article" max-width="500px"
+                             :showPlaceholderImage="true" class="rounded-lg"/>
+                </div>
+              </div>
+            </v-scroll-y-reverse-transition>
           </div>
         </v-col>
-        <v-col md="8" cols="12">
-          <canvas id="topicDistributionChart" style="height: 400px; width: 400px"></canvas>
+        <v-col md="6" cols="12">
+          <canvas id="topicDistributionChart" style="height: 300px; width: 300px"></canvas>
         </v-col>
+      </v-row>
+      <v-row>
+        <v-btn @click="start" style="margin-top: 300px">Start</v-btn>
       </v-row>
     </div>
   </v-container>
@@ -25,6 +40,7 @@ import {Chart, registerables} from "chart.js";
 import axios from "axios";
 import PoliticianImage from "../components/base/PoliticianImage";
 import PartyChip from "../components/profiles/PartyChip";
+import NewsCard from "../components/base/NewsCard";
 
 function sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -34,7 +50,8 @@ export default {
   name: "BlogArticle",
   components: {
     PoliticianImage,
-    PartyChip
+    PartyChip,
+    NewsCard
   },
   data() {
     return {
@@ -42,7 +59,9 @@ export default {
       statistics: [],
       politician: null,
       politicians: [],
-      statistic: null
+      statistic: null,
+      articles: [],
+      selectedArticles: null
     }
   },
   async mounted() {
@@ -53,24 +72,31 @@ export default {
       let result = resp.data
       this.statistics.push(result['statistics'])
       this.politicians.push(result['politician'])
-    }
-    for (let i = 0; i < this.ids.length; i++) {
-      this.statistic = this.statistics[i]
-      this.politician = this.politicians[i]
-      console.log(this.chart)
-      if (this.chart == null) {
-        this.renderArticleDistributionChart();
-      } else {
-        let data = this.generateData()
-        this.chart.config.data.datasets[0].data = data['data']
-        this.chart.update()
-      }
-      console.log('sleeping')
-      await sleep(1000)
+      this.articles.push(result['articles'])
     }
   },
   methods: {
 
+    async start() {
+      this.politician = null
+      this.selectedArticles = null
+      this.statistic = null
+      await sleep(1000)
+      for (let i = 0; i < this.ids.length; i++) {
+        this.statistic = this.statistics[i]
+        this.politician = this.politicians[i]
+        this.selectedArticles = this.articles[i].slice(0, 3)
+        if (this.chart == null) {
+          this.renderArticleDistributionChart();
+        } else {
+          let data = this.generateData()
+          this.chart.config.data.datasets[0].data = data['data']
+          this.chart.update()
+        }
+        console.log('sleeping')
+        await sleep(2000)
+      }
+    },
     generateData() {
       let data = [];
       let labels = [];
@@ -81,8 +107,7 @@ export default {
         min = Math.min(item.count, min)
       });
       this.statistic.topicDistribution.forEach(function (item) {
-        data.push((item.count- min) / (max - min));
-        console.log((item.count- min) / (max - min))
+        data.push((item.count - min) / (max - min));
         labels.push(item.name);
       });
       return {
@@ -150,6 +175,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s;
+}
+
+.fade-leave-active {
+  position: absolute;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 
 </style>
