@@ -24,7 +24,7 @@ export default {
   },
   mounted() {
     Chart.register(...registerables);
-    //this.renderArticleDistributionChart();
+    this.renderArticleDistributionChart();
   },
   methods: {
     createDateTimeHistogram(data, timeAggregation, key) {
@@ -162,7 +162,6 @@ export default {
           }
         }]
       });
-
       component.chart.update();
     }
 

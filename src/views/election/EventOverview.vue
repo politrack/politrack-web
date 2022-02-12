@@ -44,7 +44,7 @@
                 </div>
               </div>
               <div class="col-lg-8">
-                <label v-for="source in sources" :key="source" class="me-3">
+                <label v-for="source in sources" :key="source.label" class="me-3">
                   <input type="checkbox" :value="source.id" v-model="checkedSources">
                   {{ source.label }} ({{ source.count }})
                 </label>
@@ -52,25 +52,20 @@
             </div>
           </form>
           <div class="row">
-          <div v-for="article in filteredArticles" :key="article" class="mb-1 col-md-6 col-lg-4">
+          <div v-for="article in filteredArticles" :key="article.id" class="mb-1 col-md-6 col-lg-4">
             <Article :article="article"/>
           </div>
           </div>
           <div v-if="!filteredArticles.length" class="text-muted py-3 text-center">Zu dieser Anfrage wurden keine Artikel gefunden</div>
-
         </div>
       </div>
-
-
     </div>
-
   </div>
 </template>
 
 <script>
-import sources_config from "../assets/sources_config.json";
+import sources_config from "../../assets/btw/sources_config.json";
 import Article from "../../components/election/Article.vue";
-import EventSourceDistribution from "../../components/election/events/EventSourceDistribution.vue"
 import EventArticlesOverTime from "../../components/election/events/EventArticlesOverTime.vue"
 import Fuse from 'fuse.js'
 
@@ -133,7 +128,7 @@ export default {
       return moment(new Date(dateTime)).format('Do MMMM YYYY')
     },
     getImgUrl(event) {
-      let images = require.context('../assets/events/', false, /\.png$/)
+      let images = require.context('../../assets/btw/events/', false, /\.png$/)
       try {
         return images('./' + event.id + ".png")
       } catch (e) {

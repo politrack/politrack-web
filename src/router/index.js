@@ -7,8 +7,26 @@ import DataProtectionPolicy from "../views/DataProtectionPolicy";
 import LandingPage from "../views/LandingPage";
 import About from "../views/About";
 import ElectionCampaignChronic from "../views/election/ElectionCampaignChronic";
+import EventOverview from '../views/election/EventOverview.vue'
+import events from "../assets/btw/events.json"
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(Router)
+
+function getEvent (route) {
+    let event = events.find(function (e) {
+        return e.id === route.params.id;
+    });
+    return {
+        event: event
+    }
+}
+
+let path_404 = {
+    path: '/404',
+    name: 'NotFound',
+    component: NotFound
+};
 
 export default new Router({
     routes: [
@@ -65,5 +83,18 @@ export default new Router({
             name: 'chronic',
             component: ElectionCampaignChronic
         },
+        {
+            path: '/btw21/:id',
+            name: 'event',
+            component: EventOverview,
+            props: getEvent,
+            beforeEnter: (route, from, next) => {
+                let event = events.find(function (e) {
+                    return e.id === route.params.id;
+                });
+                if (!event) next(path_404.path);
+                else next();
+            }
+        }
     ]
 })
