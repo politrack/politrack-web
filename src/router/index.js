@@ -6,6 +6,7 @@ import Imprint from "../views/Imprint";
 import DataProtectionPolicy from "../views/DataProtectionPolicy";
 import LandingPage from "../views/LandingPage";
 import About from "../views/About";
+import ElectionCampaignChronic from "../views/election/ElectionCampaignChronic";
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
             meta: {
                 headerTransparent: true
             }
-        }
+        },
+        {
+            path: '/btw',
+            name: 'chronic',
+            component: ElectionCampaignChronic
+        },
     ]
 })

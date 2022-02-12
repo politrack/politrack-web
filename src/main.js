@@ -4,6 +4,22 @@ import vuetify from './plugins/vuetify'
 import router from './router/index.js'
 import moment from 'moment'
 
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {
+  faInfoCircle,
+  faChevronRight,
+  faChevronLeft,
+  faEnvelope,
+  faDownload,
+  faShare
+} from '@fortawesome/free-solid-svg-icons'
+import {faTwitter, faGithub, faLinkedin, faReddit, faTelegram, faFacebook, faWhatsapp} from '@fortawesome/free-brands-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+
+library.add(faInfoCircle, faTwitter, faGithub, faChevronRight, faChevronLeft, faEnvelope, faLinkedin,
+    faDownload, faShare, faReddit, faTelegram, faWhatsapp, faFacebook)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 moment.locale('de');
 Vue.prototype.moment = moment;
 Vue.config.productionTip = false

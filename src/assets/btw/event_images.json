@@ -1,0 +1,240 @@
+{
+  "scholz-kanzler": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:Olaf_Scholz_-_Deutscher_Radiopreis_2016_01.jpg",
+      "first_name": "Frank",
+      "last_name": "Schwichtenberg"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "name": "CC BY-SA 3.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "baerbock-buch-plagiat": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:Annalena_Baerbock.jpg",
+      "first_name": "Stefan",
+      "last_name": "Kaminski"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "name": "CC BY-SA 4.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "baerbock-kanzler": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:Annalena_Baerbock_Januar_2018.jpg",
+      "first_name": "Scheint",
+      "last_name": "Sinnig"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "name": "CC BY-SA 4.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "baerbock-lebenslauf": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:2020-10-30_Annalena_Baerbock_MdB_GR%C3%9CNE_by_OlafKosinsky_2940.jpg",
+      "first_name": "Olaf",
+      "last_name": "Kosinsky"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "name": "CC BY-SA 3.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "laschet-plagiat": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:2017-09-24_Armin_Laschet_by_Sandro_Halank.jpg",
+      "first_name": "Sandro",
+      "last_name": "Halank"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "name": "CC-BY-SA 3.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "cdu-kandidat": {
+    "author": {
+      "url": "https://ccnull.de/fotograf/timo-klostermeier",
+      "first_name": "Timo",
+      "last_name": "Klostermeier"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by/2.0/de/",
+      "name": "CC-BY 2.0"
+    },
+    "source": {
+      "name": "CCNull"
+    }
+  },
+  "regierungskrise-thueringen": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:2020-02-05_Th%C3%BCringer_Landtag,_Wahl_des_Ministerpr%C3%A4sidenten_1DX_3179_by_Stepro.jpg",
+      "first_name": "Steffen",
+      "last_name": "Prößdorf"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "name": "CC BY-SA 4.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "nawalny": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:Alexey_Navalny_(cropped)_1.jpg",
+      "first_name": "Mitya",
+      "last_name": "Aleshkovskiy"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "name": "CC BY-SA 4.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "moria": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:Lager_Moria_auf_der_Insel_Lesbos,_Griechenland_30.08.2020.jpg",
+      "first_name": "User:",
+      "last_name": "Faktengebunden"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "name": "CC BY-SA 4.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "hanau-anschlag": {
+    "author": {
+      "url": "https://www.flickr.com/photos/rasande/",
+      "first_name": "Rasande",
+      "last_name": "Tyskar"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-nc/2.0/",
+      "name": "CC BY-NC 2.0"
+    },
+    "source": {
+      "name": "flickr"
+    }
+  },
+  "cdu-vorsitz": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:2021-01-23_Armin_Laschet_MG_5824.jpg",
+      "first_name": "Olaf",
+      "last_name": "Kosinsky"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "name": "CC BY-SA 3.0 DE"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "wirecard": {
+    "author": {
+      "url": "https://img.ccnull.de/1030000/preview/1032449_e351cd30d0d1f899455cf8bd38082011.jpg",
+      "first_name": "Marco",
+      "last_name": "Verch"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by/2.0/de/",
+      "name": "CC-BY 2.0 DE"
+    },
+    "source": {
+      "name": "CCNULL"
+    }
+  },
+  "ipcc": {
+    "author": {
+      "url": "https://img.ccnull.de/1030000/preview/1032215_7c3c73b946d7fbe9090ad5da61ceb773.jpg",
+      "first_name": "Marco",
+      "last_name": "Verch"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by/2.0/de/",
+      "name": "CC-BY 2.0 DE"
+    },
+    "source": {
+      "name": "CCNULL"
+    }
+  },
+  "lockdown-weihnachten": {
+    "author": {
+      "url": "https://ccnull.de/foto/christmas-ornaments-and-padlock-with-christmas-hat-and-lockdown-text/1030274",
+      "first_name": "Marco",
+      "last_name": "Verch"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by/2.0/de/",
+      "name": "CC-BY 2.0 DE"
+    },
+    "source": {
+      "name": "CCNULL"
+    }
+  },
+  "razzia-finanzministerium": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:Detlev_Rohwedder_Building_01.jpg",
+      "first_name": "User:",
+      "last_name": "Indrajitdas"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+      "name": "CC BY-SA 4.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  },
+  "giffey-ruecktritt": {
+    "author": {
+      "url": "https://www.flickr.com/photos/97056632@N05/",
+      "first_name": "Jugendpresse",
+      "last_name": "Deutschland"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by/2.0/",
+      "name": "CC BY 2.0"
+    },
+    "source": {
+      "name": "flickr"
+    }
+  },
+  "schlussrunde": {
+    "author": {
+      "url": "https://commons.wikimedia.org/wiki/File:Tina_Hassel_Berlin_2015-08-29.jpg",
+      "first_name": "A.",
+      "last_name": "Savin"
+    },
+    "license": {
+      "url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "name": "CC BY-SA 3.0"
+    },
+    "source": {
+      "name": "Wikimedia Commons"
+    }
+  }
+}
