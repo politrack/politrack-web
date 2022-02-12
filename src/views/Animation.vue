@@ -2,9 +2,9 @@
   <v-container style="background: white">
     <div class="py-5" style="margin: 100px; background: white">
       <v-row>
-        <v-col v-if="politician" md="6" cols="12">
-          <div>
-            <v-scroll-y-reverse-transition hide-on-leave>
+        <v-col md="6" cols="12" :style="{'background': background}">
+          <div v-if="politician">
+            <v-fade-transition hide-on-leave>
               <div :key="politician._id">
                 <div class="pa-2">
                   <div class="pa-3 rounded-xl text-center">
@@ -20,10 +20,10 @@
                              :showPlaceholderImage="true" class="rounded-lg"/>
                 </div>
               </div>
-            </v-scroll-y-reverse-transition>
+            </v-fade-transition>
           </div>
         </v-col>
-        <v-col md="6" cols="12">
+        <v-col md="6" cols="12" :style="{'background': background}">
           <canvas id="topicDistributionChart" style="height: 300px; width: 300px"></canvas>
         </v-col>
       </v-row>
@@ -55,13 +55,14 @@ export default {
   },
   data() {
     return {
-      ids: [66924, 79475, 137564, 79334, 132545],
+      ids: [79475, 137564, 79334, 132545, 66924],
       statistics: [],
       politician: null,
       politicians: [],
       statistic: null,
       articles: [],
-      selectedArticles: null
+      selectedArticles: null,
+      background: "#cccccc"
     }
   },
   async mounted() {
@@ -81,6 +82,9 @@ export default {
       this.politician = null
       this.selectedArticles = null
       this.statistic = null
+      this.background = "#cccccc";
+      await sleep(6000)
+      this.background = "#ffffff";
       await sleep(1000)
       for (let i = 0; i < this.ids.length; i++) {
         this.statistic = this.statistics[i]

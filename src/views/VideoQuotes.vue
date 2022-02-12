@@ -22,8 +22,6 @@
               </div>
             </v-card>
           </v-col>
-          <v-col cols="12" lg="4">
-          </v-col>
           <v-col cols="12" lg="4" style="background: black">
             <v-card elevation="0" class="d-flex flex-row ma-2 pa-3 rounded-xl mt-5" rounded v-for="quote in rightQuotes"
                     v-bind:key="quote.quote">
