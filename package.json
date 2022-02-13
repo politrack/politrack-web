@@ -25,9 +25,7 @@
     "fuse.js": "^6.5.3",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
-    "swiper": "^6.8.4",
     "vue": "^2.6.11",
-    "vue-awesome-swiper": "^4.1.1",
     "vue-countup-v2": "^4.0.0",
     "vue-router": "^3.5.3",
     "vuetify": "^2.4.0"

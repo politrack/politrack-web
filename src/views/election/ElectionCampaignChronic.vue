@@ -14,16 +14,24 @@
           <a href="https://twitter.com/pltrck">Twitter</a>.
           Für Anregungen zu neuen Themen schreibt uns gerne eine
           <a href="mailto:politrack@gmx.de">Mail</a>.
+          {{ activeIndex }}
         </p>
       </div>
     </div>
 
-    <PollEventChart :eventsProxy="eventsProxy" v-bind:events="events" @onTimelineUpdate="onTimelineUpdate"/>
+    <PollEventChart :eventsProxy="eventsProxy" :activeIndex="activeIndex" :setActiveIndex="setEventActive"
+                    @onTimelineUpdate="onTimelineUpdate"/>
 
-    <div class="position-relative container mb-3">
-      <transition v-for="ev in events" :key="ev.id" name="slide-fade">
-        <Event v-show="ev.id === event.id" :ev="ev"/>
-      </transition>
+    <div class="container mt-4">
+      <div>
+        <EventSlider :eventsProxy="eventsProxy" :activeIndex="activeIndex" :updateActiveIndex="setEventActive"/>
+      </div>
+    </div>
+
+    <div class="position-relative container mb-3" v-if="event !== null">
+      <v-slide-y-transition hide-on-leave>
+        <Event :ev="event" :key="event.idx"/>
+      </v-slide-y-transition>
     </div>
   </div>
 </template>
@@ -32,6 +40,7 @@
 import events from "../../assets/btw/events.json"
 import PollEventChart from '../../components/election/PollEventChart.vue'
 import Event from '../../components/election/Event.vue'
+import EventSlider from "../../components/election/EventSlider";
 import IntervalTree from '@flatten-js/interval-tree'
 
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -44,14 +53,15 @@ export default {
   name: "ElectionCampaignChronic",
   components: {
     PollEventChart,
-    Event
+    Event,
+    EventSlider
   },
   data() {
     return {
       eventsProxy: [],
       events: events,
       currentDate: null,
-      event: events[0]
+      activeIndex: 0,
     }
   },
   created() {
@@ -74,14 +84,18 @@ export default {
       return a.start - b.start
     })
 
+    this.events.forEach(function (item, idx) {
+      item.idx = idx;
+    });
+
     this.eventsProxy = this.events.map(function (event) {
       return {
+        idx: event.idx,
         id: event.id,
         name: event.name,
         start: event.start,
         party: event.party,
         end: event.end,
-        isActive: false
       }
     });
 
@@ -95,19 +109,13 @@ export default {
       return event.start.getFullYear() === 2021;
     });
 
-    possibleActiveEvents[Math.floor(Math.random() * possibleActiveEvents.length)].isActive = true;
+    let activeIdx = Math.floor(Math.random() * possibleActiveEvents.length);
+    this.setEventActive(possibleActiveEvents[activeIdx].idx);
+
   },
-  watch: {
-    eventsProxy: {
-      handler: function (oldVal, newVal) {
-        for (let idx = 0; idx < newVal.length; idx++) {
-          if (newVal[idx].isActive) {
-            this.event = newVal[idx];
-            break
-          }
-        }
-      },
-      deep: true
+  computed: {
+    event(){
+      return this.activeIndex >= 0? this.events[this.activeIndex] : null;
     }
   },
   methods: {
@@ -118,17 +126,8 @@ export default {
       this.setEventActive(targetIdx);
     },
     setEventActive(idx) {
-      if (idx >= 0 && this.eventsProxy[idx].isActive === true) {
-        return
-      }
-      if (idx >= 0) {
-        this.eventsProxy[idx].isActive = true
-        this.event = this.events[idx]
-      }
-      for (let k = 0; k < this.eventsProxy.length; k++) {
-        if (k !== idx) {
-          this.eventsProxy[k].isActive = false
-        }
+      if(this.activeIndex !== idx) {
+        this.activeIndex = idx;
       }
     }
   }

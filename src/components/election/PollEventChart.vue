@@ -36,12 +36,6 @@
         <a class="text-muted ms-1 cursor-pointer" href="#download" @click="exportAsImage">Grafik herunterladen</a>
       </div>
     </div>
-
-    <div class="container mt-4">
-      <div>
-        <EventSlider :eventsProxy="eventsProxy" v-bind:events="events"/>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -61,7 +55,8 @@ import 'chartjs-adapter-moment';
 export default {
   name: "PollEventChart",
   props: {
-    events: Array,
+    activeIndex: Number,
+    setActiveIndex: Function,
     eventsProxy: Array
   },
   emits: [
@@ -124,13 +119,12 @@ export default {
     this.onEventsChanged()
   },
   watch: {
-    eventsProxy: {
-      handler: function (oldVal, newVal) {
+    activeIndex: {
+      handler: function () {
         if (this.chart) {
           this.onEventsChanged();
         }
-      },
-      deep: true
+      }
     }
   },
   methods: {
@@ -145,10 +139,8 @@ export default {
     isGanttVisible() {
       return window.innerWidth >= 768;
     },
-    isEventActive(id) {
-      return this.eventsProxy.find(function (e) {
-        return e.id === id;
-      }).isActive
+    isEventActive(idx) {
+      return this.activeIndex ===  idx;
     },
     changeYear(prev) {
       if ((prev && this.prevYearDisabled) || (!prev && this.nextYearDisabled)) return;
@@ -350,9 +342,7 @@ export default {
                   if (Math.abs(y - eventY) >= 0.5) return; // Outside of y range
                   if (date < x1 || date > x2) return; // Outside of x range
 
-                  component.eventsProxy.forEach(function (e) {
-                    e.isActive = e.id === dataset.eventId;
-                  });
+                  component.updateActiveIndex(dataset.eventIdx);
 
                   chart._mousemove_date = null;
                   chart._mousemove_x = null;
@@ -532,7 +522,7 @@ export default {
             yAxisID: 'y2',
             isActiveFunction: component.isEventActive,
             isVisible: true,
-            eventId: event.id,
+            eventIdx: event.idx,
             eventName: event.name,
             eventTextAlignment: eventXRange.id,
             eventParty: event.party,
@@ -566,10 +556,7 @@ export default {
         this.renderPollsChart();
       }
 
-      let activeEvent = this.eventsProxy.find(function (e) {
-        return e.isActive;
-      });
-
+      let activeEvent = this.activeIndex >= 0 ? this.eventsProxy[this.activeIndex] : undefined;
       if (activeEvent !== undefined && (activeEvent.start < this.currentChartDate || activeEvent.start >= this.currentChartEndDate)) {
 
         this.chartXRangeSteps.forEach(function (xRange, i) {
@@ -581,6 +568,8 @@ export default {
       } else if (!this.chart._mousemove_active) {
         this.chart.update("none");
       }
+
+
     },
     setGanttStackWeight(isGanttVisible) {
       const ganttStacks = Math.max(...this.chart.data.datasets.filter(function (dataset) {
@@ -608,15 +597,15 @@ export default {
       this.setGanttStackWeight(ganttVisible);
 
       this.chart.update("none")
-    }, 200, false)
+    }, 200, false),
+    updateActiveIndex(idx) {
+      this.setActiveIndex(idx);
+    }
   },
   beforeCreate() {
     polls.config.date_end = new Date(polls.config.date_end);
   },
   created() {
-    this.eventsProxy.forEach(function (event) {
-      event.isActive = false;
-    })
     window.addEventListener("resize", this.onWindowResize);
   },
   unmounted() {

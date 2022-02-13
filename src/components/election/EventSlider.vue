@@ -1,21 +1,16 @@
 <template>
-  <div class="container">
-    <swiper
-        :navigation="true"
-        ref="mySwiper"
-        :options="swiperOptions"
-        @swiper="onSwiper">
-      <swiper-slide v-for="event in events"
-                    v-bind:key="event.id"
-                    ref="swiper">
-        <div class="eventCard card carousel-card" :class="{ active: isActive(event) }"
-             @click="toggleActive($event, event)" :data-event="event.id">
-          <img class="card-img-top" :src="getImgUrl(event)" alt="">
-          <div class="card-img-overlay text-white d-flex flex-column justify-content-between">
-            <div><h4 class="card-title">{{ event.name }}</h4></div>
+  <div class="flicking-container">
 
-            <div v-if="attributions[event.id] !== undefined" class="small text-light text-end">
-              <small>
+    <Flicking ref="flicking" :options="options" :plugins="plugins" @ready="ready=true">
+      <div class="eventCard card carousel-card" v-for="event in eventsProxy"
+           v-bind:key="event.id" :class="{ active: isActive(event) }"
+           @click="toggleActive($event, event)" :data-event="event.id">
+        <img class="card-img-top" :src="getImgUrl(event)" alt="">
+        <div class="card-img-overlay text-white d-flex flex-column justify-content-between">
+          <div><h4 class="card-title">{{ event.name }}</h4></div>
+
+          <div v-if="attributions[event.id] !== undefined" class="small text-light text-end">
+            <small>
               <span class="text-decoration-none text-light attribution-link cursor-pointer attribution-text"
                     data-bs-toggle="tooltip"
                     data-bs-placement="bottom"
@@ -33,46 +28,47 @@
                   aus {{ attributions[event.id].source.name }}
                 </div>
               </span>
-              </small>
-            </div>
+            </small>
           </div>
         </div>
-      </swiper-slide>
-    </swiper>
+      </div>
+    </Flicking>
+    <span class="flicking-arrow-prev"></span>
+    <span class="flicking-arrow-next"></span>
   </div>
 </template>
 
 <script>
+import {Arrow} from "@egjs/flicking-plugins";
+
 const $ = require('jquery')
 window.$ = $
-import {Swiper, SwiperSlide} from 'vue-awesome-swiper'
 import event_images from "../../assets/btw/event_images.json"
-import 'swiper/swiper-bundle.css'
-import SwiperCore, {
-  Navigation
-} from 'swiper';
-
-SwiperCore.use([Navigation]);
+import {Flicking} from "@egjs/vue-flicking";
 
 export default {
   name: "EventSlider",
   props: {
-    events: Array,
-    eventsProxy: Array
+    eventsProxy: Array,
+    activeIndex: Number,
+    updateActiveIndex: Function
   },
   components: {
-    Swiper,
-    SwiperSlide,
-  },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper
-    }
+    Flicking
   },
   data() {
     return {
+      ready:false,
       attributions: event_images,
       currentSlidesPerView: 7,
+      options: {
+        horizontal: true,
+        useResizeObserver: true,
+        align: "center",
+        bound:true,
+        moveType: ["snap", { stopAtEdge: true }]
+      },
+      plugins: [new Arrow({parentEl: document.body})],
       swiperOptions: {
         navigation: true,
         watchSlidesVisibility: true,
@@ -102,27 +98,21 @@ export default {
       },
     }
   },
-  watch:
-      {
-        eventsProxy: {
-          handler: function (oldVal, newVal) {
-            let activeIdx = -1;
-            for (let idx = 0; idx < newVal.length; idx++) {
-              if (newVal[idx].isActive) {
-                activeIdx = idx
-              }
-            }
-            if (activeIdx !== -1) {
-              let idx = Math.max(0, activeIdx - Math.floor(this.currentSlidesPerView / 2))
-              this.swiper.slideTo(idx);
-            }
-          }, deep: true
+  watch: {
+    activeIndex: {
+      handler: function (oldVal, newVal) {
+        //let idx = Math.max(0, newVal)
+        if (this.ready && newVal >= 0) {
+          this.$refs.flicking.moveTo(newVal, 200).catch((err) => {
+            console.log("Flicking error", err)
+          });
         }
-      },
-
+      }
+    }
+  },
   mounted() {
-    console.log('mounted')
-    console.log(this.swiper)
+    //this.slider = new Flicking("#eventsFlicking")
+    //console.log('mounted')
   },
   methods: {
     getImgUrl(event) {
@@ -133,35 +123,18 @@ export default {
         return ""
       }
     },
-    getEventProxy(event) {
-      return this.eventsProxy.find(function (e) {
-        return e.id === event.id;
-      });
-    },
     isActive(event) {
-      return this.getEventProxy(event).isActive;
+      return event.idx === this.activeIndex;
     },
     toggleActive(e, event) {
       if (!$(e.target).hasClass("attribution-link")) {
-
-        let eventProxy = this.getEventProxy(event);
-        eventProxy.isActive = !eventProxy.isActive;
-        this.eventsProxy.forEach(function (e) {
-          if (e !== eventProxy) {
-            e.isActive = false;
-          }
-        });
+        let eventProxy = this.eventsProxy[event.idx];
+        if (this.activeIndex === eventProxy.idx) {
+          this.updateActiveIndex(-1);
+        } else {
+          this.updateActiveIndex(eventProxy.idx);
+        }
       }
-
-    },
-    onSwiper(swiper) {
-      console.log('onSwiper')
-      this.swiper = swiper
-      /*$(".attribution-link").each(function (idx) {
-        new Tooltip($(this), {
-          "title": $(this).find("div").html()
-        })
-      })*/
     },
     onSlideBreakpoint(swiper, breakpointParams) {
       this.currentSlidesPerView = breakpointParams.slidesPerView;
@@ -171,6 +144,28 @@ export default {
 </script>
 
 <style scoped>
+@import "../../../node_modules/@egjs/vue-flicking/dist/flicking.css";
+@import "../../../node_modules/@egjs/flicking-plugins/dist/arrow.css";
+
+.flicking-container {
+  padding: 0 80px 0 80px;
+  position: relative;
+  min-width: 100%;
+}
+
+@media (max-width: 960px) {
+  .flicking-container {
+    padding: 0;
+  }
+}
+
+.flicking-arrow-prev.flicking-arrow-disabled::before, .flicking-arrow-prev.flicking-arrow-disabled::after, .flicking-arrow-next.flicking-arrow-disabled::before, .flicking-arrow-next.flicking-arrow-disabled::after {
+  background-color: #949494 !important;
+}
+
+.flicking-arrow-prev:not(.flicking-arrow-disabled)::before, .flicking-arrow-prev:not(.flicking-arrow-disabled)::after, .flicking-arrow-next:not(.flicking-arrow-disabled)::before, .flicking-arrow-next:not(.flicking-arrow-disabled)::after {
+  background-color: #b5179e !important;
+}
 
 .eventCard.active {
   margin-top: 0;
@@ -184,6 +179,7 @@ export default {
   height: 180px;
   margin-top: 10px;
   transition: margin-top 0.3s ease-out;
+  width: 300px;
 }
 
 .carousel-card {

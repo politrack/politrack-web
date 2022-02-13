@@ -24,6 +24,8 @@ moment.locale('de');
 Vue.prototype.moment = moment;
 Vue.config.productionTip = false
 
+Vue.config.performance = true
+
 new Vue({
   vuetify,
   router: router,

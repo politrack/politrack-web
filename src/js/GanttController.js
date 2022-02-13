@@ -69,7 +69,7 @@ class GanttController extends LineController {
 
             if (this.chart._currently_animating && this.chart._currently_animating_initial)
             {
-                if(!this.getDataset().isActiveFunction(this.getDataset().eventId)) super.draw();
+                if(!this.getDataset().isActiveFunction(this.getDataset().eventIdx)) super.draw();
             } else {
                 super.draw();
             }
@@ -93,7 +93,7 @@ class GanttController extends LineController {
             }
 
 
-            if (this.getDataset().isActiveFunction(this.getDataset().eventId)) {
+            if (this.getDataset().isActiveFunction(this.getDataset().eventIdx)) {
                 ctx.beginPath()
                 ctx.strokeStyle = this.getDataset().eventColor;
                 ctx.lineWidth = 2;
@@ -110,7 +110,7 @@ class GanttController extends LineController {
             ctx.save();
         }
 
-        if (this.getDataset().isActiveFunction(this.getDataset().eventId)) {
+        if (this.getDataset().isActiveFunction(this.getDataset().eventIdx)) {
             let xMax = this.chart._mousemove_active ? this.chart._mousemove_x : x2;
             if (this.getDataset().eventParty === null) {
                 ctx.fillStyle = addAlpha("#af9e7f", 0.1);
@@ -122,7 +122,6 @@ class GanttController extends LineController {
         }
 
         ctx.restore()
-
     }
 }
 
