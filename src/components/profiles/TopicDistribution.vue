@@ -1,17 +1,29 @@
 <template>
   <div class="position-relative">
-    <canvas id="topicDistributionChart"></canvas>
+    <help :text="helpText" :title="helpTitle"/>
+    <div class="position-relative">
+      <canvas id="topicDistributionChart"></canvas>
+    </div>
   </div>
+
 </template>
 
 <script>
 import {Chart, registerables} from "chart.js";
+import Help from "../base/Help";
 
 export default {
   name: "TopicDistribution",
+  components: {Help},
   props: {
     statistics: Object,
     light: Boolean
+  },
+  data() {
+    return {
+      helpTitle: "Themenfokus Erklärung",
+      helpText: "Lorem lorem"
+    }
   },
   mounted() {
     Chart.register(...registerables);
@@ -19,7 +31,6 @@ export default {
   },
   methods: {
     prepareData() {
-
       let data = [];
       let labels = [];
 
@@ -35,7 +46,6 @@ export default {
           borderColor: "#F72585",
           backgroundColor: "rgba(247,37,133,0.73)",
         }],
-
       }
     },
     renderArticleDistributionChart() {

@@ -1,11 +1,15 @@
 <template>
   <v-card class="blur-background rounded-xl pa-5">
-    <canvas id="partiesChart"></canvas>
+    <div class="position-relative">
+      <help :text="helpText" :title="helpTitle" right-padding/>
+      <div class="pe-5"><canvas id="partiesChart"></canvas></div>
+    </div>
   </v-card>
 </template>
 
 <script>
 
+import Help from "../base/Help";
 import {Chart, registerables} from "chart.js";
 import 'chartjs-adapter-moment';
 import parties_config from "../../assets/parties.json"
@@ -15,6 +19,9 @@ export default {
   props: {
     partiesData: Object
   },
+  components: {
+    Help
+  },
   mounted() {
     Chart.register(...registerables);
     if (this.partiesData != null) {
@@ -22,7 +29,10 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      helpTitle: "Parteien Erklärung",
+      helpText: "Lorem lorem"
+    }
   },
   watch: {
     partiesData: {

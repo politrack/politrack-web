@@ -1,11 +1,14 @@
 <template>
-  <div>
-    <canvas id="trendingPoliticiansChart" style="height: 250px"></canvas>
+  <div class="position-relative">
+    <help :text="helpText" :title="helpTitle"/>
+    <div class="pt-5">
+      <canvas id="trendingPoliticiansChart" style="height: 250px"></canvas>
+    </div>
   </div>
 </template>
 
 <script>
-
+import Help from "../base/Help";
 import {Chart, registerables} from "chart.js";
 import ChartPluginLabels from '../../utils/chartjs-plugin-labels'
 
@@ -13,7 +16,13 @@ export default {
   name: "PartiesChart",
   props: ['data'],
   data() {
-    return {}
+    return {
+      helpTitle: "Politiker in den Medien Erklärung",
+      helpText: "Lorem lorem"
+    }
+  },
+  components: {
+    Help
   },
   mounted() {
     Chart.register(...registerables);
