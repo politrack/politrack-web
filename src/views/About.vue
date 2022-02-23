@@ -1,39 +1,55 @@
 <template>
   <v-container>
     <div class="py-5">
-      <h3>Über Uns</h3>
-      <p>
+      <div class="text-h4 mb-3">Über Uns</div>
+      <p class="text-justify">
         PoliTrack ist ein durch das <a href="https://www.bmbf.de/">Bundesministerium für Bildung und Forschung</a>
         gefördertes Projekt, das ein größeres Ziel verfolgt. Hierzu zitieren wir aus unserer Vorhabensbeschreibung.
       </p>
-      <blockquote>
-        <p class="default">
-          Die Entscheidung, in einer Wahl dem einen oder der anderen
-          Politiker*in die Stimme zu
-          geben, kann sehr komplex sein. Am besten orientieren sich Wähler*innen dabei nicht nur am aktuellen
-          Wahlkampf,
-          sondern auch an vergangenen Entscheidungen und Meinungen. Wer mehr über eine*n Bundestagsabgeordnete*n
-          eines
-          Landkreises erfahren möchte, kann beispielsweise eine Online-Suche starten, sich Interviews ansehen und
-          auf
-          Wahlkampfveranstaltungen gehen. All diese Möglichkeiten haben jedoch einen großen Makel: Es fehlt die
-          zeitliche
-          Dimension.
-        </p>
+      <p class="text-justify">
+        Die Entscheidung, in einer Wahl dem einen oder der anderen
+        Politiker*in die Stimme zu
+        geben, kann sehr komplex sein. Am besten orientieren sich Wähler*innen dabei nicht nur am aktuellen
+        Wahlkampf,
+        sondern auch an vergangenen Entscheidungen und Meinungen. Wer mehr über eine*n Bundestagsabgeordnete*n
+        eines
+        Landkreises erfahren möchte, kann beispielsweise eine Online-Suche starten, sich Interviews ansehen und
+        auf
+        Wahlkampfveranstaltungen gehen. All diese Möglichkeiten haben jedoch einen großen Makel: Es fehlt die
+        zeitliche
+        Dimension.
+      </p>
 
-        <p class="default">
-          Eventuell gibt es einen Wikipedia-Artikel, in dem einige der wichtigsten Schwerpunkte zusammengefasst
-          sind.
-          Wir
-          sind überzeugt davon, dass es eine bessere Möglichkeit geben sollte sich über eine*n Politiker*in zu
-          informieren: PoliTrack soll Nachrichtenartikel von verschiedenen Anbietern aus den letzten Jahren
-          analysieren
-          und thematisch gruppieren. Nutzer*innen haben dann die Möglichkeit, sich die Nachrichtenartikel über die
-          für
-          sie
-          relevanten Themen durchzulesen und sich ihre eigene Meinung zu bilden.
-        </p>
-      </blockquote>
+      <p class="text-justify">
+        Eventuell gibt es einen Wikipedia-Artikel, in dem einige der wichtigsten Schwerpunkte zusammengefasst
+        sind.
+        Wir
+        sind überzeugt davon, dass es eine bessere Möglichkeit geben sollte sich über eine*n Politiker*in zu
+        informieren: PoliTrack soll Nachrichtenartikel von verschiedenen Anbietern aus den letzten Jahren
+        analysieren
+        und thematisch gruppieren. Nutzer*innen haben dann die Möglichkeit, sich die Nachrichtenartikel über die
+        für
+        sie
+        relevanten Themen durchzulesen und sich ihre eigene Meinung zu bilden.
+      </p>
+
+      <v-row align="center">
+        <v-col lg="6" cols="12">
+          <div class="text-h4 text-center">Partner</div>
+        </v-col>
+        <v-col lg="4" cols="12" sm="6">
+          <a href="https://www.bmbf.de/">
+            <v-img src="../assets/img/bmbf_logo.png" contain height="100"/>
+          </a>
+        </v-col>
+        <v-col lg="2" cols="12" sm="6">
+          <a href="https://prototypefund.de/">
+            <v-img src="../assets/img/prototypefund.png" contain height="100"/>
+          </a>
+        </v-col>
+
+      </v-row>
+
 
       <v-row>
         <v-col class="offset-lg-2 col-lg-4 col-md-6 col-12">
@@ -70,18 +86,6 @@
           </div>
         </div>
       </v-row>
-
-      <div class="px-4 text-center mb-5">
-        <h2 class="mb-0">Gefördert durch</h2>
-        <v-row>
-          <v-col cols="12" sm="6">
-            <v-img src="../assets/img/bmbf_logo.png" contain height="200"/>
-          </v-col>
-          <v-col cols="12" sm="6" class="pa-5">
-            <v-img src="../assets/img/prototypefund.png" contain height="200"/>
-          </v-col>
-        </v-row>
-      </div>
     </div>
   </v-container>
 </template>
@@ -98,61 +102,6 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Lora|Playfair+Display:700i,900');
-
-html,
-body {
-  margin: 0;
-  width: 100%;
-}
-
-h1, h2, p, i, a {
-  color: rgba(0, 0, 0, 0.84);
-  text-rendering: optimizeLegibility;
-}
-
-h1 {
-  font-family: "Playfair Display", serif;
-  text-align: left;
-  margin-bottom: 8px;
-}
-
-h2 {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  padding: 0;
-  margin: 56px 0 -13px -1.883px;
-  text-align: left;
-  line-height: 34.5px;
-  letter-spacing: -0.45px;
-}
-
-p:not(.default), i:not(.fas):not(.fab), a {
-  margin-top: 21px;
-  font-family: "Lora";
-  letter-spacing: -0.03px;
-  line-height: 1.58;
-}
-
-a {
-  text-decoration: underline;
-}
-
-blockquote {
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  letter-spacing: -0.36px;
-  line-height: 2rem;
-  overflow-wrap: break-word;
-  margin: 20px 0 33px 0;
-  /* text-align: center; */
-  color: rgba(0, 0, 0, 0.68);
-  padding: 0 0 0 50px;
-}
-
-.text-decoration-none {
-  text-decoration: none;
-}
 
 .rounded-circle {
   border: 5px solid #ffffff;
