@@ -1,8 +1,7 @@
 <template>
   <div class="flicking-container">
-
     <Flicking ref="flicking" :options="options" :plugins="plugins" @ready="ready=true">
-      <v-card class="eventCard card carousel-card mx-2" v-for="event in eventsProxy"
+      <v-card class="eventCard card carousel-card mx-1" v-for="event in eventsProxy"
               flat
               v-bind:key="event.id" :class="{ active: isActive(event) }"
               @click="toggleActive($event, event)" :data-event="event.id">
@@ -40,10 +39,11 @@ export default {
     return {
       ready: false,
       attributions: event_images,
-      // Todo: make adjustable based on breakpoints
-      currentSlidesPerView: 5,
+      currentSlidesPerView: 7,
+      currentMoveEvent: null,
       options: {
         horizontal: true,
+        interruptable: true,
         useResizeObserver: true,
         align: "center",
         bound: true,
@@ -81,19 +81,13 @@ export default {
   },
   watch: {
     activeIndex: {
-      handler: function (oldVal, newVal) {
+      handler: function (newVal) {
         //let idx = Math.max(0, newVal)
         if (this.ready && newVal >= 0) {
-          this.$refs.flicking.moveTo(newVal, 200).catch((err) => {
-            console.log("Flicking error", err)
-          });
+          this.$refs.flicking.moveTo(newVal, 200).catch(() => {});
         }
       }
     }
-  },
-  mounted() {
-    //this.slider = new Flicking("#eventsFlicking")
-    //console.log('mounted')
   },
   methods: {
     getImgUrl(event) {
@@ -161,6 +155,7 @@ export default {
   margin-top: 10px;
   transition: margin-top 0.3s ease-out;
   width: 180px;
+  max-width: 100%;
 }
 
 .carousel-card {

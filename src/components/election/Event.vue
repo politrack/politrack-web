@@ -6,11 +6,11 @@
         }}
       </router-link>
     </h3>
-    <div class="row">
-      <div class="col-md-3 mt-1 article-container" v-for="article in articles" :key="article.id">
-        <Article v-bind:article="article" v-bind:currentDate="currentDate"/>
-      </div>
-    </div>
+    <v-row>
+      <v-col lg="4" sm="6" cols="12" v-for="article in articles" :key="article._id">
+        <NewsCard :article="article" :max-width="300" :showPlaceholderImage="true" />
+      </v-col>
+    </v-row>
     <div class="text-end py-3">
       <router-link :to="{name: 'event', params: {id: ev.id}}" class="text-decoration-none">
         Zum Event
@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import Article from "./Article.vue"
+import NewsCard from "../base/NewsCard";
 
 export default {
   name: "Event",
-  components: {Article},
+  components: {NewsCard},
   props: {
     ev: Object,
     currentDate: Date
@@ -40,8 +40,8 @@ export default {
     let articlesBySource = {};
 
     this.ev.articles.forEach(function (article){
-      if(!(article.info.source in articlesBySource)) articlesBySource[article.info.source] = [];
-      if(!article.info.is_paid) articlesBySource[article.info.source].push(article);
+      if(!(article.source in articlesBySource)) articlesBySource[article.source] = [];
+      if(!article.is_paid) articlesBySource[article.source].push(article);
     });
 
     let sources = Object.keys(articlesBySource);

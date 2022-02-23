@@ -29,35 +29,35 @@
       </div>
 
       <div class="bg-light py-5">
-        <div class="container">
+        <v-container>
           <h3 class="mb-4">Alle Artikel</h3>
           <form class="mb-3">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="input-group rounded">
-                  <label class="input-group-text border-0 bg-transparent" id="search-addon" for="searchInput">
-                    <i class="fas fa-search"></i>
-                  </label>
-                  <input id="searchInput" type="search" class="form-control rounded" placeholder="Suche"
-                         v-model="search"
-                         aria-describedby="search-addon"/>
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <label v-for="source in sources" :key="source.label" class="me-3">
-                  <input type="checkbox" :value="source.id" v-model="checkedSources">
-                  {{ source.label }} ({{ source.count }})
-                </label>
-              </div>
-            </div>
+            <v-row>
+              <v-col lg="4">
+                <v-text-field v-model="search" placeholder="Suche">
+                  <v-icon slot="prepend" small>
+                    fas fa-search
+                  </v-icon>
+                </v-text-field>
+
+              </v-col>
+              <v-col lg="8">
+                <v-checkbox class="shrink mt-0 p-0 d-inline-block me-2"
+                            v-for="source in sources" :key="source.label"  :value="source.id"
+                            v-model="checkedSources" :label="source.label + ' (' + source.count + ')'">
+                </v-checkbox>
+              </v-col>
+            </v-row>
           </form>
-          <div class="row">
-          <div v-for="article in filteredArticles" :key="article.id" class="mb-1 col-md-6 col-lg-4">
-            <Article :article="article"/>
+          <v-row>
+            <v-col lg="4" sm="6" cols="12" v-for="article in filteredArticles" :key="article._id">
+              <NewsCard :article="article" :max-width="300" :showPlaceholderImage="true"/>
+            </v-col>
+          </v-row>
+          <div v-if="!filteredArticles.length" class="text-muted py-3 text-center">Zu dieser Anfrage wurden keine
+            Artikel gefunden
           </div>
-          </div>
-          <div v-if="!filteredArticles.length" class="text-muted py-3 text-center">Zu dieser Anfrage wurden keine Artikel gefunden</div>
-        </div>
+        </v-container>
       </div>
     </div>
   </div>
@@ -65,9 +65,9 @@
 
 <script>
 import sources_config from "../../assets/btw/sources_config.json";
-import Article from "../../components/election/Article.vue";
 import EventArticlesOverTime from "../../components/election/events/EventArticlesOverTime.vue"
 import Fuse from 'fuse.js'
+import NewsCard from "../../components/base/NewsCard";
 
 let moment = require("moment");
 
@@ -86,8 +86,8 @@ export default {
     filteredArticles() {
       let component = this;
 
-      let filtered_articles = this.event.articles.filter(function (a){
-        return component.checkedSources.includes(a.info.source);
+      let filtered_articles = this.event.articles.filter(function (a) {
+        return component.checkedSources.includes(a.source);
       });
 
       return this.searchInArticles(filtered_articles);
@@ -97,19 +97,20 @@ export default {
         s.count = 0;
       });
 
-      this.searchInArticles(this.event.articles).forEach(function (a){
-        sources_config[a.info.source].count++;
+      this.searchInArticles(this.event.articles).forEach(function (a) {
+        sources_config[a.source].count++;
       });
 
       return Object.values(sources_config);
     }
   },
   components: {
-    Article, EventArticlesOverTime
+    NewsCard,
+    EventArticlesOverTime
   },
   methods: {
     searchInArticles(articles) {
-      if(!this.search.trim().length) {
+      if (!this.search.trim().length) {
         return articles;
       }
 
@@ -120,7 +121,7 @@ export default {
 
       const fuse = new Fuse(articles, options)
 
-      return fuse.search(this.search.trim()).map(function (entry){
+      return fuse.search(this.search.trim()).map(function (entry) {
         return entry.item;
       })
     },
@@ -142,8 +143,8 @@ export default {
       s.count = 0;
     });
 
-    this.event.articles.forEach(function (a){
-      sources_config[a.info.source].count++;
+    this.event.articles.forEach(function (a) {
+      sources_config[a.source].count++;
     });
 
     this.checkedSources = Object.values(sources_config).map(function (s) {
@@ -155,4 +156,23 @@ export default {
 
 <style scoped>
 
+.shrink ::v-deep .v-input--selection-controls__input {
+  transform: scale(0.6);
+  margin-right: 0;
+}
+
+.shrink ::v-deep .v-messages {
+  display: none !important;
+}
+
+.shrink ::v-deep .v-input__slot {
+  margin-bottom: 0 !important;
+}
+::v-deep .v-input--checkbox .v-label {
+  font-size: 13px;
+}
+
+::v-deep input[type=checkbox] {
+  transform: scale(1.5);
+}
 </style>

@@ -14,7 +14,6 @@
           <a href="https://twitter.com/pltrck">Twitter</a>.
           Für Anregungen zu neuen Themen schreibt uns gerne eine
           <a href="mailto:politrack@gmx.de">Mail</a>.
-          {{ activeIndex }}
         </p>
       </div>
     </div>
@@ -60,6 +59,14 @@ export default {
       events: events,
       currentDate: null,
       activeIndex: 0,
+      lastValidIndex: 0 // We want to display the event at the bottom even when no active event is set.
+    }
+  },
+  watch: {
+    activeIndex: function (newVal) {
+      if(newVal >= 0) {
+        this.lastValidIndex = newVal;
+      }
     }
   },
   created() {
@@ -113,7 +120,7 @@ export default {
   },
   computed: {
     event(){
-      return this.activeIndex >= 0? this.events[this.activeIndex] : null;
+      return this.activeIndex >= 0? this.events[this.activeIndex] : this.events[this.lastValidIndex];
     }
   },
   methods: {
@@ -134,10 +141,6 @@ export default {
 </script>
 
 <style scoped>
-.header-container {
-  font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
-}
-
 .slide-fade-enter-active {
   transition: all 0.5s ease-out;
 }

@@ -10,13 +10,13 @@
           <font-awesome-icon :icon="['fas', 'chevron-left']"/> {{ prevYearText }}
         </span>
       </div>
-      <div class="col-lg-6 small text-muted text-center d-none d-lg-block">
-        Quelle: <a class="text-muted" href="https://dawum.de/">dawum.de</a>
+      <div class="col-lg-6 caption text-center d-none d-lg-block">
+        Quelle: <a class="grey--text caption" href="https://dawum.de/">dawum.de</a>
         &middot;
-        <router-link :to="{ name: 'about', hash: '#polls' }" class="text-muted">Methodik</router-link>
+        <router-link :to="{ name: 'about', hash: '#polls' }" class="grey--text caption">Methodik</router-link>
         &middot;
-        <font-awesome-icon :icon="['fas','download']"/>
-        <a class="text-muted ms-1 cursor-pointer" href="#download" @click="exportAsImage">Grafik herunterladen</a>
+        <v-icon x-small>fa-solid fa-download</v-icon>
+        <a class="grey--text caption ms-1 cursor-pointer" href="#download" @click="exportAsImage">Grafik herunterladen</a>
       </div>
       <div class="col-6 col-lg-3 text-end">
         <span v-if="!nextYearDisabled" class="text-decoration-none cursor-pointer text-primary"
@@ -27,13 +27,13 @@
     </div>
 
     <div class="row chart-width d-lg-none mt-2">
-      <div class="col-12 small text-muted text-center">
-        Quelle: <a class="text-muted" href="https://dawum.de/">dawum.de</a>
+      <div class="col-12 grey--text text-center caption">
+        Quelle: <a class="grey--text caption" href="https://dawum.de/">dawum.de</a>
         &middot;
-        <router-link :to="{ name: 'about', hash: '#polls' }" class="text-muted">Methodik</router-link>
+        <router-link :to="{ name: 'about', hash: '#polls' }" class="grey--text caption">Methodik</router-link>
         &middot;
-        <font-awesome-icon :icon="['fas','download']"/>
-        <a class="text-muted ms-1 cursor-pointer" href="#download" @click="exportAsImage">Grafik herunterladen</a>
+        <v-icon x-small>fa-solid fa-download</v-icon>
+        <a class="grey--text caption ms-1 cursor-pointer" href="#download" @click="exportAsImage">Grafik herunterladen</a>
       </div>
     </div>
   </div>
