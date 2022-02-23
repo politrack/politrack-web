@@ -47,7 +47,7 @@
               <ICountUp
                   class="count-text"
                   :delay="100"
-                  :endVal="510312"
+                  :endVal="counts.articles"
               />
             </v-card>
           </v-col>
@@ -58,7 +58,7 @@
               <ICountUp
                   class="count-text"
                   :delay="100"
-                  :endVal="21031"
+                  :endVal="counts.politicians"
               />
             </v-card>
           </v-col>
@@ -69,7 +69,7 @@
               <ICountUp
                   class="count-text"
                   :delay="100"
-                  :endVal="21031"
+                  :endVal="counts.quotes"
               />
             </v-card>
           </v-col>
@@ -174,6 +174,7 @@
 <script>
 
 import ICountUp from 'vue-countup-v2';
+import axios from "axios";
 
 export default {
   name: "LandingPage",
@@ -181,6 +182,10 @@ export default {
     ICountUp
   },
   mounted() {
+    axios.get(process.env.VUE_APP_URL + '/web/data/landing.json').then((data) => {
+      this.counts = data.data['counts']
+    });
+
     switch (this.$vuetify.breakpoint.name) {
       case "lg":
       case "xl":
@@ -201,6 +206,11 @@ export default {
   data() {
     return {
       timer: null,
+      counts: {
+        articles: 0,
+        politicians: 0,
+        quotes: 0
+      },
       currentTimingStep: 0,
       changeInterval: 5000,
       updateProgressSteps: 50,
