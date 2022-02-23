@@ -1,79 +1,98 @@
 <template>
-  <div>
-    <div class="header-content" v-if="politician">
-      <v-container>
-        <v-row>
-          <v-col cols="12" md="8">
-            <v-card rounded class="pa-3 h-100 rounded-xl blur-background opaque">
-              <ProfileCard :politician="politician.politician" :mentionedWith="politician.mentionedWith"
-                           :statistics="politician.statistics"/>
-            </v-card>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-card class="pa-3 rounded-xl blur-background opaque" obsolet="accent-background">
-              <TopicDistribution :light="false" :statistics="this.politician.statistics" style="height: 180px"/>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </div>
-
-    <div class="content-container pt-5">
-      <div class="content" v-if="politician">
-        <div>
-          <h2 class="mb-2">Aktuelle Berichte</h2>
-          <div class="overflow-x-hidden flicking-container">
-            <Flicking
-                :plugins="pluginsArticles"
-                :options="options">
-              <div v-for="article in politician.articles"
-                   :key="article.id" class="align-self-center">
-                <div class="pb-2 pt-2 mx-3 d-flex align-center justify-center">
-                  <news-card :article="article" :max-width="cardWidth" :showPlaceholderImage="true" class="rounded-xl"/>
-                </div>
-              </div>
-            </Flicking>
-            <span class="flicking-arrow-prev flicking-arrow-prev-articles"></span>
-            <span class="flicking-arrow-next flicking-arrow-next-articles"></span>
-          </div>
-        </div>
-
-        <div class="content mt-3" v-if="politician && politician.quotes.length > 0">
-          <h2 class="mb-2">Aktuelle Aussagen</h2>
+  <div class="h-100">
+    <div v-if="!loading && !notFound">
+      <div class="header-content" v-if="politician">
+        <v-container>
           <v-row>
-            <v-col lg="12">
-              <div class="overflow-x-hidden flicking-container">
-                <Flicking
-                    :plugins="pluginsQuotes"
-                    :options="options">
-                  <div v-for="(quote, index) in politician.quotes"
-                       :key="index" class="align-self-center">
-                    <div class="pb-2 pt-2 d-flex align-center justify-center mx-3">
-                      <SingleQuote :quote="quote" :maxWidth="cardWidth"/>
-                    </div>
-                  </div>
-                </Flicking>
-                <span class="flicking-arrow-prev flicking-arrow-prev-quotes"></span>
-                <span class="flicking-arrow-next flicking-arrow-next-quotes"></span>
-              </div>
+            <v-col cols="12" md="8">
+              <v-card rounded class="pa-3 h-100 rounded-xl blur-background opaque">
+                <ProfileCard :politician="politician.politician" :mentionedWith="politician.mentionedWith"
+                             :statistics="politician.statistics"/>
+              </v-card>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-card class="pa-3 rounded-xl blur-background opaque" obsolet="accent-background">
+                <TopicDistribution :light="false" :statistics="this.politician.statistics" style="height: 180px"/>
+              </v-card>
             </v-col>
           </v-row>
-        </div>
+        </v-container>
       </div>
 
-      <div class="content-end"></div>
-    </div>
+      <div class="content-container pt-5">
+        <div class="content" v-if="politician">
+          <div>
+            <h2 class="mb-2">Aktuelle Berichte</h2>
+            <div class="overflow-x-hidden flicking-container">
+              <Flicking
+                  :plugins="pluginsArticles"
+                  :options="options">
+                <div v-for="article in politician.articles"
+                     :key="article.id" class="align-self-center">
+                  <div class="pb-2 pt-2 mx-3 d-flex align-center justify-center">
+                    <news-card :article="article" :max-width="cardWidth" :showPlaceholderImage="true"
+                               class="rounded-xl"/>
+                  </div>
+                </div>
+              </Flicking>
+              <span class="flicking-arrow-prev flicking-arrow-prev-articles"></span>
+              <span class="flicking-arrow-next flicking-arrow-next-articles"></span>
+            </div>
+          </div>
 
-    <div class="bottom-container" v-if="politician">
-      <h2 class="mb-2 text-center mt-5">Präsenz in den Medien</h2>
-      <v-row class="px-5 pb-3">
-        <v-col lg="8">
-          <ArticlesOverTime :statistics="politician.statistics"/>
-        </v-col>
-        <v-col lg="4">
-          <SourceDistribution :statistics="politician.statistics" style="height: 250px"/>
-        </v-col>
-      </v-row>
+          <div class="content mt-3" v-if="politician && politician.quotes.length > 0">
+            <h2 class="mb-2">Aktuelle Aussagen</h2>
+            <v-row>
+              <v-col lg="12">
+                <div class="overflow-x-hidden flicking-container">
+                  <Flicking
+                      :plugins="pluginsQuotes"
+                      :options="options">
+                    <div v-for="(quote, index) in politician.quotes"
+                         :key="index" class="align-self-center">
+                      <div class="pb-2 pt-2 d-flex align-center justify-center mx-3">
+                        <SingleQuote :quote="quote" :maxWidth="cardWidth"/>
+                      </div>
+                    </div>
+                  </Flicking>
+                  <span class="flicking-arrow-prev flicking-arrow-prev-quotes"></span>
+                  <span class="flicking-arrow-next flicking-arrow-next-quotes"></span>
+                </div>
+              </v-col>
+            </v-row>
+          </div>
+        </div>
+        <div class="content-end"></div>
+      </div>
+
+      <div class="bottom-container" v-if="politician">
+        <h2 class="mb-2 text-center mt-5">Präsenz in den Medien</h2>
+        <v-row class="px-5 pb-3">
+          <v-col lg="8">
+            <ArticlesOverTime :statistics="politician.statistics"/>
+          </v-col>
+          <v-col lg="4">
+            <SourceDistribution :statistics="politician.statistics" style="height: 250px"/>
+          </v-col>
+        </v-row>
+      </div>
+    </div>
+    <div v-if="loading">
+      <v-progress-linear indeterminate></v-progress-linear>
+    </div>
+    <div v-if="notFound" class="h-100 mt-5">
+      <v-container fill-height fluid>
+        <v-row align="center"
+               justify="center">
+          <v-alert
+              text
+              prominent
+              type="error"
+              icon="fa-solid fa-file-excel">
+            Für diesen Politiker existieren leider keine Artikel in unserem Datensatz.
+          </v-alert>
+        </v-row>
+      </v-container>
     </div>
   </div>
 </template>
@@ -103,8 +122,8 @@ export default {
     Flicking
   },
   computed: {
-    cardWidth: function (){
-      return Math.min(this.windowWidth-50, 300);
+    cardWidth: function () {
+      return Math.min(this.windowWidth - 50, 300);
     },
   },
   data() {
@@ -112,6 +131,8 @@ export default {
       windowWidth: window.innerWidth,
       id: null,
       politician: null,
+      loading: false,
+      notFound: false,
       options: {
         align: "prev",
         bound: true,
@@ -135,6 +156,7 @@ export default {
   },
   mounted() {
     this.id = this.$route.params.id;
+    this.loading = true
     axios.get(process.env.VUE_APP_URL + '/web/data/politicians/' + this.id + '.json').then((resp) => {
       let result = resp.data
       this.politician = {
@@ -147,14 +169,22 @@ export default {
         'mentionedWith': result['mentionedWith']
       }
       this.initializeSortedEntries();
+      this.loading = false
+    }).catch((e) => {
+      this.loading = false
+      console.log(e.response.status)
+      if (e.response.status === 404) {
+        this.notFound = true
+        console.log('not found')
+      }
     })
     window.addEventListener('resize', () => {
       this.windowWidth = window.innerWidth;
     })
   },
   methods: {
-    cleanupQuotes(quotes){
-      return quotes.filter(function (item){
+    cleanupQuotes(quotes) {
+      return quotes.filter(function (item) {
         return item.quote.split(' ').length > 4;
       })
     },
@@ -197,6 +227,7 @@ export default {
 .content-container > .content {
   padding: 0 70px 0 70px
 }
+
 .bottom-container {
   padding: 0 70px 10px 70px
 }
