@@ -82,7 +82,6 @@ export default {
               display: false,
               position: "right"
             },
-            tooltip: false
           }
         }
       });
