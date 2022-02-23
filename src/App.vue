@@ -26,9 +26,11 @@
                 Dashboard
               </v-btn>
             </router-link>
-            <v-btn small class="me-4" rounded outlined>
-              Kontakt
-            </v-btn>
+            <router-link :to="{'name': 'chronic'}" class="text-decoration-none">
+              <v-btn small class="me-4" rounded outlined>
+                Bundestagswahl 21
+              </v-btn>
+            </router-link>
             <a class="text-decoration-none"
                href="https://github.com/politrack"
                target="_blank"

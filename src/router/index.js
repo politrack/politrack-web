@@ -79,7 +79,7 @@ export default new Router({
             }
         },
         {
-            path: '/btw',
+            path: '/btw21',
             name: 'chronic',
             component: ElectionCampaignChronic
         },

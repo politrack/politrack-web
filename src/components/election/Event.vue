@@ -1,7 +1,7 @@
 <template>
   <div class="events">
-    <h3 class="mt-3">
-      <router-link class="text-decoration-none text-dark" :to="{name: 'event', params: {id: ev.id}}">{{
+    <h3 class="mt-3 mb-3">
+      <router-link class="text-decoration-none black--text" :to="{name: 'event', params: {id: ev.id}}">{{
           ev.name
         }}
       </router-link>
@@ -70,5 +70,8 @@ export default {
 
 <style scoped>
 
+h3 {
+  font-size: 1.75rem;
+}
 
 </style>

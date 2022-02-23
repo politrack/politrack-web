@@ -2,36 +2,16 @@
   <div class="flicking-container">
 
     <Flicking ref="flicking" :options="options" :plugins="plugins" @ready="ready=true">
-      <div class="eventCard card carousel-card" v-for="event in eventsProxy"
-           v-bind:key="event.id" :class="{ active: isActive(event) }"
-           @click="toggleActive($event, event)" :data-event="event.id">
-        <img class="card-img-top" :src="getImgUrl(event)" alt="">
-        <div class="card-img-overlay text-white d-flex flex-column justify-content-between">
-          <div><h4 class="card-title">{{ event.name }}</h4></div>
-
-          <div v-if="attributions[event.id] !== undefined" class="small text-light text-end">
-            <small>
-              <span class="text-decoration-none text-light attribution-link cursor-pointer attribution-text"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="bottom"
-                    data-bs-trigger="focus"
-                    tabindex="0"
-                    data-bs-html="true">
-                Foto von {{ attributions[event.id].author.first_name }}
-                {{ attributions[event.id].author.last_name }}
-                <div style="display: none;">
-                  <a :href="attributions[event.id].author.url">
-                    {{ attributions[event.id].author.first_name }}
-                    {{ attributions[event.id].author.last_name }}</a>,
-                  <a :href="attributions[event.id].license.url">
-                    {{ attributions[event.id].license.name }}</a>
-                  aus {{ attributions[event.id].source.name }}
-                </div>
-              </span>
-            </small>
+      <v-card class="eventCard card carousel-card mx-2" v-for="event in eventsProxy"
+              flat
+              v-bind:key="event.id" :class="{ active: isActive(event) }"
+              @click="toggleActive($event, event)" :data-event="event.id">
+        <v-img class="card-img-top" :src="getImgUrl(event)" alt="">
+          <div class="card-img-overlay white--text">
+            <v-card-title>{{ event.name }}</v-card-title>
           </div>
-        </div>
-      </div>
+        </v-img>
+      </v-card>
     </Flicking>
     <span class="flicking-arrow-prev"></span>
     <span class="flicking-arrow-next"></span>
@@ -58,15 +38,16 @@ export default {
   },
   data() {
     return {
-      ready:false,
+      ready: false,
       attributions: event_images,
-      currentSlidesPerView: 7,
+      // Todo: make adjustable based on breakpoints
+      currentSlidesPerView: 5,
       options: {
         horizontal: true,
         useResizeObserver: true,
         align: "center",
-        bound:true,
-        moveType: ["snap", { stopAtEdge: true }]
+        bound: true,
+        moveType: ["snap", {stopAtEdge: true}]
       },
       plugins: [new Arrow({parentEl: document.body})],
       swiperOptions: {
@@ -179,14 +160,14 @@ export default {
   height: 180px;
   margin-top: 10px;
   transition: margin-top 0.3s ease-out;
-  width: 300px;
+  width: 180px;
 }
 
 .carousel-card {
   text-align: left;
 }
 
-.carousel-card img {
+.carousel-card .card-img-top {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -195,9 +176,11 @@ export default {
 .carousel-card .card-img-overlay {
   background: rgba(144, 144, 144, .7);
   transition: background-color .3s;
+  height: 100%;
 }
 
 .carousel-card.active .card-img-overlay {
+  z-index: 30;
   background: rgba(144, 144, 144, .3);
 }
 

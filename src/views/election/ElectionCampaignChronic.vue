@@ -43,8 +43,6 @@ import Event from '../../components/election/Event.vue'
 import EventSlider from "../../components/election/EventSlider";
 import IntervalTree from '@flatten-js/interval-tree'
 
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap"
 
 const $ = require('jquery')
 window.$ = $
