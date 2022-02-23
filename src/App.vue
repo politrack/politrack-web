@@ -78,9 +78,10 @@
             class=" py-4 text-center"
             cols="12">
           <span>{{ new Date().getFullYear() }} — <strong>PoliTrack</strong></span><br>
-          <small class="me-3 float-end">
-            <a href="http://www.freepik.com" class="white--text text-decoration-none">Vektorgrafiken designed von
-              pikisuperstar / Freepik</a>
+          <small class="me-3 float-end text-end">
+            <a href="http://www.freepik.com" class="white--text text-decoration-none" target="_blank">Vektorgrafiken designed von
+              pikisuperstar / Freepik</a><br>
+            <a target="_blank" class="white--text text-decoration-none" href="https://bgjar.com">SVG Hintergründe von BGJar</a>
           </small>
         </v-col>
       </v-row>

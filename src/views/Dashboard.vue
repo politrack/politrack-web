@@ -24,8 +24,8 @@
           </v-row>
           <v-row>
             <v-col cols="12" lg="4">
-              <h3 class="text-center">Aktuell beliebt</h3>
-              <TrendingPoliticiansGrid v-if="politicians" :politicians="politicians"/>
+              <h3 class="text-center">Aktueller Themenfokus</h3>
+              <topic-distribution v-if="statistics" :statistics="statistics" light class="px-5"/>
             </v-col>
             <v-col cols="12" lg="4">
               <h3 class="text-center">Aktuelle Zitate</h3>
@@ -46,23 +46,10 @@
         <v-container>
 
           <div class="text-h2">Schlagzeilen</div>
-          <div class="d-flex justify-end mt-5">
-            <v-btn color="accent" rounded @click="topicDistributionVisible=!topicDistributionVisible">
-              <span v-if="topicDistributionVisible"><v-icon>fas fa-chevron-right</v-icon></span>
-              <span v-else>Aktuelle Themen</span>
-            </v-btn>
-          </div>
           <div class="position-relative">
             <div v-if="topics">
               <TopicSlider class="mt-2" :topics="topics"/>
             </div>
-            <v-slide-y-reverse-transition>
-              <v-card elevation="4" class="topic-distribution-container rounded-xl blur-background"
-                      v-if="topicDistributionVisible" :key="topicDistributionVisible">
-                <h3 class="text-center">Themenfokus</h3>
-                <topic-distribution v-if="statistics" :statistics="statistics"/>
-              </v-card>
-            </v-slide-y-reverse-transition>
           </div>
 
         </v-container>
@@ -73,7 +60,7 @@
       <div class="overlay">
 
         <v-container>
-          <div class="text-h3">Parteien im Fokus</div>
+          <div class="text-h4">Parteien im Fokus</div>
 
           <v-row class="mt-5">
             <v-col md="6" cols="12">
@@ -102,7 +89,6 @@ import TopicDistribution from "../components/profiles/TopicDistribution";
 import SearchBar from "../components/dashboard/SearchBar";
 import TopicSlider from "../components/dashboard/TopicSlider";
 import PeopleInParties from "../components/dashboard/PeopleInParties";
-import TrendingPoliticiansGrid from "../components/dashboard/TrendingPoliticiansGrid";
 import axios from 'axios'
 import parties_config from "../assets/parties.json"
 
@@ -148,8 +134,7 @@ export default {
     QuotesCard,
     TopicSlider,
     SearchBar,
-    PeopleInParties,
-    TrendingPoliticiansGrid
+    PeopleInParties
   }
 }
 </script>

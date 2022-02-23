@@ -37,6 +37,7 @@ export default {
           borderJoinStyle: "round",
           pointRadius: 0.5,
           tension: 0.4,
+          stepped: true,
           label: "Neue Artikel",
           yAxisID: "y"
         }]
