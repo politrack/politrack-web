@@ -1,31 +1,36 @@
 <template>
-  <div style="background: white">
-    <div class="jumbotron jumbotron-fluid mt-3">
-      <div class="container header-container">
-        <h1>Die Themen des Wahlkampfes</h1>
-        <p class="">Mithilfe von künstlicher Intelligenz
-          haben wir Artikel über politisch relevante Ereignisse nach Themen gruppiert
-          und diese zeitlich mit den Umfragewerten zur Bundestagswahl verknüpft.
-          Die Punkte repräsentieren die Ergebnisse einzelner Umfragen, während die Linien den
-          Trend über die wichtigsten Umfragen im jeweiligen Zeitraum widerspiegeln.
-          In der nächsten Zeit werden wir weitere Analysen über die politische Berichterstattung in Deutschland
-          erstellen.
-          Um immer auf dem neusten Stand zu bleiben, folgt uns gerne auf
-          <a href="https://twitter.com/pltrck">Twitter</a>.
-          Für Anregungen zu neuen Themen schreibt uns gerne eine
-          <a href="mailto:politrack@gmx.de">Mail</a>.
-        </p>
+  <div>
+    <div class="header-container">
+      <div class="overlay">
+        <v-container>
+          <h1>Die Themen des Wahlkampfes</h1>
+          <p class="">Mithilfe von künstlicher Intelligenz
+            haben wir Artikel über politisch relevante Ereignisse nach Themen gruppiert
+            und diese zeitlich mit den Umfragewerten zur Bundestagswahl verknüpft.
+            Die Punkte repräsentieren die Ergebnisse einzelner Umfragen, während die Linien den
+            Trend über die wichtigsten Umfragen im jeweiligen Zeitraum widerspiegeln.
+            In der nächsten Zeit werden wir weitere Analysen über die politische Berichterstattung in Deutschland
+            erstellen.
+            Um immer auf dem neusten Stand zu bleiben, folgt uns gerne auf
+            <a href="https://twitter.com/pltrck">Twitter</a>.
+            Für Anregungen zu neuen Themen schreibt uns gerne eine
+            <a href="mailto:politrack@gmx.de">Mail</a>.
+          </p>
+        </v-container>
       </div>
     </div>
 
-    <PollEventChart :eventsProxy="eventsProxy" :activeIndex="activeIndex" :setActiveIndex="setEventActive"
-                    @onTimelineUpdate="onTimelineUpdate"/>
+    <div class="white py-5">
 
-    <div class="container mt-4">
-      <div>
-        <EventSlider :eventsProxy="eventsProxy" :activeIndex="activeIndex" :updateActiveIndex="setEventActive"/>
-      </div>
+      <PollEventChart :eventsProxy="eventsProxy" :activeIndex="activeIndex" :setActiveIndex="setEventActive"
+                      @onTimelineUpdate="onTimelineUpdate"/>
+      <v-container class="mt-4">
+        <div>
+          <EventSlider :eventsProxy="eventsProxy" :activeIndex="activeIndex" :updateActiveIndex="setEventActive"/>
+        </div>
+      </v-container>
     </div>
+
 
     <div class="position-relative container mb-3" v-if="event !== null">
       <v-slide-y-transition hide-on-leave>
@@ -64,7 +69,7 @@ export default {
   },
   watch: {
     activeIndex: function (newVal) {
-      if(newVal >= 0) {
+      if (newVal >= 0) {
         this.lastValidIndex = newVal;
       }
     }
@@ -119,8 +124,8 @@ export default {
 
   },
   computed: {
-    event(){
-      return this.activeIndex >= 0? this.events[this.activeIndex] : this.events[this.lastValidIndex];
+    event() {
+      return this.activeIndex >= 0 ? this.events[this.activeIndex] : this.events[this.lastValidIndex];
     }
   },
   methods: {
@@ -131,7 +136,7 @@ export default {
       this.setEventActive(targetIdx);
     },
     setEventActive(idx) {
-      if(this.activeIndex !== idx) {
+      if (this.activeIndex !== idx) {
         this.activeIndex = idx;
       }
     }
@@ -141,24 +146,18 @@ export default {
 </script>
 
 <style scoped>
-.slide-fade-enter-active {
-  transition: all 0.5s ease-out;
+.header-container {
+  margin-top: -64px;
+  background-image: url('../../assets/img/landing_page/news-image.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
 }
 
-.slide-fade-leave-active {
-  transition: all 0s ease-out;
+.header-container > div.overlay {
+  padding-bottom: 64px;
+  padding-top: 84px;
+  background-color: rgba(0, 0, 0, .65)
 }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(50px);
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.events {
-
-}
 </style>

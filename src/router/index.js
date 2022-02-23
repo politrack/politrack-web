@@ -81,7 +81,10 @@ export default new Router({
         {
             path: '/btw21',
             name: 'chronic',
-            component: ElectionCampaignChronic
+            component: ElectionCampaignChronic,
+            meta: {
+                headerTransparent: true
+            }
         },
         {
             path: '/btw21/:id',
