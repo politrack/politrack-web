@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-if="loading">
+      <v-progress-linear indeterminate></v-progress-linear>
+    </div>
     <div class="header-container">
       <div class="overlay">
         <v-container>
@@ -22,7 +25,7 @@
               </div>
             </v-col>
           </v-row>
-          <v-row>
+          <v-row v-if="!loading">
             <v-col cols="12" lg="4">
               <h3 class="text-center">Aktueller Themenfokus</h3>
               <topic-distribution v-if="statistics" :statistics="statistics" light class="px-5"/>
@@ -41,7 +44,7 @@
         </v-container>
       </div>
     </div>
-    <div class="py-5 middle-container">
+    <div v-if="!loading" class="py-5 middle-container">
       <div>
         <v-container>
 
@@ -56,7 +59,7 @@
       </div>
 
     </div>
-    <div class="parties-container">
+    <div class="parties-container" v-if="!loading">
       <div class="overlay">
 
         <v-container>
@@ -71,7 +74,8 @@
             </v-col>
             <v-col cols="12" md="6">
               <h3 class="text-center">Parteien in den Medien</h3>
-              <PartiesChart class="mt-5" v-if="partiesData !== null && partiesData.partiesOverTime !== undefined" :partiesData="partiesData.partiesOverTime"/>
+              <PartiesChart class="mt-5" v-if="partiesData !== null && partiesData.partiesOverTime !== undefined"
+                            :partiesData="partiesData.partiesOverTime"/>
             </v-col>
 
           </v-row>
@@ -96,6 +100,7 @@ export default {
   name: "Dashboard",
   data() {
     return {
+      loading: false,
       politicians: null,
       topics: null,
       quotes: null,
@@ -107,6 +112,7 @@ export default {
     }
   },
   mounted() {
+    this.loading = true
     parties_config.parties.forEach((party) => {
       this.partyMap[party.id] = {
         'name': party.label,
@@ -125,6 +131,8 @@ export default {
       }
       this.partiesData = data.data['parties']
       this.quotes = data.data['quotes']
+      this.loading = false
+      console.log('loaded')
     });
   },
   components: {

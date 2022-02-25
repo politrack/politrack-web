@@ -172,10 +172,8 @@ export default {
       this.loading = false
     }).catch((e) => {
       this.loading = false
-      console.log(e.response.status)
       if (e.response.status === 404) {
         this.notFound = true
-        console.log('not found')
       }
     })
     window.addEventListener('resize', () => {
