@@ -46,6 +46,12 @@
                   fab fa-twitter
                 </v-icon>
               </a>
+              <a class="text-decoration-none"
+                 href="mailto:politrack@gmx.de">
+                <v-icon class="ms-3">
+                  fa fa-envelope
+                </v-icon>
+              </a>
             </a>
           </v-col>
         </v-row>
