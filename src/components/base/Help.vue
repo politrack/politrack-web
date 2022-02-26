@@ -1,21 +1,13 @@
 <template>
-  <div class="help-hover" :style="rightPadding?{'right': '5px'}:{}">
+  <div class="help-hover" :style="rightPadding?{'right': '10px'}:{}">
     <v-dialog
         v-model="dialog"
         width="600px"
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-            fab
-            dark
-            x-small
-            v-bind="attrs"
-            v-on="on"
-            color="secondary"
-            class="body-2"
-        >
-          ?
-        </v-btn>
+        <v-icon v-bind="attrs" color="grey" size="20"
+                v-on="on">fas fa-question-circle
+        </v-icon>
       </template>
       <v-card class="rounded-xl">
         <v-card-title>

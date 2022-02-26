@@ -559,10 +559,9 @@ export default {
       let activeEvent = this.activeIndex >= 0 ? this.eventsProxy[this.activeIndex] : undefined;
       if (activeEvent !== undefined && (activeEvent.start < this.currentChartDate || activeEvent.start >= this.currentChartEndDate)) {
 
-        this.chartXRangeSteps.forEach(function (xRange, i) {
-          if (activeEvent.start >= xRange.start_date && activeEvent.start <= xRange.end_date)
-            component.activeXRange = i;
-        })
+        component.activeXRange = this.chartXRangeSteps.findIndex(function (xRange) {
+          return activeEvent.start >= xRange.start_date && activeEvent.start <= xRange.end_date;
+        });
 
         this.updateChartDates();
       } else if (!this.chart._mousemove_active) {

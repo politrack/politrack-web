@@ -3,7 +3,7 @@
     <div class="header-container">
       <div class="overlay">
         <v-container>
-          <h1>Die Themen des Wahlkampfes</h1>
+          <div class="text-h3">Die Themen des Wahlkampfes</div>
           <p class="">Mithilfe von künstlicher Intelligenz
             haben wir Artikel über politisch relevante Ereignisse nach Themen gruppiert
             und diese zeitlich mit den Umfragewerten zur Bundestagswahl verknüpft.
@@ -16,6 +16,18 @@
             Für Anregungen zu neuen Themen schreibt uns gerne eine
             <a href="mailto:politrack@gmx.de">Mail</a>.
           </p>
+
+          <div class="text-end">
+            <router-link :to="{'name': 'btw-about'}" class="text-decoration-none">
+              <v-btn
+                  color="accent"
+                  elevation="4"
+                  rounded
+              >
+                Mehr erfahren
+              </v-btn>
+            </router-link>
+          </div>
         </v-container>
       </div>
     </div>
@@ -121,7 +133,6 @@ export default {
 
     let activeIdx = Math.floor(Math.random() * possibleActiveEvents.length);
     this.setEventActive(possibleActiveEvents[activeIdx].idx);
-
   },
   computed: {
     event() {
@@ -155,9 +166,14 @@ export default {
 }
 
 .header-container > div.overlay {
-  padding-bottom: 64px;
+  padding-bottom: 32px;
   padding-top: 84px;
-  background-color: rgba(0, 0, 0, .65)
+  background-color: rgba(0, 0, 0, .7)
+}
+
+.header-container > div.overlay a {
+  color: #89dfff;
+  text-decoration: none;
 }
 
 </style>

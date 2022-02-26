@@ -12,6 +12,7 @@ import {
     faEnvelope,
     faDownload,
     faExclamationTriangle,
+    faCircleQuestion,
     faShare
 } from '@fortawesome/free-solid-svg-icons'
 import {
@@ -25,7 +26,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
-library.add(faInfoCircle, faTwitter, faGithub, faChevronRight, faChevronLeft, faEnvelope, faLinkedin, faExclamationTriangle,
+library.add(faInfoCircle, faTwitter, faGithub, faChevronRight, faChevronLeft, faEnvelope, faLinkedin, faExclamationTriangle, faCircleQuestion,
     faDownload, faShare, faReddit, faTelegram, faWhatsapp, faFacebook)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

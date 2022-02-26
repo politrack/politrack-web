@@ -10,6 +10,7 @@ import ElectionCampaignChronic from "../views/election/ElectionCampaignChronic";
 import EventOverview from '../views/election/EventOverview.vue'
 import events from "../assets/btw/events.json"
 import NotFound from '../views/NotFound.vue'
+import BlogArticle from "../views/election/BlogArticle";
 
 Vue.use(Router)
 
@@ -84,6 +85,14 @@ export default new Router({
             component: ElectionCampaignChronic,
             meta: {
                 headerTransparent: true
+            }
+        },
+        {
+            path: '/btw21/about',
+            name: 'btw-about',
+            component: BlogArticle,
+            meta: {
+                headerTransparent: false
             }
         },
         {
