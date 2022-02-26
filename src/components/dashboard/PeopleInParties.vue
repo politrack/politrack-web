@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="d-flex">
-      <div class="d-flex flex-column me-5">
+    <div class="d-flex flex-md-row flex-column">
+      <div class="d-flex flex-md-column flex-row me-5 flex-wrap justify-space-around align-center mb-3">
         <v-progress-circular
             :rotate="-90"
             :size="60"
@@ -24,7 +24,7 @@
 
       <v-scroll-x-transition hide-on-leave>
 
-        <div class="ms-5 flex-fill" :key="selectedPartyId"
+        <div class="flex-fill" :key="selectedPartyId"
              v-if="selectedPartyId !== null && stars[selectedPartyId] !== undefined">
           <div
               class="rounded-xl overflow-hidden justify-center d-flex"
@@ -37,8 +37,9 @@
             <v-tabs
                 v-model="tab"
                 background-color="transparent"
-                right
+                grow
                 dark
+                show-arrows
                 icons-and-text
                 :color="selectedParty.backgroundColor"
             >
