@@ -6,8 +6,10 @@
         <v-container>
           <div class="text-h2 text-center">Endlich Politik versteh'n</div>
           <div class="text-h6 text-center caption grey--text text--lighten-2">
-            Wir gruppieren Meinungen und Entscheidungen von Politikern basierend auf Nachrichtenartikeln.
-            Die Informationen und Statistiken stehen jedem kostenlos zur Verfügung.
+            Unsere KI liest alle politische Nachrichtenartikel von den größten Medien aus Deutschland und generiert
+            daraus spannende Statistiken und Einblicke.
+            <!--Wir gruppieren Meinungen und Entscheidungen von Politikern basierend auf Nachrichtenartikeln.
+            Die Informationen und Statistiken stehen jedem kostenlos zur Verfügung.-->
           </div>
           <div class="d-flex justify-center flex-md-row flex-column">
             <router-link :to="{'name': 'dashboard'}" class="me-md-5 mt-5 text-decoration-none d-block">
@@ -107,7 +109,7 @@
                       v-if="this.timer !== null"
                       class="float-end" color="accent"/>
                   <h2>{{ activeStep.title }}</h2>
-                  <p>{{ activeStep.description }}}</p>
+                  <p>{{ activeStep.description }}</p>
                 </div>
               </v-col>
               <v-col lg="4" v-if="(activeStepIndex+1) % 2 === 0" cols="10" sm="7" md="6" class="order-0 order-lg-2">
@@ -128,17 +130,26 @@
             </v-col>
             <v-col lg="6" cols="12">
               <p>
-                PoliTrack ist ein durch das <a href="https://www.bmbf.de/">Bundesministerium für Bildung und
+                PoliTrack ist ein durch das <a href="https://www.bmbf.de/" target="_blank">Bundesministerium für Bildung
+                und
                 Forschung</a>
                 gefördertes Projekt, das ein größeres Ziel verfolgt. Hierzu zitieren wir aus unserer
                 Vorhabensbeschreibung.
               </p>
               <p>
-                Mithilfe von künstlicher Intelligenz haben wir Artikel über politisch relevante Ereignisse nach Themen
-                gruppiert. Diese Gruppierung erlaubt es uns verschiedene Auswertungen über Meinungen und
-                Aüßerungen von Politikern zu erstellen. Gleichzeitig können wir
-                die Berichterstattung zu bestimmten Ereignissen
-                transparenter und übersichtlicher machen.
+                Wir sind zwei Informatiker aus Berlin und Braunschweig und haben im letzten Jahr mit einem größeren Team
+                an einem anderen Data-Science-Projekt gearbeitet. Mit <a href="https://collabovid.org" target="_blank">Collabovid</a>
+                haben wir mehr als 20.000
+                Wissenschaftler:innen aus der ganzen Welt dabei geholfen, Publikationen über das Coronavirus SARS-CoV-2
+                besser durchsuchbar zu machen. Uns war klar, dass man die Techniken zur Textanalyse, die wir im Zuge des
+                Projektes gelernt haben, auch auf andere Bereiche übertragen kann. Da wir beide großes Interesse an der
+                deutschen Politik haben, kam uns die Idee, diese Methoden auch in diesem Gebiet einzusetzen. Besonders
+                vor der Bundestagswahl haben wir festgestellt, dass man sich viel zu wenig mit den wichtigen Themen und
+                den einzelnen Kandidat:innen auseinandergesetzt hat. Wir beobachten, dass es manchen deutschen Medien
+                mehr um Schlagzeilen geht als um unabhängige Berichterstattung. Diesen Trend halten wir für
+                problematisch. Wir hoffen, mit unserem Projekt den Bürger:innen viele unterschiedliche Perspektiven zu
+                einem Thema geben zu können. Damit soll die Transparenz in unserer Demokratie verbessert und eine
+                objektivere Meinungsbildung gefördert werden.
               </p>
             </v-col>
           </v-row>
@@ -217,48 +228,66 @@ export default {
       activeStepIndex: 0,
       politrackSteps: [
         {
-          title: "Nachrichtenartikel extrahieren",
+          title: "Nachrichtenartikel",
           icon: require("@/assets/img/landing_page/newspaper.png"),
           image: require("@/assets/img/landing_page/logos.png"),
-          description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n" +
-              "          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
-              "          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n" +
-              "          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna\n" +
-              "          aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd\n" +
-              "          gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          description: "Einer der Grundpfeiler der Demokratie sind unabhängige Medien, die kritisch über " +
+              "die politische Lage im Land berichten. In Zeiten von Online-Journalismus und Livetickern zu " +
+              "aktuellen Geschehnissen vergisst man leicht, dass sich die Entscheidung bei einer Wahl auch " +
+              "an bereits vergangenen Entscheidungen und Meinungen orientieren sollte. Möchte man über eine:n " +
+              "Bundestagsabgeordneten eines Landkreises mehr erfahren, kann man eine Onlinesuche machen, " +
+              "sich Interviews ansehen und auf Wahlkampfveranstaltungen gehen. Um die Meinungsbildung zu erleichtern, " +
+              "versuchen wir Nachrichtenartikel besser zu ordnen und zugänglich machen. Dazu indexieren wir regelmäßig alle " +
+              "politische Nachrichtenartikel von den größten Medien aus Deutschland. Insgesamt haben wir bereits über " +
+              "eine halbe Million Artikel gesammelt."
         },
         {
           title: "Analyse der Daten",
           icon: require("@/assets/img/landing_page/evaluation.png"),
           image: require("@/assets/img/landing_page/machine-learning.png"),
-          description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n" +
-              "          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
-              "          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n" +
-              "          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna\n" +
-              "          aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd\n" +
-              "          gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          description: "Durch den Einsatz von Machine-Learning-Techniken, den sogenannten Transformer Modellen, können " +
+              "wir weitere Informationen über die Themen extrahieren, mit denen sich bestimmte Politiker:innen " +
+              "beschäftigen. Transformer Modelle sind in der KI-Forschung das State-of-the-Art Werkzeug, um dem " +
+              "Computer zu ermöglichen Sprache/Text zu verstehen. Dabei wird der zu analysierende Text zunächst " +
+              "in eine Repräsentation der im Text vorkommenden Themen und Inhalte überführt. Auf Basis dieser " +
+              "Repräsentation können im Anschluss Funktionen wie Themenextraktion oder eine Ähnlichkeitssuche " +
+              "stattfinden. Durch diese grobe Kategorisierung der Artikel, können wir dann eine Übersicht geben, " +
+              "mit welchen politischen Themen sich eine Person am meisten beschäftigt. Andere Machine Learning Modelle " +
+              "nutzen wir außerdem, um Zitate der Politiker:innen automatisch aus den Artikeln zu extrahieren. " +
+              "Leider gelingt die Extraktion der Zitate nicht immer fehlerfrei. Manchmal werden bestimmte " +
+              "Zitate einer falschen Person zugeordnet. Darauf weisen wir die Nutzenden explizit hin. Neben den " +
+              "Zitaten liefern wir außerdem eine Quelle, in der die Aussage im Zweifelsfall validiert werden kann. " +
+              "Natürlich arbeiten wir weiter daran, die Extraktion der Zitate zu verbessern."
         },
         {
-          title: "Meinungen und Äußerungen von Politker:innen",
+          title: "Profile von Politiker:innen",
           icon: require("@/assets/img/landing_page/choice.png"),
           image: require("@/assets/img/website-mock.png"),
-          description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n" +
-              "          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
-              "          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n" +
-              "          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna\n" +
-              "          aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd\n" +
-              "          gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          description: "Basierend auf unseren Informationen erstellen wir für jede:n Politiker:in ein Profil. Dieses" +
+              " beinhaltet grundlegende Attribute, wie Parteizugehörigkeit, aktuelle Position " +
+              "und weiterführende Links. Zudem berechnen wir, mit welchen Personen die oder der " +
+              "jeweilige Politiker:in am meisten in einem Artikel vorkommt. Natürlich zeigen wir " +
+              "ebenfalls aktuelle Artikel an, in denen der oder die Politiker:in erwähnt wird. " +
+              "Politiker:innen werden oft an ihren Meinungen und Äußerungen zu bestimmten Themen " +
+              "gemessen. Um die Informationen über Aussagen und Positionen schneller zugänglich zu " +
+              "machen, extrahieren wir automatisch Zitate aus den einzelnen Artikeln und ordnen sie den jeweiligen " +
+              "Politiker:innen zu. Damit ermöglichen wir einen direkten Überblick, über alle ihrer Aussagen in den " +
+              "Medien."
         },
         {
-          title: "Statistiken",
+          title: "Dashboard",
           icon: require("@/assets/img/landing_page/bar-chart.png"),
           image: require("@/assets/img/landing_page/website-mock-statistics.png"),
-          description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n" +
-              "          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
-              "          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n" +
-              "          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna\n" +
-              "          aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd\n" +
-              "          gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          description: "PoliTrack liefert nicht nur eine spezifische Übersicht über Politiker:innen, sondern auch " +
+              "über das aktuelle Tagesgeschehen in den Politik-Nachrichten. Auf der Dashboard-Seite zeigen wir " +
+              "die “Schlagzeilen des Tages”. Dabei gruppieren wir einzelne Schlagzeilen thematisch und" +
+              " verweisen auf die Artikel zu dem jeweiligen Thema. Dadurch kann man sich eine umfangreichere " +
+              "Meinung über ein Thema bilden und die Berichte von verschiedenen Herausgebern auf einen Blick " +
+              "vergleichen. Wir klassifizieren basierend auf den Schlagworten des Artikels, ob ein Artikel eine " +
+              "bestimmte Partei behandelt. Damit lässt sich berechnen, welche Parteien besonders im Fokus der " +
+              "Medien sind. Zudem zeigen wir auch, welche Politiker:innen einer Partei besonders viel in den Medien " +
+              "vorkommen und identifizieren Newcomer, die im Vergleich zu früheren Monaten nun besonders oft in " +
+              "Artikeln erscheinen."
         }
       ]
     }
