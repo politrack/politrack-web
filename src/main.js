@@ -6,17 +6,26 @@ import moment from 'moment'
 
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
-  faInfoCircle,
-  faChevronRight,
-  faChevronLeft,
-  faEnvelope,
-  faDownload,
-  faShare
+    faInfoCircle,
+    faChevronRight,
+    faChevronLeft,
+    faEnvelope,
+    faDownload,
+    faExclamationTriangle,
+    faShare
 } from '@fortawesome/free-solid-svg-icons'
-import {faTwitter, faGithub, faLinkedin, faReddit, faTelegram, faFacebook, faWhatsapp} from '@fortawesome/free-brands-svg-icons'
+import {
+    faTwitter,
+    faGithub,
+    faLinkedin,
+    faReddit,
+    faTelegram,
+    faFacebook,
+    faWhatsapp
+} from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
-library.add(faInfoCircle, faTwitter, faGithub, faChevronRight, faChevronLeft, faEnvelope, faLinkedin,
+library.add(faInfoCircle, faTwitter, faGithub, faChevronRight, faChevronLeft, faEnvelope, faLinkedin, faExclamationTriangle,
     faDownload, faShare, faReddit, faTelegram, faWhatsapp, faFacebook)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -27,7 +36,7 @@ Vue.config.productionTip = false
 Vue.config.performance = true
 
 new Vue({
-  vuetify,
-  router: router,
-  render: h => h(App)
+    vuetify,
+    router: router,
+    render: h => h(App)
 }).$mount('#app')

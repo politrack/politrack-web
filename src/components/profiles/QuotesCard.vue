@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import PoliticianImage from "../base/PoliticianImage";
 import sources from "../../assets/sources_config.json";
 import {Flicking} from "@egjs/vue-flicking";
 import {Pagination} from "@egjs/flicking-plugins";
@@ -48,8 +47,7 @@ export default {
   },
   components: {
     PoliticianAvatar,
-    Flicking,
-    PoliticianImage
+    Flicking
   },
   mounted() {
     this.resizeObserver = new ResizeObserver(this.onResize)

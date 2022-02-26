@@ -39,9 +39,20 @@
               <span class="flicking-arrow-next flicking-arrow-next-articles"></span>
             </div>
           </div>
-
           <div class="content mt-3" v-if="politician && politician.quotes.length > 0">
-            <h2 class="mb-2">Aktuelle Aussagen</h2>
+            <h2>Aktuelle Aussagen</h2>
+            <div class="d-flex mb-2 align-center px-5 px-md-0">
+              <warning title="Aktuelle Aussagen" red
+                       text="Leider gelingt die Extraktion der Zitate nicht immer fehlerfrei. Manchmal werden bestimmte
+                         Zitate einer falschen Person zugeordnet. Neben den Zitaten liefern wir außerdem eine Quelle,
+                         in der die Aussage im Zweifelsfall validiert werden kann. Wir arbeiten hart daran,
+                         die Extraktion der Zitate zu verbessern." class="mb-1"/>
+              <div class="ms-2 red--text">
+                Leider gelingt die Extraktion der Zitate nicht immer fehlerfrei. Bitte überprüfe bei Verwendung der
+                Zitate
+                die angegebene Quelle.
+              </div>
+            </div>
             <v-row>
               <v-col lg="12">
                 <div class="overflow-x-hidden flicking-container">
@@ -98,6 +109,7 @@
 </template>
 
 <script>
+import Warning from "../components/base/Warning";
 import SourceDistribution from "../components/profiles/SourceDistribution";
 import ArticlesOverTime from "../components/profiles/ArticlesOverTime";
 import TopicDistribution from "../components/profiles/TopicDistribution";
@@ -119,7 +131,8 @@ export default {
     SourceDistribution,
     TopicDistribution,
     ProfileCard,
-    Flicking
+    Flicking,
+    Warning
   },
   computed: {
     cardWidth: function () {
@@ -261,5 +274,8 @@ export default {
 
 .flicking-viewport {
   transition: height 500ms;
+}
+
+.warning-card {
 }
 </style>

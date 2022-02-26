@@ -31,7 +31,15 @@
               <topic-distribution v-if="statistics" :statistics="statistics" light class="px-5"/>
             </v-col>
             <v-col cols="12" lg="4">
-              <h3 class="text-center">Aktuelle Zitate</h3>
+              <div class="d-flex flex-row justify-center">
+                <h3>Aktuelle Zitate</h3>
+                <warning title="Aktuelle Aussagen"
+                         text="Leider gelingt die Extraktion der Zitate nicht immer fehlerfrei. Manchmal werden bestimmte
+                         Zitate einer falschen Person zugeordnet. Neben den Zitaten liefern wir außerdem eine Quelle,
+                         in der die Aussage im Zweifelsfall validiert werden kann. Wir arbeiten hart daran,
+                         die Extraktion der Zitate zu verbessern." class="ms-3"/>
+              </div>
+
               <quotes-card :quotes="quotes" v-if="quotes"></quotes-card>
             </v-col>
             <v-col cols="12" lg="4">
@@ -95,6 +103,7 @@ import TopicSlider from "../components/dashboard/TopicSlider";
 import PeopleInParties from "../components/dashboard/PeopleInParties";
 import axios from 'axios'
 import parties_config from "../assets/parties.json"
+import Warning from "../components/base/Warning";
 
 export default {
   name: "Dashboard",
@@ -136,6 +145,7 @@ export default {
     });
   },
   components: {
+    Warning,
     TopicDistribution,
     PartiesChart,
     TrendingPoliticians,
