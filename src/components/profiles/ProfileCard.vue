@@ -23,9 +23,9 @@
             {{ chip.text }}
           </a>
         </v-chip>
-        <div class="d-flex align-center">
+        <div class="d-flex align-center align-content-center flex-row mt-2">
           <span class="text-caption me-4">Oft erwähnt mit:</span>
-          <PoliticianAvatarRow :persons="mentionedWith.slice(0,5)" class="mt-5"/>
+          <PoliticianAvatarRow :persons="mentionedWith.slice(0,5)"/>
         </div>
       </v-col>
     </v-row>

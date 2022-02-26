@@ -1,5 +1,6 @@
 <template>
   <div class="position-relative">
+    <help :text="helpText" :title="helpTitle"/>
     <canvas id="articlesOverTimeChart"></canvas>
   </div>
 </template>
@@ -8,13 +9,24 @@
 import {Chart, registerables} from "chart.js";
 import 'chartjs-adapter-moment';
 import moment from 'moment'
+import Help from "../base/Help";
 
 moment.locale('de');
 
 export default {
   name: "ArticlesOverTime",
+  components: {Help},
   props: {
     statistics: Object
+  },
+  data() {
+    return {
+      helpTitle: "Präsenz in den Medien Erklärung",
+      helpText: "Diese Grafik stellt dar, wie häufig diese Person in Nachrichtenartikeln erwähnt wurde. " +
+          "Dabei werden hohe Werte zunächst mit gelber und dann mit roter Farbe besonders hervorgehoben. " +
+          "Für eine bessere Übersicht, zeigen wir nur die Zahlen ab dem 01.01.2021 an. Wenn sie die Maus über die " +
+          "Übersicht bewegen können Sie die genauen Zahlen für konkrete Zeitpunkte sehen."
+    }
   },
   mounted() {
     Chart.register(...registerables);
@@ -87,7 +99,7 @@ export default {
               time: {
                 unit: 'day'
               },
-              min: new Date(2021, 0 , 1),
+              min: new Date(2020, 0, 1),
               grid: {
                 display: false,
                 drawBorder: false
@@ -96,12 +108,12 @@ export default {
           }
         },
         plugins: [{
-          beforeRender: function(chart) {
+          beforeRender: function (chart) {
             let maxValue = 0;
             chart.data.datasets[0].data.forEach(function (val) {
               maxValue = Math.max(maxValue, val.y);
             })
-            let gradientFill = chart.ctx.createLinearGradient(0, 0, 0, chart.scales.y.bottom-chart.scales.y.getPixelForValue(maxValue));
+            let gradientFill = chart.ctx.createLinearGradient(0, 0, 0, chart.scales.y.bottom - chart.scales.y.getPixelForValue(maxValue));
             gradientFill.addColorStop(0, "#d52727");
             gradientFill.addColorStop(0.7, "#ffd235");
             gradientFill.addColorStop(1, "#329832");
@@ -122,5 +134,7 @@ export default {
 </script>
 
 <style scoped>
-
+.position-relative {
+  position: relative;
+}
 </style>

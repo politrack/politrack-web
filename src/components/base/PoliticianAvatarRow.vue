@@ -1,23 +1,15 @@
 <template>
   <div>
-    <a v-for="person in persons" :key="person.id" class="me-1" href="#">
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on, attrs }">
-          <v-avatar v-bind="attrs"
-                    :size="size"
-                    class="avatar elevation-2"
-                    v-on="on">
-            <PoliticianImage :id="person.id"/>
-          </v-avatar>
-        </template>
-        <span>{{ person.first_name }} {{ person.last_name }}</span>
-      </v-tooltip>
-    </a>
+    <div class="d-flex flex-wrap">
+      <PoliticianAvatar class="ms-2 my-1" :politician="person" :size="40"
+                        v-for="person in persons" :key="person.id"/>
+    </div>
   </div>
 </template>
 
 <script>
-import PoliticianImage from "./PoliticianImage";
+import PoliticianAvatar from "./PoliticianAvatar";
+
 export default {
   name: "PoliticianAvatarRow",
   props: {
@@ -25,7 +17,7 @@ export default {
     size: Number,
   },
   components: {
-    PoliticianImage
+    PoliticianAvatar
   }
 }
 </script>

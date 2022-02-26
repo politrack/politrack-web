@@ -17,12 +17,21 @@ export default {
   components: {Help},
   props: {
     statistics: Object,
-    light: Boolean
+    light: Boolean,
+    showHelpPolitician: Boolean
   },
   data() {
     return {
       helpTitle: "Themenfokus Erklärung",
-      helpText: "Lorem lorem"
+      helpText: (this.showHelpPolitician ? "Mit dieser Grafik möchten wir eine Übersicht geben, " +
+          "mit welchen politischen Themen sich diese Person am meisten beschäftigt. Dafür anaylsierten wir alle Artikel aus unserem Datensatz, in denen diese Person vorkommt. " :
+          "Mit dieser Grafik möchten wir eine Übersicht geben, " +
+          "mit welchen politischen Themen sich die Medien am meisten beschäftigen. Die anaylsierten Artikel stammen aus den letzten sieben Tagen Berichterstattung. ") +
+
+          "Mithilfe einer künstlichen Intelligenz können wir Artikel einem der aufgeführten Themen zuordnen. Zu diesen Kategorien gehören " +
+          "zum Beispiel “Soziales”, “Außenpolitik”, “Gesundheit” oder “Klimaschutz”. Die Eckpunkte der angezeigten " +
+          "Fläche sind näher an einem der Themen am Rand, wenn das Thema häufiger vorkommt." +
+          " So bekommen Sie einen schnellen Überblick über den derzetigen Themenfokus."
     }
   },
   mounted() {

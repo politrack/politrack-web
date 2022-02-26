@@ -1,5 +1,6 @@
 <template>
   <div class="position-relative">
+    <help :text="helpText" :title="helpTitle"/>
     <canvas id="articleDistributionChart"></canvas>
   </div>
 </template>
@@ -8,11 +9,21 @@
 import sources from "../../assets/sources_config.json";
 import {Chart, registerables} from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import Help from "../base/Help";
 
 export default {
   name: "SourceDistribution",
+  components: {Help},
   props: {
     statistics: Object
+  },
+  data() {
+    return {
+      helpTitle: "Quellenverteilung Erklärung",
+      helpText: "Diese Übersicht zeigt an, wie häufig diese Person insgesamt in Nachrichtenartikeln vorkommt. " +
+          "Dabei zeigen wir die Verteilung auf die einzelnen Zeitungen an. Bitte beachten Sie, dass diese Zahlen " +
+          "absolute Werte darstellen. Die Artikellängen oder die Art der Erwähnung werden nicht berücksichtigt."
+    }
   },
   mounted() {
     Chart.register(...registerables);
@@ -71,8 +82,7 @@ export default {
                 var value = dataset.data[context.dataIndex];
                 return value > count * 1.5;
               },
-              font: {
-              },
+              font: {},
               padding: 6,
               formatter: function (value, context) {
                 return context.chart.data.labels[context.dataIndex];
@@ -92,5 +102,7 @@ export default {
 </script>
 
 <style scoped>
-
+.position-relative {
+  position: relative;
+}
 </style>

@@ -2,7 +2,9 @@
   <v-card class="blur-background rounded-xl pa-5">
     <div class="position-relative">
       <help :text="helpText" :title="helpTitle" right-padding/>
-      <div class="pe-5"><canvas id="partiesChart"></canvas></div>
+      <div class="pe-5">
+        <canvas id="partiesChart"></canvas>
+      </div>
     </div>
   </v-card>
 </template>
@@ -30,13 +32,16 @@ export default {
   },
   data() {
     return {
-      helpTitle: "Parteien Erklärung",
-      helpText: "Lorem lorem"
+      helpTitle: "Parteien in den Medien Erklärung",
+      helpText: "Basierend auf den Schlagworten des Artikels können wir prüfen, ob ein Artikel eine bestimmte Partei " +
+          "behandelt. Damit lässt sich berechnen, welche Parteien besonders im Fokus der Medien sind. " +
+          "Diese Informationen zeigen wir in dieser Grafik an, wobei wir den Parteienfokus für jeden Tag des " +
+          "vergangenen Monats anzeigen."
     }
   },
   watch: {
     partiesData: {
-      handler(){
+      handler() {
         if (this.partiesData != null) {
           this.renderChart()
         }

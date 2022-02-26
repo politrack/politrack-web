@@ -17,20 +17,21 @@
           ?
         </v-btn>
       </template>
-      <v-card>
+      <v-card class="rounded-xl">
         <v-card-title>
           <span class="text-h5">{{ title }}</span>
         </v-card-title>
         <v-card-text>
           {{ text }}
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions class="pb-4">
           <v-spacer></v-spacer>
           <v-btn
               color="accent"
+              rounded
               @click="dialog = false"
           >
-            Okay
+            Hab's verstanden
           </v-btn>
         </v-card-actions>
       </v-card>

@@ -18,7 +18,10 @@ export default {
   data() {
     return {
       helpTitle: "Politiker in den Medien Erklärung",
-      helpText: "Lorem lorem"
+      helpText: "Diese Grafik zeigt an welche Politiker:innen in den letzten sieben Tagen am " +
+          "häufigsten in Nachrichtenartikeln erwähnt wurden. Am unteren Ende des Dashboards findet sich " +
+          "eine weitere Übersicht in der die meist erwähntesten Poltiker:innen und Newcomer nach ihren Parteien " +
+          "getrennt angezeigt werden."
     }
   },
   components: {

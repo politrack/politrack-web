@@ -12,7 +12,7 @@
             </v-col>
             <v-col cols="12" md="4">
               <v-card class="pa-3 rounded-xl blur-background opaque" obsolet="accent-background">
-                <TopicDistribution :light="false" :statistics="this.politician.statistics"/>
+                <TopicDistribution :light="false" :statistics="this.politician.statistics" show-help-politician/>
               </v-card>
             </v-col>
           </v-row>
@@ -152,6 +152,13 @@ export default {
             nextElSelector: ".flicking-arrow-next-quotes"
           }
       )]
+    }
+  },
+  watch: {
+    $route(to, from) {
+      if (to !== from) {
+        location.reload();
+      }
     }
   },
   mounted() {
