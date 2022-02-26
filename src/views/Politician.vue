@@ -12,7 +12,7 @@
             </v-col>
             <v-col cols="12" md="4">
               <v-card class="pa-3 rounded-xl blur-background opaque" obsolet="accent-background">
-                <TopicDistribution :light="false" :statistics="this.politician.statistics" style="height: 180px"/>
+                <TopicDistribution :light="false" :statistics="this.politician.statistics"/>
               </v-card>
             </v-col>
           </v-row>

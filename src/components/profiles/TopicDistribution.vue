@@ -1,6 +1,6 @@
 <template>
   <div class="position-relative">
-    <help :text="helpText" :title="helpTitle"/>
+    <help :text="helpText" :title="helpTitle" right-padding/>
     <div class="position-relative">
       <canvas id="topicDistributionChart"></canvas>
     </div>
