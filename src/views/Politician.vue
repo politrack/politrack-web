@@ -276,6 +276,9 @@ export default {
   transition: height 500ms;
 }
 
-.warning-card {
+.header-content {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' transform='scale(1 1)' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='300' preserveAspectRatio='none' viewBox='0 0 1440 300'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1185%26quot%3b)' fill='none'%3e%3cpath d='M 0%2c81 C 96%2c113 288%2c256.6 480%2c241 C 672%2c225.4 768%2c11.2 960%2c3 C 1152%2c-5.2 1344%2c160.6 1440%2c200L1440 300L0 300z' fill='rgba(67%2c 97%2c 238%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c283 C 96%2c236.4 288%2c68.2 480%2c50 C 672%2c31.8 768%2c174.4 960%2c192 C 1152%2c209.6 1344%2c148.8 1440%2c138L1440 300L0 300z' fill='rgba(63%2c 55%2c 201%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c299 C 96%2c256.6 288%2c108.2 480%2c87 C 672%2c65.8 768%2c188 960%2c193 C 1152%2c198 1344%2c128.2 1440%2c112L1440 300L0 300z' fill='rgba(58%2c 12%2c 163%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c34 C 96%2c80.2 288%2c245.8 480%2c265 C 672%2c284.2 768%2c146.2 960%2c130 C 1152%2c113.8 1344%2c173.2 1440%2c184L1440 300L0 300z' fill='rgba(72%2c 12%2c 168%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c186 C 96%2c158.4 288%2c52.4 480%2c48 C 672%2c43.6 768%2c146.6 960%2c164 C 1152%2c181.4 1344%2c140.8 1440%2c135L1440 300L0 300z' fill='rgba(114%2c 9%2c 183%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c267 C 96%2c237.2 288%2c140.6 480%2c118 C 672%2c95.4 768%2c175.2 960%2c154 C 1152%2c132.8 1344%2c40.4 1440%2c12L1440 300L0 300z' fill='rgba(247%2c 37%2c 133%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c260 C 96%2c230.2 288%2c106.4 480%2c111 C 672%2c115.6 768%2c283.2 960%2c283 C 1152%2c282.8 1344%2c144.6 1440%2c110L1440 300L0 300z' fill='rgba(181%2c 23%2c 158%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1185'%3e%3crect width='1440' height='300' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-color: #4895EF;
+  background-size: 100% 100%;
 }
 </style>

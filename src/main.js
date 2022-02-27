@@ -33,7 +33,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 moment.locale('de');
 Vue.prototype.moment = moment;
 Vue.config.productionTip = false
-
 Vue.config.performance = true
 
 new Vue({

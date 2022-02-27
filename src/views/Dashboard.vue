@@ -3,8 +3,8 @@
     <div v-if="loading">
       <v-progress-linear indeterminate></v-progress-linear>
     </div>
-    <div class="header-container">
-      <div class="overlay">
+    <div class="header-container" :style="{'margin-top': '-'+barHeight+'px'}">
+      <div class="overlay" :style="{'padding-top': 20+barHeight+'px'}">
         <v-container>
           <v-row justify="center" class="mt-5">
             <v-col cols="12" lg="6">
@@ -107,6 +107,9 @@ import Warning from "../components/base/Warning";
 
 export default {
   name: "Dashboard",
+  props: {
+    barHeight: Number
+  },
   data() {
     return {
       loading: false,
@@ -128,7 +131,7 @@ export default {
         'color': party.color
       }
     })
-    axios.get(process.env.VUE_APP_URL + '/web/data/trends.json').then((data) => {
+    axios.get(process.env.VUE_APP_URL + '/web/data/trends-test.json').then((data) => {
       this.topics = data.data['topics']
       this.politicians = data.data['politicians'].map((x) => {
         x['party'] = this.partyMap[x['party']]
@@ -176,7 +179,6 @@ export default {
 }
 
 .header-container {
-  margin-top: -64px;
   background-image: url('../assets/img/newspaper.jpg');
   background-attachment: fixed;
   background-size: cover;
@@ -185,7 +187,6 @@ export default {
 
 .header-container > div.overlay {
   padding-bottom: 64px;
-  padding-top: 84px;
   background-color: rgba(0, 0, 0, .65)
 }
 

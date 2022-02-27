@@ -1,8 +1,8 @@
 <template>
   <div>
 
-    <div class="header-container">
-      <div class="overlay">
+    <div class="header-container" :style="{'margin-top': '-'+barHeight+'px'}">
+      <div class="overlay" :style="{'padding-top': 20+barHeight+'px'}">
         <v-container>
           <div class="text-h2 text-center">Endlich Politik versteh'n</div>
           <div class="text-h6 text-center caption grey--text text--lighten-2">
@@ -189,6 +189,9 @@ import axios from "axios";
 
 export default {
   name: "LandingPage",
+  props: {
+    barHeight: Number
+  },
   components: {
     ICountUp
   },
@@ -349,7 +352,6 @@ export default {
 }
 
 .header-container {
-  margin-top: -64px;
   background-image: url('../assets/img/landing_page/news-image.jpg');
   background-attachment: fixed;
   background-size: cover;
@@ -358,7 +360,6 @@ export default {
 
 .header-container > div.overlay {
   padding-bottom: 180px;
-  padding-top: 84px;
   background-color: rgba(60, 60, 60, .65)
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="header-container">
-      <div class="overlay">
+    <div class="header-container" :style="{'margin-top': '-'+barHeight+'px'}">
+      <div class="overlay" :style="{'padding-top': 20+barHeight+'px'}">
         <v-container>
           <div class="text-h3">Die Themen des Wahlkampfes</div>
           <p class="">Mithilfe von künstlicher Intelligenz
@@ -65,6 +65,9 @@ window.$ = $
 
 export default {
   name: "ElectionCampaignChronic",
+  props: {
+    barHeight: Number
+  },
   components: {
     PollEventChart,
     Event,
