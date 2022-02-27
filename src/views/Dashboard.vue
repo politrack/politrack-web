@@ -8,21 +8,7 @@
         <v-container>
           <v-row justify="center" class="mt-5">
             <v-col cols="12" lg="6">
-              <div class="d-flex flex-column align-end">
-                <SearchBar :partyMap="partyMap" class="w-100"/>
-                <div class="d-flex mt-1">
-                  <div class="caption white--text ms-3">Andere suchten nach:</div>
-                  <v-carousel hide-delimiters vertical cycle :show-arrows="false" interval="2000" height="auto"
-                              style="width: auto;">
-                    <v-carousel-item
-                        v-for="(text, i) in searchBarTexts"
-                        :key="i"
-                    >
-                      <div class="caption ms-1 white--text font-weight-bold">{{ text }}</div>
-                    </v-carousel-item>
-                  </v-carousel>
-                </div>
-              </div>
+              <SearchBar/>
             </v-col>
           </v-row>
           <v-row v-if="!loading">
@@ -119,8 +105,7 @@ export default {
       statistics: null,
       partiesData: null,
       topicDistributionVisible: false,
-      partyMap: {},
-      searchBarTexts: ['Bärbel Bas', 'Robert Habeck', 'Alice Weidel', 'Angela Merkel', 'Karl Lauterbach']
+      partyMap: {}
     }
   },
   mounted() {
@@ -161,10 +146,6 @@ export default {
 </script>
 
 <style scoped>
-
-.w-100 {
-  width: 100%;
-}
 
 .position-relative {
   position: relative;

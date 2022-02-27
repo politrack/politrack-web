@@ -23,7 +23,7 @@
           <v-col cols="12" xs="12" sm="8" class="d-flex justify-center justify-sm-end flex-wrap flex-gap">
             <router-link :to="{'name': 'dashboard'}" class="text-decoration-none">
               <v-btn small rounded color="accent">
-                Dashboard
+                Übersicht
               </v-btn>
             </router-link>
             <router-link :to="{'name': 'chronic'}" class="text-decoration-none d-none d-md-inline">

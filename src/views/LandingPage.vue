@@ -4,38 +4,46 @@
     <div class="header-container" :style="{'margin-top': '-'+barHeight+'px'}">
       <div class="overlay" :style="{'padding-top': 20+barHeight+'px'}">
         <v-container>
-          <div class="text-h2 text-center">Endlich Politik versteh'n</div>
+          <div class="text-h2 text-center">Dein Politik-Briefing</div>
           <div class="text-h6 text-center caption grey--text text--lighten-2">
             Unsere KI liest alle politische Nachrichtenartikel von den größten Medien aus Deutschland und generiert
             daraus spannende Statistiken und Einblicke.
-            <!--Wir gruppieren Meinungen und Entscheidungen von Politikern basierend auf Nachrichtenartikeln.
-            Die Informationen und Statistiken stehen jedem kostenlos zur Verfügung.-->
           </div>
-          <div class="d-flex justify-center flex-md-row flex-column">
-            <router-link :to="{'name': 'dashboard'}" class="me-md-5 mt-5 text-decoration-none d-block">
-              <v-btn
-                  color="accent"
-                  elevation="4"
-                  rounded
-                  x-large
-                  class="w-100"
-              >
-                Zum Dashboard
-              </v-btn>
-            </router-link>
 
-            <v-btn
-                color="white"
-                class="ms-md-5 mt-5"
-                outlined
-                elevation="4"
-                rounded
-                x-large
-                @click="scrollToElement('functionality-container', {behavior: 'smooth'})"
-            >
-              Mehr erfahren
-            </v-btn>
-          </div>
+          <v-row justify="center" align="start" class="mt-5">
+            <v-col cols="12" lg="6">
+              <SearchBar/>
+            </v-col>
+            <v-col cols="12" lg="6">
+              <div class="d-flex justify-center flex-md-row flex-column  mt-1">
+                <router-link :to="{'name': 'dashboard'}" class="me-md-5 text-decoration-none d-block">
+                  <v-btn
+                      color="accent"
+                      elevation="4"
+                      rounded
+                      large
+                      class="w-100"
+                  >
+                    Zur Übersicht
+                  </v-btn>
+                </router-link>
+
+                <v-btn
+                    color="white"
+                    class="ms-md-5 mt-5 mt-md-0"
+                    outlined
+                    elevation="4"
+                    rounded
+                    large
+                    @click="scrollToElement('functionality-container', {behavior: 'smooth'})"
+                >
+                  Mehr erfahren
+                </v-btn>
+              </div>
+            </v-col>
+          </v-row>
+
+
         </v-container>
       </div>
     </div>
@@ -186,6 +194,7 @@
 
 import ICountUp from 'vue-countup-v2';
 import axios from "axios";
+import SearchBar from "../components/dashboard/SearchBar";
 
 export default {
   name: "LandingPage",
@@ -193,6 +202,7 @@ export default {
     barHeight: Number
   },
   components: {
+    SearchBar,
     ICountUp
   },
   mounted() {
@@ -278,11 +288,11 @@ export default {
               "Medien."
         },
         {
-          title: "Dashboard",
+          title: "Übersicht",
           icon: require("@/assets/img/landing_page/bar-chart.png"),
           image: require("@/assets/img/landing_page/website-mock-statistics.png"),
           description: "PoliTrack liefert nicht nur eine spezifische Übersicht über Politiker:innen, sondern auch " +
-              "über das aktuelle Tagesgeschehen in den Politik-Nachrichten. Auf der Dashboard-Seite zeigen wir " +
+              "über das aktuelle Tagesgeschehen in den Politik-Nachrichten. Auf der Übersichtsseite zeigen wir " +
               "die “Schlagzeilen des Tages”. Dabei gruppieren wir einzelne Schlagzeilen thematisch und" +
               " verweisen auf die Artikel zu dem jeweiligen Thema. Dadurch kann man sich eine umfangreichere " +
               "Meinung über ein Thema bilden und die Berichte von verschiedenen Herausgebern auf einen Blick " +
