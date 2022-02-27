@@ -8,6 +8,30 @@
         <v-img class="card-img-top" :src="getImgUrl(event)" alt="">
           <div class="card-img-overlay white--text">
             <v-card-title>{{ event.name }}</v-card-title>
+
+            <div v-if="attributions[event.id] !== undefined" class="small text-light text-end">
+              <v-menu open-on-hover right offset-y nudge-bottom="5" close-delay="100">
+                <template v-slot:activator="{ on, attrs }">
+                  <div class="attribution-text" v-bind="attrs" v-on="on">
+                    Foto von
+                    {{ attributions[event.id].author.first_name }}
+                    {{ attributions[event.id].author.last_name }}
+                  </div>
+                </template>
+
+                <v-card dark class="tooltip-dark">
+                  <v-card-text>
+                    <a :href="attributions[event.id].author.url" target="_blank">
+                      {{ attributions[event.id].author.first_name }} {{ attributions[event.id].author.last_name }}
+                    </a>,
+                    <a :href="attributions[event.id].license.url" target="_blank">
+                      {{ attributions[event.id].license.name }}
+                    </a>
+                    aus {{ attributions[event.id].source.name }}
+                  </v-card-text>
+                </v-card>
+              </v-menu>
+            </div>
           </div>
         </v-img>
       </v-card>
@@ -36,9 +60,15 @@ export default {
     Flicking
   },
   data() {
+    let tooltipsVisible = {};
+    this.eventsProxy.forEach(function (e) {
+      tooltipsVisible[e.id] = false;
+    });
+
     return {
       ready: false,
       attributions: event_images,
+      tooltipsVisible: tooltipsVisible,
       currentSlidesPerView: 7,
       currentMoveEvent: null,
       options: {
@@ -49,34 +79,7 @@ export default {
         bound: true,
         moveType: ["snap", {stopAtEdge: true}]
       },
-      plugins: [new Arrow({parentEl: document.body})],
-      swiperOptions: {
-        navigation: true,
-        watchSlidesVisibility: true,
-        simulateTouch: false,
-        breakpoints: {
-          0: {
-            slidesPerView: 1,
-            spaceBetween: 0
-          },
-          576: {
-            slidesPerView: 2,
-            spaceBetween: 5
-          },
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 5
-          },
-          992: {
-            slidesPerView: 5,
-            spaceBetween: 5
-          },
-          1200: {
-            slidesPerView: 7,
-            spaceBetween: 5
-          }
-        }
-      },
+      plugins: [new Arrow({parentEl: document.body})]
     }
   },
   watch: {
@@ -84,7 +87,8 @@ export default {
       handler: function (newVal) {
         //let idx = Math.max(0, newVal)
         if (this.ready && newVal >= 0) {
-          this.$refs.flicking.moveTo(newVal, 200).catch(() => {});
+          this.$refs.flicking.moveTo(newVal, 200).catch(() => {
+          });
         }
       }
     }
@@ -122,6 +126,13 @@ export default {
 @import "../../../node_modules/@egjs/vue-flicking/dist/flicking.css";
 @import "../../../node_modules/@egjs/flicking-plugins/dist/arrow.css";
 
+.attribution-text {
+  font-size: 11px !important;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+}
+
 .flicking-container {
   padding: 0 80px 0 80px;
   position: relative;
@@ -146,10 +157,6 @@ export default {
   margin-top: 0;
 }
 
-.attribution-text {
-  font-size: 8px;
-}
-
 .eventCard {
   height: 180px;
   margin-top: 10px;
@@ -172,11 +179,20 @@ export default {
   background: rgba(144, 144, 144, .7);
   transition: background-color .3s;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .carousel-card.active .card-img-overlay {
   z-index: 30;
   background: rgba(144, 144, 144, .3);
+}
+
+.tooltip-dark a {
+  color: #93dbff;
+  text-decoration: none;
 }
 
 </style>
