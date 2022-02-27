@@ -12,7 +12,7 @@
         class="topic-carousel"
         height="280">
       <v-carousel-item
-          v-for="(article, i) in topic.articles"
+          v-for="(article, i) in topic.articles.slice(0, 6)"
           :key="i">
          <news-card :max-width="width" :article="article" :showPlaceholderImage="true" :elevation="0"/>
       </v-carousel-item>
