@@ -4,7 +4,6 @@
     <div class="container-fluid">
 
       <div class="container">
-        <!--<img :src="getImgUrl(event)" class="position-absolute">-->
         <div class="row mt-3">
           <div class="col-12">
             <h1>{{ event.name }}</h1>
@@ -127,15 +126,7 @@ export default {
     },
     toTimeString(dateTime) {
       return moment(new Date(dateTime)).format('Do MMMM YYYY')
-    },
-    getImgUrl(event) {
-      let images = require.context('../../assets/btw/events/', false, /\.png$/)
-      try {
-        return images('./' + event.id + ".png")
-      } catch (e) {
-        return ""
-      }
-    },
+    }
   },
   mounted() {
     window.scrollTo(0, 0);

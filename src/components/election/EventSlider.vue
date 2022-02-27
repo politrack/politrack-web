@@ -95,12 +95,7 @@ export default {
   },
   methods: {
     getImgUrl(event) {
-      let images = require.context('../../assets/btw/events/', false, /\.png$/)
-      try {
-        return images('./' + event.id + ".png")
-      } catch (e) {
-        return ""
-      }
+      return "https://api.v2202110157813164869.happysrv.de/web/data/img/events/" + event.id + ".png";
     },
     isActive(event) {
       return event.idx === this.activeIndex;

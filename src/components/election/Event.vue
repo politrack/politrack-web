@@ -8,7 +8,7 @@
     </h3>
     <v-row>
       <v-col lg="4" sm="6" cols="12" v-for="article in articles" :key="article._id">
-        <NewsCard :article="article" :max-width="300" :showPlaceholderImage="true" />
+        <NewsCard :article="article" :max-width="300" :showPlaceholderImage="true" class="mx-auto" />
       </v-col>
     </v-row>
     <div class="text-end py-3">
