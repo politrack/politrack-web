@@ -153,9 +153,8 @@
                 Projektes gelernt haben, auch auf andere Bereiche übertragen kann. Da wir beide großes Interesse an der
                 deutschen Politik haben, kam uns die Idee, diese Methoden auch in diesem Gebiet einzusetzen. Besonders
                 vor der Bundestagswahl haben wir festgestellt, dass man sich viel zu wenig mit den wichtigen Themen und
-                den einzelnen Kandidat:innen auseinandergesetzt hat. Wir beobachten, dass es manchen deutschen Medien
-                mehr um Schlagzeilen geht als um unabhängige Berichterstattung. Diesen Trend halten wir für
-                problematisch. Wir hoffen, mit unserem Projekt den Bürger:innen viele unterschiedliche Perspektiven zu
+                den einzelnen Kandidat:innen auseinandergesetzt hat.
+                Wir hoffen, mit unserem Projekt den Bürger:innen viele unterschiedliche Perspektiven zu
                 einem Thema geben zu können. Damit soll die Transparenz in unserer Demokratie verbessert und eine
                 objektivere Meinungsbildung gefördert werden.
               </p>
