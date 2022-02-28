@@ -6,7 +6,7 @@
         <v-container>
           <div class="text-h2 text-center">Dein Politik-Briefing</div>
           <div class="text-h6 text-center caption grey--text text--lighten-2">
-            Unsere KI liest alle politische Nachrichtenartikel von den größten Medien aus Deutschland und generiert
+            Unsere KI liest alle politischen Nachrichtenartikel von den größten Medien aus Deutschland und generiert
             daraus spannende Statistiken und Einblicke.
           </div>
 
