@@ -8,12 +8,15 @@
           <img alt="" class="img-fluid rounded-circle mb-3 img-thumbnail elevation-2"
                src="../assets/img/jonas.jpg" width="100">
           <h3 class="mb-0">Jonas Dippel</h3>
-          <span class="small text-muted">Doktorand TU Berlin</span>
-          <div class="mt-3">
-            <a class="social-link text-decoration-none" href="mailto:j.dippel@campus.tu-berlin.de">
+          <div class="small text-muted"></div>
+          <div class="mt-2">
+            <a class="text-decoration-none" href="https://twitter.com/jdppel">
+              <v-icon>fab fa-twitter</v-icon>
+            </a>
+            <a class="social-link text-decoration-none ms-2" href="mailto:jonas.dippel@gmx.de">
               <v-icon>fas fa-envelope</v-icon>
             </a>
-            <a class="text-decoration-none ms-4" href="https://linkedin.com/in/jdippel/">
+            <a class="text-decoration-none ms-2" href="https://linkedin.com/in/jdippel/">
               <v-icon>fab fa-linkedin</v-icon>
             </a>
           </div>
@@ -23,13 +26,15 @@
           <img alt="" class="img-fluid rounded-circle mb-3 elevation-2 img-thumbnail"
                src="../assets/img/michael.jpg"
                width="100">
-          <h3 class="mb-0">Michael Perk</h3><span
-            class="small text-muted">Doktorand TU Braunschweig</span>
-          <div class="mt-3">
-            <a class="social-link text-decoration-none" href="mailto:m.perk@tu-bs.de">
+          <h3 class="mb-0">Michael Perk</h3>
+          <div class="mt-2">
+            <a class="text-decoration-none" href="https://twitter.com/perkmi">
+              <v-icon>fab fa-twitter</v-icon>
+            </a>
+            <a class="social-link text-decoration-none ms-2" href="mailto:m.perk@tu-bs.de">
               <v-icon>fas fa-envelope</v-icon>
             </a>
-            <a class="text-decoration-none ms-4" href="https://www.linkedin.com/in/michael-perk">
+            <a class="text-decoration-none ms-2" href="https://www.linkedin.com/in/michael-perk">
               <v-icon>fab fa-linkedin</v-icon>
             </a>
           </div>
